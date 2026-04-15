@@ -4,124 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amato Lima</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Helvetica Neue', sans-serif;
-    }
-
-    body {
-      background-color: #f5f2ed;
-      color: #1a1a1a;
-    }
-
-    header {
-      position: fixed;
-      width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-    }
-
-    header h1 {
-      font-size: 18px;
-      letter-spacing: 2px;
-      font-weight: 500;
-    }
-
-    header a {
-      text-decoration: none;
-      color: #1a1a1a;
-      font-size: 14px;
-    }
-
-    .hero {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero h2 {
-      color: white;
-      font-size: 32px;
-      font-weight: 300;
-      letter-spacing: 2px;
-      max-width: 600px;
-    }
-
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .section h3 {
-      margin-bottom: 20px;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .projects img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-
-    footer {
-      padding: 40px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    @media (min-width: 768px) {
-      .projects {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .hero h2 {
-        font-size: 40px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>AMATO LIMA</h1>
-    <a href="https://instagram.com" target="_blank">Instagram</a>
-  </header>
+<header>
+  <div>AMATO LIMA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projetos.html">Projetos</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h2>Arquitetura que transforma espaços em experiência</h2>
-  </section>
+<section class="hero">
+  <h1>Arquitetura que transforma espaços</h1>
+</section>
 
-  <section class="section">
-    <h3>Projetos</h3>
+<div class="container">
+  <h2>Projetos</h2>
 
-    <div class="projects">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0">
-      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea">
-    </div>
-  </section>
-
-  <footer>
-    © Amato Lima — Todos os direitos reservados
-  </footer>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d">
+    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0">
+    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea">
+  </div>
+</div>
 
 </body>
 </html>
