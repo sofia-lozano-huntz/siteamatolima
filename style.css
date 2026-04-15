@@ -33,7 +33,7 @@ header a {
 }
 
 .hero {
-  height: 100vh;
+  height: 80vh;
   background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
   display: flex;
   align-items: center;
