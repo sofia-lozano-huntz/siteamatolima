@@ -4,34 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amato Lima</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      background: #000;
+      color: white;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      z-index: 10;
+    }
+
+    header img {
+      height: 30px;
+    }
+
+    .menu-btn {
+      font-size: 20px;
+      cursor: pointer;
+      letter-spacing: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2);
+      transition: 0.5s;
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0.7;
+      animation: fade 2s infinite;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+
+    /* MENU FULLSCREEN */
+    .menu {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transform: translateY(-100%);
+      transition: 0.5s;
+      z-index: 20;
+    }
+
+    .menu.active {
+      transform: translateY(0);
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      margin: 15px 0;
+      letter-spacing: 2px;
+    }
+
+    /* CONTENT */
+    .content {
+      height: 100vh;
+      background: #f5f2ed;
+    }
+
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div>AMATO LIMA</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-  </nav>
+  <img src="logo.png" alt="logo">
+  <div class="menu-btn" onclick="toggleMenu()">MENU</div>
 </header>
 
+<!-- MENU -->
+<div class="menu" id="menu">
+  <a href="index.html">HOME</a>
+  <a href="projetos.html">PROJETOS</a>
+  <a href="sobre.html">SOBRE</a>
+  <a href="contato.html">CONTATO</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-  <h1>Arquitetura que transforma espaços</h1>
+  <video autoplay muted loop playsinline>
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="scroll">SCROLL</div>
 </section>
 
-<div class="container">
-  <h2>Projetos</h2>
+<div class="content"></div>
 
-  <div class="grid">
-    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d">
-    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0">
-    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea">
-  </div>
-</div>
+<script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+  }
+
+  // efeito leve no scroll
+  window.addEventListener("scroll", () => {
+    let scroll = window.scrollY;
+    document.getElementById("overlay").style.background = 
+      "rgba(0,0,0," + (0.2 + scroll / 1000) + ")";
+  });
+</script>
 
 </body>
 </html>
