@@ -58,8 +58,37 @@ header a {
   object-fit: cover;
 }
 
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-left img {
+  height: 26px;
+  width: auto;
+}
+
+.brand-left span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #f6f1eb;
+  font-weight: 400;
+}
+
 @media(min-width:768px){
   .grid {
     grid-template-columns: repeat(3,1fr);
   }
+
+  .brand-left img {
+  height: 20px;
+}
+
+.brand-left span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
 }
