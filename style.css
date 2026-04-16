@@ -148,14 +148,19 @@ p { margin: 0; }
 }
 .logo {
   position: relative;
-  z-index: 5;
+  z-index: 2;
   width: 72px;
   height: auto;
-  opacity: 0.82;
-  filter: brightness(0.88) contrast(0.92) saturate(0.9);
-  mix-blend-mode: screen;
-  animation: logoReveal 1.8s ease-out both, logoFloat 7s ease-in-out infinite;
-  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+  display: block;
+  opacity: 0.88;
+  filter: brightness(0.92) contrast(0.96) saturate(0.9);
+  transform-origin: center;
+  animation: logoReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+             logoFloat 7s ease-in-out infinite;
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
 }
 
 /* halo bem sutil atrás da logo */
@@ -174,8 +179,7 @@ p { margin: 0; }
   height: auto;
   display: block;
   opacity: 0.78;
-  filter: brightness(0.86) contrast(0.94) saturate(0.88);
-  mix-blend-mode: screen;
+  filter: brightness(0.9) contrast(0.95) saturate(0.88);
   transform-origin: center;
   animation: logoReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) both,
              logoFloat 7s ease-in-out infinite;
@@ -227,10 +231,9 @@ p { margin: 0; }
 
 /* quando o header ganha blur no scroll */
 .header.scrolled .logo {
-  opacity: 0.9;
-  filter: brightness(0.95) contrast(1) saturate(0.92);
+  opacity: 0.96;
+  filter: brightness(0.98) contrast(1) saturate(0.92);
   transform: scale(0.985);
-  mix-blend-mode: normal;
 }
 
 .header.scrolled .logo-wrap::before {
