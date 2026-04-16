@@ -1,16 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amato Lima</title>
-    <meta
-      name="description"
-      content="Arquitetura, interiores e execução em uma experiência imersiva inspirada em matéria, luz e profundidade."
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Amato Lima</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="menu-icon" id="menuBtn">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="brand-small">AMATO LIMA</div>
+</header>
+
+<!-- MENU -->
+<nav class="side-menu" id="menu">
+  <ul>
+    <li>Home</li>
+    <li>Imóveis</li>
+    <li>Projetos</li>
+    <li>Sobre</li>
+    <li>Contato</li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- GRID -->
+  <div class="grid-overlay"></div>
+
+  <!-- LOGO PEDRA -->
+  <img src="/assets/stone-logo.png" class="stone" />
+
+  <!-- TEXTO -->
+  <h1 class="brand-title">AMATO LIMA</h1>
+
+  <div class="brand-line"></div>
+
+  <!-- CURVA -->
+  <div class="curve-line"></div>
+
+</section>
+
+<!-- ARQUITETURA -->
+<section class="architecture">
+
+  <div class="grid-overlay"></div>
+
+  <div class="arch-content">
+    <h2>Arquitetura que constrói valor</h2>
+    <p>
+      Transformamos espaço em presença, matéria em linguagem e construção em legado.
+    </p>
+  </div>
+
+</section>
+
+<!-- MATERIAIS -->
+<section class="materials">
+
+  <div class="material travertine"></div>
+  <div class="material walnut"></div>
+
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+
+  <h2>
+    Não projetamos apenas espaços.  
+    Construímos permanência.
+  </h2>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © Amato Lima
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
