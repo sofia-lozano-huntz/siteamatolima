@@ -126,12 +126,15 @@ p { margin: 0; }
 
 .header {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0 0 auto 0;
+  height: var(--header-height);
   z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
   background: transparent;
-  border: none;
+  border: 0;
   box-shadow: none;
 }
 
@@ -141,7 +144,8 @@ p { margin: 0; }
   align-items: center;
   justify-content: center;
   isolation: isolate;
-  margin: 28px 0 0 32px;
+  flex: 0 0 auto;
+  margin: 0;
 }
 
 .logo {
@@ -150,54 +154,62 @@ p { margin: 0; }
   width: 72px;
   height: auto;
   display: block;
-  opacity: 1;
-  filter: brightness(0.94) contrast(1.02) saturate(0.95);
+  opacity: 0.98;
+  filter: brightness(0.93) contrast(1.02) saturate(0.95);
   transform-origin: center;
   animation: logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
   transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
 }
 
-/* halo muito mais sutil */
 .logo-wrap::before {
   content: "";
   position: absolute;
   z-index: 0;
-  inset: -10px;
+  inset: -8px;
   border-radius: 999px;
   background: radial-gradient(
     circle,
-    rgba(255, 244, 230, 0.06) 0%,
-    rgba(255, 244, 230, 0.025) 42%,
+    rgba(255, 244, 230, 0.045) 0%,
+    rgba(255, 244, 230, 0.02) 42%,
     rgba(255, 244, 230, 0) 78%
   );
-  filter: blur(10px);
-  opacity: 0.45;
+  filter: blur(8px);
+  opacity: 0.38;
   pointer-events: none;
 }
 
-/* remove completamente a linha */
 .logo-wrap::after {
   content: none;
 }
 
-/* quando rolar, aí sim entra o blur */
 .header.scrolled {
   position: fixed;
-  background: rgba(20, 16, 12, 0.26);
+  inset: 0 0 auto 0;
+  background: rgba(20, 16, 12, 0.22);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(214, 200, 184, 0.08);
 }
 
-.header.scrolled .logo-wrap {
-  margin-top: 18px;
-  margin-bottom: 18px;
+.header.scrolled .logo {
+  width: 68px;
+  filter: brightness(0.97) contrast(1.03) saturate(0.96);
+  transform: scale(0.99);
 }
 
-.header.scrolled .logo {
+.menu-toggle {
   width: 64px;
-  filter: brightness(0.98) contrast(1.04) saturate(0.96);
-  transform: scale(0.985);
+  height: 64px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  position: relative;
+  z-index: 31;
 }
 
 @keyframes logoReveal {
@@ -210,7 +222,6 @@ p { margin: 0; }
     transform: translateY(0) scale(1);
   }
 }
-}
 
 @keyframes logoFloat {
   0%, 100% {
@@ -219,7 +230,6 @@ p { margin: 0; }
   50% {
     transform: translateY(1.5px);
   }
-}
 }
 .menu-toggle,
 .menu-close {
@@ -1115,7 +1125,10 @@ body.menu-open .menu-shell { transform: translateY(0) scale(1); }
   h1 { font-size: clamp(2.3rem, 12vw, 3.6rem); }
   h2 { font-size: clamp(1.7rem, 8vw, 2.6rem); }
   h3 { font-size: 1.2rem; }
-  .header { width: calc(100vw - 28px); }
+  .header {
+  width: 100%;
+  padding: 0 14px;
+}
   .brand-mark { width: 48px; height: 48px; }
   .brand-mark img { width: 34px; height: 34px; }
   .menu-shell {
