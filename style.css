@@ -164,58 +164,95 @@ p { margin: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
 }
 
+.logo {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: auto;
+  display: block;
+  opacity: 0.78;
+  filter: brightness(0.86) contrast(0.94) saturate(0.88);
+  mix-blend-mode: screen;
+  transform-origin: center;
+  animation: logoReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+             logoFloat 7s ease-in-out infinite;
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease,
+    mix-blend-mode 0.5s ease;
+}
+
+/* halo atmosférico */
 .logo-wrap::before {
   content: "";
   position: absolute;
-  inset: -18px;
+  z-index: 0;
+  inset: -16px;
   border-radius: 999px;
   background: radial-gradient(
     circle,
-    rgba(255, 248, 238, 0.10) 0%,
-    rgba(255, 248, 238, 0.05) 35%,
-    rgba(255, 248, 238, 0.00) 75%
+    rgba(255, 244, 230, 0.10) 0%,
+    rgba(255, 244, 230, 0.05) 34%,
+    rgba(255, 244, 230, 0.00) 76%
   );
-  filter: blur(10px);
+  filter: blur(14px);
+  opacity: 0.75;
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* linha arquitetônica de conexão */
+/* linha arquitetônica mais sutil */
 .logo-wrap::after {
   content: "";
   position: absolute;
-  left: calc(100% + 14px);
+  z-index: 1;
+  left: calc(100% + 12px);
   top: 50%;
-  width: 46px;
+  width: 42px;
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(214, 200, 184, 0.55),
-    rgba(214, 200, 184, 0.08)
+    rgba(214, 200, 184, 0.38),
+    rgba(214, 200, 184, 0.05)
   );
   transform: translateY(-50%);
-  opacity: 0.55;
+  opacity: 0.42;
   pointer-events: none;
+  transition: opacity 0.5s ease, width 0.5s ease;
 }
 
-/* estado ao rolar */
+/* quando o header ganha blur no scroll */
 .header.scrolled .logo {
-  opacity: 0.94;
-  filter: brightness(0.98) contrast(1) saturate(0.95);
-  transform: translateY(0) scale(0.98);
+  opacity: 0.9;
+  filter: brightness(0.95) contrast(1) saturate(0.92);
+  transform: scale(0.985);
   mix-blend-mode: normal;
+}
+
+.header.scrolled .logo-wrap::before {
+  opacity: 0.5;
+  transform: scale(0.96);
+}
+
+.header.scrolled .logo-wrap::after {
+  opacity: 0.26;
+  width: 34px;
 }
 
 @keyframes logoReveal {
   from {
     opacity: 0;
-    transform: translateY(-8px) scale(0.96);
+    transform: translateY(-8px) scale(0.965);
+    filter: brightness(0.82) contrast(0.9) saturate(0.85);
   }
   to {
-    opacity: 0.82;
+    opacity: 0.78;
     transform: translateY(0) scale(1);
+    filter: brightness(0.86) contrast(0.94) saturate(0.88);
   }
 }
 
@@ -226,6 +263,7 @@ p { margin: 0; }
   50% {
     transform: translateY(1.5px);
   }
+}
 }
 .menu-toggle,
 .menu-close {
