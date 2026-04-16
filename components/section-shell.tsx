@@ -1,9 +1,15 @@
 export default function SectionShell({
   children,
-  className = ""
+  className = "",
+  id
 }: {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <section className={`shell section-space ${className}`}>{children}</section>;
+  return (
+    <section id={id} className={`shell section-space ${className}`}>
+      {children}
+    </section>
+  );
 }
