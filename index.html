@@ -64,7 +64,7 @@
   </nav>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero" id="home" data-immersive="true">
       <video class="hero-media" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
         <source src="assets/video-headder.mp4" type="video/mp4" />
       </video>
@@ -73,14 +73,39 @@
       <div class="hero-vignette"></div>
       <div class="hero-grid" aria-hidden="true"></div>
 
-      <div class="container hero-content reveal">
-        <p class="eyebrow">AMATO LIMA</p>
-        <h1>Ativos imobiliários</h1>
-        <p class="hero-subtitle">Tradição e valor</p>
-        <div class="hero-actions">
-          <a href="#imoveis" class="btn btn-primary">Ver imóveis</a>
-          <a href="#projetos" class="btn btn-secondary">Conheça os projetos</a>
+      <div class="container hero-layout">
+        <div class="hero-content reveal">
+          <p class="eyebrow">AMATO LIMA</p>
+          <h1>Ativos imobiliários</h1>
+          <p class="hero-subtitle">Tradição e valor</p>
+          <p class="hero-note">Curadoria, transformação e valorização com presença arquitetônica, leitura técnica e linguagem sensorial.</p>
+          <div class="hero-actions">
+            <a href="#imoveis" class="btn btn-primary">Ver imóveis</a>
+            <a href="#projetos" class="btn btn-secondary">Conheça os projetos</a>
+          </div>
         </div>
+
+        <aside class="hero-aside reveal delay-2" aria-label="Destaques da marca">
+          <div class="hero-panel hero-panel-outline">
+            <span class="hero-panel-label">Leitura do ativo</span>
+            <strong>Estratégia, engenharia e materialidade</strong>
+            <p>Cada imóvel é tratado como projeto: potencial, intervenção e valor percebido.</p>
+          </div>
+          <div class="hero-specs">
+            <div>
+              <span>Curadoria</span>
+              <strong>Leilão</strong>
+            </div>
+            <div>
+              <span>Transformação</span>
+              <strong>Reforma</strong>
+            </div>
+            <div>
+              <span>Resultado</span>
+              <strong>Valorização</strong>
+            </div>
+          </div>
+        </aside>
       </div>
 
       <div class="hero-scroll">
@@ -90,6 +115,7 @@
     </section>
 
     <section class="section section-stone intro" id="posicionamento" data-tone="stone">
+      <div class="section-orbit section-orbit-left" aria-hidden="true"></div>
       <div class="container two-columns intro-grid">
         <div class="section-heading reveal">
           <p class="eyebrow">Posicionamento</p>
@@ -124,6 +150,7 @@
     </section>
 
     <section class="section featured-properties" id="imoveis" data-tone="light">
+      <div class="section-orbit section-orbit-right" aria-hidden="true"></div>
       <div class="container">
         <div class="section-heading row-heading reveal">
           <div>
@@ -184,7 +211,7 @@
 
     <section class="section sensory-block" data-tone="dark">
       <video class="sensory-video" autoplay muted loop playsinline poster="assets/sensory-poster.jpg">
-        <source src="assets/sensory-video.mp4" type="video/mp4" />
+        <source src="assets/video-hero.mp4" type="video/mp4" />
       </video>
       <div class="sensory-overlay"></div>
       <div class="sensory-gradient"></div>
@@ -227,6 +254,7 @@
     </section>
 
     <section class="section projects-section section-dark" id="projetos" data-tone="dark">
+      <div class="section-orbit section-orbit-grid" aria-hidden="true"></div>
       <div class="architect-grid" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
@@ -234,6 +262,11 @@
         <div class="section-heading reveal">
           <p class="eyebrow">Projetos</p>
           <h2>Camadas de visão, técnica, materialidade e resultado</h2>
+        </div>
+
+        <div class="project-topline reveal">
+          <div class="blueprint-chip">Grid arquitetônico</div>
+          <p>Conceito, técnica, materialidade e resultado articulados como camadas do mesmo ativo.</p>
         </div>
 
         <div class="project-layers">
@@ -287,6 +320,7 @@
     </section>
 
     <section class="section about-home" id="sobre" data-tone="stone">
+      <div class="section-orbit section-orbit-left" aria-hidden="true"></div>
       <div class="container about-grid">
         <div class="about-media placeholder-media reveal media-outline"><span>Adicionar mídia</span></div>
         <div class="about-copy reveal delay-1">
