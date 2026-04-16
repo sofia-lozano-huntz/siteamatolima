@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4efe6;
+  --foreground: #1d1814;
+  --muted: #8f8378;
+  --line: rgba(64, 48, 36, 0.14);
+  --card: rgba(255, 255, 255, 0.5);
+  --overlay: rgba(25, 18, 13, 0.48);
+  --sand: #d9ccb8;
+  --stone: #bfa588;
+  --bronze: #8d715a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 30%),
+    radial-gradient(circle at 70% 10%, rgba(255,255,255,0.18), transparent 22%),
+    linear-gradient(180deg, #f6f2ea 0%, #efe7dc 60%, #ece1d2 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.texture-travertine {
+  position: relative;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.18), rgba(0,0,0,0) 28%),
+    linear-gradient(180deg, #d8cab6 0%, #cfbea9 38%, #c6b39d 100%);
+}
+
+.texture-travertine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(255,255,255,.35), transparent 12%),
+    radial-gradient(circle at 68% 28%, rgba(255,255,255,.18), transparent 10%),
+    radial-gradient(circle at 40% 78%, rgba(102,76,57,.12), transparent 18%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.04) 0 3px,
+      rgba(0,0,0,.03) 3px 4px,
+      transparent 4px 24px
+    );
+  pointer-events: none;
+}
+
+.brand-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
+}
+
+.shell {
+  width: min(1320px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.card-soft {
+  background: rgba(255,255,255,0.36);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 20px 60px rgba(62, 45, 30, 0.08);
+}
+
+.hamburger-line {
+  display: block;
+  width: 34px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+.grid-fade > * {
+  opacity: 0;
+  transform: translateY(32px);
+}
