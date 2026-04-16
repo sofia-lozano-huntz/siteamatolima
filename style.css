@@ -398,7 +398,7 @@ body.menu-open .menu-shell { transform: translateY(0) scale(1); }
   grid-template-columns: minmax(0, 1.1fr) minmax(280px, .62fr);
   gap: 44px;
   align-items: end;
-  padding-top: calc(var(--header-height) + 28px);
+   padding-top: calc(var(--header-height) + 80px);
   padding-bottom: 78px;
 }
 
@@ -1107,6 +1107,12 @@ body.menu-open .menu-shell { transform: translateY(0) scale(1); }
 
   .header.scrolled .brand-lockup-img {
     width: 154px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-layout {
+    padding-top: calc(var(--header-height) + 60px);
   }
 }
 
