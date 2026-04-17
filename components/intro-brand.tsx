@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP);
 
 function MonogramLarge() {
   return (
-    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-white/25 bg-white/10 text-2xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl">
+    <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-white/20 bg-white/10 text-xl font-semibold tracking-[0.18em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl md:tracking-[0.22em]">
       AL
     </div>
   );
@@ -30,14 +30,14 @@ export default function IntroBrand() {
       });
 
       tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".hero-layer", { autoAlpha: 0, y: 16 })
+        .set(".hero-layer", { autoAlpha: 0, y: 18 })
 
         .fromTo(
           brand,
           {
             autoAlpha: 0,
-            scale: 0.97,
-            y: 10,
+            scale: 0.985,
+            y: 8,
             xPercent: -50,
             yPercent: -50
           },
@@ -45,7 +45,7 @@ export default function IntroBrand() {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 0.75
+            duration: 0.9
           }
         )
         .fromTo(
@@ -56,34 +56,34 @@ export default function IntroBrand() {
           },
           {
             scaleX: 1,
-            duration: 0.45
+            duration: 0.55
           },
-          "-=0.2"
+          "-=0.3"
         )
-        .to({}, { duration: 0.35 })
+        .to({}, { duration: 0.45 })
         .to(brand, {
           autoAlpha: 0,
-          scale: 0.985,
-          y: -8,
-          duration: 0.45,
-          onStart: () => setHeaderVisible(true)
+          scale: 0.992,
+          y: -6,
+          duration: 0.55,
+          onComplete: () => setHeaderVisible(true)
         })
         .to(
           ".intro-overlay",
           {
             opacity: 0,
-            duration: 0.55
+            duration: 0.7
           },
-          "-=0.3"
+          "-=0.35"
         )
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.7
+            duration: 0.85
           },
-          "-=0.35"
+          "-=0.4"
         )
         .to(
           ".intro-screen",
@@ -103,21 +103,21 @@ export default function IntroBrand() {
       <Header visible={headerVisible} />
 
       <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[#140e0a]" />
-        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,.06),transparent_36%),linear-gradient(180deg,rgba(58,39,28,.28),rgba(20,14,10,.82))]" />
+        <div className="absolute inset-0 bg-[#120b08]" />
+        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_35%_22%,rgba(255,255,255,.05),transparent_24%),radial-gradient(circle_at_50%_50%,rgba(141,113,90,.08),transparent_45%),linear-gradient(180deg,rgba(36,22,15,.30),rgba(18,11,8,.90))]" />
 
         <div
           ref={brandRef}
-          className="absolute left-1/2 top-1/2 z-[101] w-[calc(100vw-40px)] max-w-[820px] -translate-x-1/2 -translate-y-1/2 px-4 text-white"
+          className="absolute left-1/2 top-1/2 z-[101] w-[min(92vw,760px)] -translate-x-1/2 -translate-y-1/2 px-3 text-white"
         >
-          <div className="flex items-center justify-center gap-4 md:gap-7">
+          <div className="flex items-center justify-center gap-3 md:gap-7">
             <MonogramLarge />
 
             <div className="min-w-0 flex-1">
-              <div className="font-display text-[clamp(2.1rem,5vw,5.8rem)] uppercase leading-none tracking-[0.12em] whitespace-nowrap">
+              <div className="font-display text-[clamp(1.7rem,7vw,5.8rem)] uppercase leading-none tracking-[0.08em] whitespace-nowrap md:tracking-[0.12em]">
                 Amato Lima
               </div>
-              <div className="brand-line mt-5 h-px bg-white/60" />
+              <div className="brand-line mt-4 w-[78%] bg-white/60 md:mt-5 md:w-full" />
             </div>
           </div>
         </div>
@@ -163,4 +163,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-}
+            }
