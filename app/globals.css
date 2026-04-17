@@ -22,8 +22,6 @@ html {
 
 html,
 body {
-html,
-body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -33,15 +31,6 @@ body {
 
 body {
   overscroll-behavior-y: none;
-}
-
-body {
-  overscroll-behavior-y: none;
-}
-
-body {
-  margin: 0;
-  padding: 0;
   background:
     radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 30%),
     radial-gradient(circle at 70% 10%, rgba(255,255,255,0.18), transparent 22%),
@@ -52,7 +41,11 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .font-display {
+h1,
+h2,
+h3,
+h4,
+.font-display {
   font-family: var(--font-display), serif;
 }
 
@@ -127,8 +120,13 @@ a {
   transform: translateY(32px);
 }
 
-  .intro-grain {
+.intro-grain {
   background-image:
     radial-gradient(rgba(255,255,255,0.08) 0.6px, transparent 0.6px);
   background-size: 8px 8px;
-  }
+}
+
+.grid-v,
+.grid-h {
+  will-change: transform, opacity;
+}
