@@ -17,32 +17,29 @@ function MonogramLarge() {
 
 export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
-  const [ready, setReady] = useState(false);
+  const brandRef = useRef<HTMLDivElement | null>(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
 
   useGSAP(
     () => {
+      const brand = brandRef.current;
+      if (!brand) return;
+
       const tl = gsap.timeline({
         defaults: { ease: "power3.inOut" },
-        onComplete: () => setReady(true)
+        onComplete: () => {
+          setHeaderVisible(true);
+        }
       });
 
       tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".brand-mark", {
-          autoAlpha: 1,
-          xPercent: -50,
-          yPercent: -50,
-          x: 0,
-          y: 0,
-          scale: 1
-        })
-        .set(".hero-layer", { autoAlpha: 0, y: 30 })
+        .set(".hero-layer", { autoAlpha: 0, y: 24 })
 
-        .from(".brand-mark", {
-          duration: 1,
-          scale: 0.94,
-          y: 18,
-          autoAlpha: 0
-        })
+        .fromTo(
+          brand,
+          { autoAlpha: 0, scale: 0.94, y: 18, xPercent: -50, yPercent: -50 },
+          { autoAlpha: 1, scale: 1, y: 0, duration: 1.1 }
+        )
         .fromTo(
           ".brand-line",
           { scaleX: 0, transformOrigin: "left center" },
@@ -50,33 +47,33 @@ export default function IntroBrand() {
           "-=0.45"
         )
         .to({}, { duration: 0.7 })
-        .to(".brand-mark", {
-          duration: 1.1,
+        .to(brand, {
           scale: 0.42,
           x: () => (window.innerWidth < 768 ? -118 : -360),
-          y: () => -(window.innerHeight / 2) + 78
+          y: () => -(window.innerHeight / 2) + 78,
+          duration: 1.1
         })
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 1
+            duration: 0.9
           },
-          "-=0.35"
+          "-=0.3"
         )
         .to(
           ".intro-overlay",
           {
             autoAlpha: 0,
-            duration: 0.9
+            duration: 0.8
           },
-          "-=0.9"
+          "-=0.8"
         )
         .to(".intro-screen", {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.35
+          duration: 0.2
         });
     },
     { scope: root }
@@ -84,29 +81,31 @@ export default function IntroBrand() {
 
   return (
     <div ref={root} className="relative overflow-hidden">
-      <Header ready={ready} />
+      <Header visible={headerVisible} />
 
       <div className="intro-screen texture-travertine fixed inset-0 z-[100] h-[100dvh] w-screen overflow-hidden">
         <div className="intro-overlay absolute inset-0 bg-[var(--overlay)]" />
 
-        <div className="brand-mark absolute left-1/2 top-1/2 z-[101] w-[calc(100vw-32px)] max-w-[760px] -translate-x-1/2 -translate-y-1/2 px-4 text-white">
-          <div className="flex items-center justify-center gap-4 md:gap-6">
+        <div
+          ref={brandRef}
+          className="absolute left-1/2 top-1/2 z-[101] w-[calc(100vw-40px)] max-w-[820px] -translate-x-1/2 -translate-y-1/2 px-4 text-white"
+        >
+          <div className="flex items-center justify-center gap-5 md:gap-7">
             <MonogramLarge />
 
             <div className="min-w-0 flex-1">
-              <div className="font-display text-[clamp(2rem,6vw,5.5rem)] uppercase tracking-[0.12em] leading-none">
+              <div className="font-display text-[clamp(2.2rem,5vw,5.8rem)] uppercase tracking-[0.12em] leading-none whitespace-nowrap">
                 Amato Lima
               </div>
-              <div className="brand-line mt-4 h-px bg-white/60" />
+              <div className="brand-line mt-5 h-px bg-white/60" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="hero-layer relative overflow-hidden">
-        <section className="relative min-h-[100dvh] overflow-hidden text-white">
-          <div className="texture-travertine absolute inset-0" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,12,8,.62),rgba(18,12,8,.18),rgba(18,12,8,.5))]" />
+      <div className="hero-layer relative">
+        <section className="texture-travertine relative min-h-[100dvh] overflow-hidden text-white">
+          <div className="absolute inset-0 bg-[var(--overlay)]" />
 
           <div className="shell relative flex min-h-[100dvh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
