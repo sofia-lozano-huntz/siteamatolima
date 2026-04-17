@@ -67,10 +67,12 @@ a {
 
 .texture-travertine {
   position: relative;
-  background:
-    linear-gradient(115deg, rgba(255,255,255,0.18), rgba(0,0,0,0) 28%),
-    linear-gradient(180deg, #d8cab6 0%, #cfbea9 38%, #c6b39d 100%);
-}
+  background: linear-gradient(
+  180deg,
+  rgba(79, 64, 50, 0.14) 0%,
+  rgba(79, 64, 50, 0.24) 34%,
+  rgba(79, 64, 50, 0.52) 100%
+);
 
 .texture-travertine::before {
   content: "";
