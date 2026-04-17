@@ -11,96 +11,103 @@ gsap.registerPlugin(useGSAP);
 function StoneWireframe() {
   return (
     <svg
-      viewBox="0 0 1000 1000"
+      viewBox="0 0 900 900"
       className="h-full w-full"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       {/* contorno externo da pedra */}
-      <g className="stone-group stone-group-outer">
-        <path className="stone-line" d="M165 118H835" />
-        <path className="stone-line" d="M835 118L894 176" />
-        <path className="stone-line" d="M894 176V832" />
-        <path className="stone-line" d="M894 832L832 890" />
-        <path className="stone-line" d="M832 890H172" />
-        <path className="stone-line" d="M172 890L118 835" />
-        <path className="stone-line" d="M118 835V170" />
-        <path className="stone-line" d="M118 170L165 118" />
-
-        {/* leve espessura lateral */}
-        <path className="stone-line stone-line-soft" d="M118 170L165 198" />
-        <path className="stone-line stone-line-soft" d="M165 198H832" />
-        <path className="stone-line stone-line-soft" d="M832 198L894 176" />
-
-        <path className="stone-line stone-line-soft" d="M832 890L832 820" />
-        <path className="stone-line stone-line-soft" d="M172 890L172 820" />
+      <g className="stone-group stone-group-outline">
+        <path
+          className="stone-line"
+          d="M150 120H760C795 120 820 145 820 180V760C820 795 795 820 760 820H180C145 820 120 795 120 760V150C120 132 132 120 150 120Z"
+        />
+        <path
+          className="stone-line stone-line-soft"
+          d="M168 138H742C776 138 802 164 802 198V742C802 776 776 802 742 802H198C164 802 138 776 138 742V168C138 150 150 138 168 138Z"
+        />
       </g>
 
-      {/* cavidade interna da pedra */}
+      {/* rebaixo interno principal */}
       <g className="stone-group stone-group-recess">
-        <path className="stone-line" d="M262 250H748" />
-        <path className="stone-line" d="M748 250L792 292" />
-        <path className="stone-line" d="M792 292V714" />
-        <path className="stone-line" d="M792 714L746 756" />
-        <path className="stone-line" d="M746 756H270" />
-        <path className="stone-line" d="M270 756L226 712" />
-        <path className="stone-line" d="M226 712V292" />
-        <path className="stone-line" d="M226 292L262 250" />
-
-        {/* lado direito profundo */}
-        <path className="stone-line stone-line-soft" d="M748 250V314" />
-        <path className="stone-line stone-line-soft" d="M792 292H862" />
-        <path className="stone-line stone-line-soft" d="M792 714H862" />
+        <path
+          className="stone-line"
+          d="M250 220H680C710 220 730 240 730 270V645C730 675 710 695 680 695H645"
+        />
+        <path
+          className="stone-line"
+          d="M245 220H245L215 250V690L250 730H690L730 690"
+        />
+        <path
+          className="stone-line stone-line-soft"
+          d="M230 245H655C682 245 700 263 700 290V625C700 652 682 670 655 670H620"
+        />
       </g>
 
-      {/* símbolo interno */}
-      <g className="stone-group stone-group-symbol">
-        {/* haste esquerda */}
+      {/* símbolo interno - haste esquerda */}
+      <g className="stone-group stone-group-symbol-left">
         <path
           className="stone-line stone-line-strong"
-          d="M318 330C302 408 294 498 302 634C306 708 316 754 342 796"
+          d="M320 300L305 330V600C305 650 330 690 372 708"
         />
         <path
-          className="stone-line stone-line-strong"
-          d="M360 316C342 392 336 492 344 626C348 700 356 740 382 780"
+          className="stone-line stone-line-soft"
+          d="M342 305L328 338V592C328 634 349 665 383 684"
         />
+      </g>
 
-        {/* curva central externa */}
+      {/* símbolo interno - curva central */}
+      <g className="stone-group stone-group-symbol-center">
         <path
           className="stone-line stone-line-strong"
-          d="M390 774C364 716 356 642 360 540C366 436 396 362 456 320C500 288 560 280 616 298C680 318 724 372 738 444C746 482 748 532 744 596C742 664 742 718 742 780"
+          d="M395 310C465 300 520 327 555 380C585 425 587 488 560 545C533 602 483 646 420 680"
         />
+        <path
+          className="stone-line stone-line-strong"
+          d="M395 310C380 350 372 396 372 442C372 548 412 637 492 702"
+        />
+        <path
+          className="stone-line stone-line-soft"
+          d="M420 322C476 320 522 344 551 388C575 426 576 479 554 529C532 579 491 616 440 645"
+        />
+      </g>
 
-        {/* curva central interna */}
+      {/* símbolo interno - arco direito */}
+      <g className="stone-group stone-group-symbol-right">
         <path
           className="stone-line stone-line-strong"
-          d="M442 744C422 698 416 632 420 548C426 456 448 394 494 354C530 322 576 316 620 332C670 350 702 392 714 446C720 476 722 520 718 578C716 636 716 690 716 744"
+          d="M455 300C570 300 650 374 650 486V610"
         />
+        <path
+          className="stone-line stone-line-strong"
+          d="M650 610H595"
+        />
+        <path
+          className="stone-line stone-line-soft"
+          d="M480 320C575 324 630 388 630 482V590"
+        />
+      </g>
 
-        {/* arco direito */}
+      {/* detalhe/fenda direita */}
+      <g className="stone-group stone-group-detail">
         <path
-          className="stone-line stone-line-strong"
-          d="M630 300C708 300 772 302 826 304"
+          className="stone-line"
+          d="M735 405L782 455V635L735 700"
         />
         <path
-          className="stone-line stone-line-strong"
-          d="M826 304C824 448 822 590 820 736"
+          className="stone-line stone-line-soft"
+          d="M720 420L760 462V622L720 677"
         />
-        <path
-          className="stone-line stone-line-strong"
-          d="M820 736C790 736 758 736 726 736"
-        />
-        <path
-          className="stone-line stone-line-strong"
-          d="M726 736C724 662 724 590 724 520"
-        />
+      </g>
 
-        {/* fundo do encaixe */}
-        <path className="stone-line stone-line-soft" d="M270 756L332 796" />
-        <path className="stone-line stone-line-soft" d="M742 780L820 736" />
-        <path className="stone-line stone-line-soft" d="M360 316L456 320" />
-        <path className="stone-line stone-line-soft" d="M620 332L738 444" />
+      {/* cortes sutis para dar profundidade */}
+      <g className="stone-group stone-group-depth">
+        <path className="stone-line stone-line-faint" d="M245 220L215 250" />
+        <path className="stone-line stone-line-faint" d="M730 690L690 730" />
+        <path className="stone-line stone-line-faint" d="M650 610L650 675" />
+        <path className="stone-line stone-line-faint" d="M372 442L405 472" />
+        <path className="stone-line stone-line-faint" d="M555 380L585 350" />
       </g>
     </svg>
   );
@@ -110,7 +117,7 @@ export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
   const introScreenRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
-  const wireframeRef = useRef<HTMLDivElement | null>(null);
+  const stoneWireRef = useRef<HTMLDivElement | null>(null);
   const stoneFillRef = useRef<HTMLDivElement | null>(null);
   const heroImageRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -155,67 +162,72 @@ export default function IntroBrand() {
 
       const introScreen = introScreenRef.current;
       const logo = logoRef.current;
-      const wireframe = wireframeRef.current;
+      const stoneWire = stoneWireRef.current;
       const stoneFill = stoneFillRef.current;
       const heroImage = heroImageRef.current;
       const overlay = overlayRef.current;
 
-      if (!introScreen || !logo || !wireframe || !stoneFill || !heroImage || !overlay) {
+      if (!introScreen || !logo || !stoneWire || !stoneFill || !heroImage || !overlay) {
         return;
       }
 
-      const lines = gsap.utils.toArray<SVGPathElement>(".stone-line");
+      const stoneLines = gsap.utils.toArray<SVGPathElement>(".stone-line");
 
-      lines.forEach((line) => {
+      stoneLines.forEach((line) => {
         const length =
           typeof line.getTotalLength === "function" ? line.getTotalLength() : 300;
 
         gsap.set(line, {
           strokeDasharray: length,
           strokeDashoffset: length,
-          opacity: line.classList.contains("stone-line-soft")
-            ? 0.12
-            : line.classList.contains("stone-line-strong")
-            ? 0.2
-            : 0.16
+          opacity: line.classList.contains("stone-line-faint")
+            ? 0.08
+            : line.classList.contains("stone-line-soft")
+              ? 0.14
+              : line.classList.contains("stone-line-strong")
+                ? 0.2
+                : 0.16
         });
       });
 
       gsap.set(".hero-layer", {
         autoAlpha: 0,
-        y: 26
+        y: 24
       });
 
       gsap.set(logo, {
         autoAlpha: 0,
         y: 10,
-        scale: 0.975,
-        filter: "blur(0px)"
+        scale: 0.985
       });
 
-      gsap.set(wireframe, {
+      gsap.set(stoneWire, {
         autoAlpha: 1,
-        scale: 0.98,
-        y: 10
+        scale: 0.94,
+        y: 12
       });
 
       gsap.set(stoneFill, {
         autoAlpha: 0,
-        scale: 0.99
+        scale: 0.955
       });
 
       gsap.set(heroImage, {
         autoAlpha: 0,
-        scale: 1.025
+        scale: 1.035
       });
 
       gsap.set(overlay, {
         opacity: 1
       });
 
-      const outer = gsap.utils.toArray(".stone-group-outer .stone-line");
+      const outline = gsap.utils.toArray(".stone-group-outline .stone-line");
       const recess = gsap.utils.toArray(".stone-group-recess .stone-line");
-      const symbol = gsap.utils.toArray(".stone-group-symbol .stone-line");
+      const left = gsap.utils.toArray(".stone-group-symbol-left .stone-line");
+      const center = gsap.utils.toArray(".stone-group-symbol-center .stone-line");
+      const right = gsap.utils.toArray(".stone-group-symbol-right .stone-line");
+      const detail = gsap.utils.toArray(".stone-group-detail .stone-line");
+      const depth = gsap.utils.toArray(".stone-group-depth .stone-line");
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
@@ -226,19 +238,18 @@ export default function IntroBrand() {
         { autoAlpha: 0 },
         { autoAlpha: 1, duration: 0.35 }
       )
-
-        // assinatura mínima
+        // assinatura
         .to(
           logo,
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.58
+            duration: 0.62
           },
           "0.15"
         )
-        .to({}, { duration: 0.38 })
+        .to({}, { duration: 0.34 })
         .to(
           logo,
           {
@@ -247,122 +258,175 @@ export default function IntroBrand() {
             filter: "blur(2px)",
             duration: 0.34
           },
-          "0.98"
+          "1.02"
         )
 
-        // pedra começa a surgir em linhas
+        // pedra em linhas
         .to(
-          wireframe,
+          stoneWire,
           {
             scale: 1,
             y: 0,
-            duration: 0.8
+            duration: 1.05
           },
           "1.0"
         )
         .to(
-          outer,
+          outline,
           {
             strokeDashoffset: 0,
             opacity: 0.72,
-            duration: 0.92,
-            stagger: 0.04
+            duration: 0.95,
+            stagger: 0.06
           },
-          "1.05"
+          "1.06"
         )
         .to(
           recess,
           {
             strokeDashoffset: 0,
             opacity: 0.62,
-            duration: 0.82,
-            stagger: 0.035
+            duration: 0.78,
+            stagger: 0.05
           },
-          "1.48"
+          "1.44"
         )
         .to(
-          symbol,
+          left,
           {
             strokeDashoffset: 0,
-            opacity: 0.78,
-            duration: 1.02,
-            stagger: 0.045
+            opacity: 0.72,
+            duration: 0.68,
+            stagger: 0.04
           },
-          "1.82"
+          "1.72"
+        )
+        .to(
+          center,
+          {
+            strokeDashoffset: 0,
+            opacity: 0.84,
+            duration: 0.82,
+            stagger: 0.04
+          },
+          "1.9"
+        )
+        .to(
+          right,
+          {
+            strokeDashoffset: 0,
+            opacity: 0.76,
+            duration: 0.7,
+            stagger: 0.04
+          },
+          "2.14"
+        )
+        .to(
+          detail,
+          {
+            strokeDashoffset: 0,
+            opacity: 0.48,
+            duration: 0.48,
+            stagger: 0.03
+          },
+          "2.34"
+        )
+        .to(
+          depth,
+          {
+            strokeDashoffset: 0,
+            opacity: 0.22,
+            duration: 0.45,
+            stagger: 0.02
+          },
+          "2.5"
         )
 
-        // leve preenchimento com a pedra real
+        // presença do objeto
+        .to(
+          stoneWire,
+          {
+            scale: 1.015,
+            duration: 0.6
+          },
+          "2.65"
+        )
         .to(
           stoneFill,
           {
-            autoAlpha: 0.38,
+            autoAlpha: 0.34,
             scale: 1,
-            duration: 0.75
+            duration: 0.95
           },
-          "2.45"
+          "2.62"
         )
 
-        // hero entra por trás
+        // hero surge por trás
         .to(
           heroImage,
           {
             autoAlpha: 1,
             scale: 1,
-            duration: 1.05
+            duration: 1.2
           },
-          "2.95"
+          "3.18"
         )
         .to(
           overlay,
           {
-            opacity: 0.18,
-            duration: 1
+            opacity: 0.14,
+            duration: 1.12
           },
-          "2.95"
+          "3.18"
         )
 
-        // a pedra começa a ceder espaço
-        .to(
-          stoneFill,
-          {
-            autoAlpha: 0.14,
-            scale: 1.01,
-            duration: 0.55
-          },
-          "3.45"
-        )
-        .to(
-          symbol,
-          {
-            opacity: 0,
-            duration: 0.42
-          },
-          "3.62"
-        )
-        .to(
-          recess,
-          {
-            opacity: 0,
-            duration: 0.44
-          },
-          "3.72"
-        )
-        .to(
-          outer,
-          {
-            opacity: 0,
-            duration: 0.55,
-            onStart: () => setHeaderVisible(true)
-          },
-          "3.82"
-        )
+        // pedra segura a cena
+        .to({}, { duration: 0.3 })
+
+        // dissolve
         .to(
           stoneFill,
           {
             autoAlpha: 0,
-            duration: 0.48
+            scale: 1.01,
+            duration: 0.55
           },
-          "3.9"
+          "4.2"
+        )
+        .to(
+          depth,
+          {
+            opacity: 0,
+            duration: 0.28
+          },
+          "4.22"
+        )
+        .to(
+          detail,
+          {
+            opacity: 0,
+            duration: 0.3
+          },
+          "4.26"
+        )
+        .to(
+          [right, center, left],
+          {
+            opacity: 0,
+            duration: 0.42,
+            stagger: 0.03
+          },
+          "4.32"
+        )
+        .to(
+          [recess, outline],
+          {
+            opacity: 0,
+            duration: 0.55,
+            stagger: 0.03,
+            onStart: () => setHeaderVisible(true)
+          },
+          "4.42"
         )
 
         // hero assume
@@ -373,15 +437,15 @@ export default function IntroBrand() {
             y: 0,
             duration: 0.95
           },
-          "3.78"
+          "4.32"
         )
         .to(
           introScreen,
           {
             autoAlpha: 0,
-            duration: 0.65
+            duration: 0.7
           },
-          "4.18"
+          "4.72"
         )
         .set(introScreen, {
           pointerEvents: "none"
@@ -405,10 +469,10 @@ export default function IntroBrand() {
         >
           <div
             ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,#f8f5ef_0%,#f1eadf_54%,#ece3d6_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,#f8f5ef_0%,#f1eadf_52%,#ece3d6_100%)]"
           />
 
-          <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
             <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(45,33,24,0.14)]" />
             <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(45,33,24,0.12)]" />
             <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(45,33,24,0.10)]" />
@@ -422,16 +486,16 @@ export default function IntroBrand() {
               alt="Residência Amato Lima"
               fill
               priority
-              className="hero-intro-image object-cover object-center"
+              className="object-cover object-center hero-intro-image"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.9)_0%,rgba(244,239,230,0.42)_34%,rgba(33,23,16,0.18)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.88)_0%,rgba(244,239,230,0.52)_32%,rgba(33,23,16,0.20)_100%)]" />
           </div>
 
           {/* assinatura mínima */}
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
             <div
               ref={logoRef}
-              className="relative h-[44px] w-[170px] md:h-[74px] md:w-[300px]"
+              className="relative w-[150px] md:w-[300px]"
             >
               <Image
                 src="/logo-header.png"
@@ -443,18 +507,18 @@ export default function IntroBrand() {
             </div>
           </div>
 
-          {/* preenchimento leve da pedra */}
+          {/* pedra preenchida por trás das linhas */}
           <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
             <div
               ref={stoneFillRef}
-              className="relative h-[230px] w-[230px] md:h-[360px] md:w-[360px]"
+              className="relative aspect-square w-[300px] md:w-[440px]"
             >
               <Image
                 src="/stone-object.png"
                 alt="Pedra Amato Lima"
                 fill
                 priority
-                className="object-contain stone-object-fill"
+                className="object-contain stone-fill-image"
               />
             </div>
           </div>
@@ -462,8 +526,8 @@ export default function IntroBrand() {
           {/* wireframe da pedra */}
           <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
             <div
-              ref={wireframeRef}
-              className="h-[240px] w-[240px] md:h-[380px] md:w-[380px]"
+              ref={stoneWireRef}
+              className="w-[320px] md:w-[470px]"
             >
               <StoneWireframe />
             </div>
@@ -482,10 +546,10 @@ export default function IntroBrand() {
             alt="Residência Amato Lima"
             fill
             priority
-            className="hero-main-image object-cover object-center"
+            className="object-cover object-center hero-main-image"
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,20,14,0.18)_0%,rgba(28,20,14,0.28)_35%,rgba(22,16,12,0.56)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,20,14,0.16)_0%,rgba(28,20,14,0.26)_35%,rgba(22,16,12,0.58)_100%)]" />
 
           <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
@@ -523,4 +587,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-                }
+          }
