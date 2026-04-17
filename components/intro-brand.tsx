@@ -25,21 +25,19 @@ export default function IntroBrand() {
       const brand = brandRef.current;
       if (!brand) return;
 
-      const isMobile = window.innerWidth < 768;
-
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
       });
 
       tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".hero-layer", { autoAlpha: 0, y: 18 })
+        .set(".hero-layer", { autoAlpha: 0, y: 16 })
 
         .fromTo(
           brand,
           {
             autoAlpha: 0,
-            scale: 0.96,
-            y: 12,
+            scale: 0.97,
+            y: 10,
             xPercent: -50,
             yPercent: -50
           },
@@ -62,28 +60,22 @@ export default function IntroBrand() {
           },
           "-=0.2"
         )
-        .to(
-          brand,
-          {
-            scale: 1.02,
-            duration: 0.16
-          }
-        )
-        .to(
-          brand,
-          {
-            scale: 1,
-            duration: 0.16
-          }
-        )
-        .to({}, { duration: 0.28 })
+        .to({}, { duration: 0.35 })
         .to(brand, {
-          scale: isMobile ? 0.42 : 0.36,
-          x: isMobile ? -132 : -420,
-          y: isMobile ? -300 : -370,
-          duration: 0.9,
+          autoAlpha: 0,
+          scale: 0.985,
+          y: -8,
+          duration: 0.45,
           onStart: () => setHeaderVisible(true)
         })
+        .to(
+          ".intro-overlay",
+          {
+            opacity: 0,
+            duration: 0.55
+          },
+          "-=0.3"
+        )
         .to(
           ".hero-layer",
           {
@@ -91,15 +83,7 @@ export default function IntroBrand() {
             y: 0,
             duration: 0.7
           },
-          "-=0.55"
-        )
-        .to(
-          ".intro-overlay",
-          {
-            opacity: 0,
-            duration: 0.55
-          },
-          "-=0.5"
+          "-=0.35"
         )
         .to(
           ".intro-screen",
@@ -108,7 +92,7 @@ export default function IntroBrand() {
             pointerEvents: "none",
             duration: 0.15
           },
-          "-=0.15"
+          "-=0.1"
         );
     },
     { scope: root }
