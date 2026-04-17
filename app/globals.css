@@ -144,3 +144,25 @@ a {
 .grid-box-line {
   will-change: transform, opacity;
 }
+
+.wire-line {
+  stroke: rgba(67, 52, 40, 0.82);
+  stroke-width: 2.15;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+  will-change: opacity, stroke-dashoffset, transform;
+}
+
+.wire-line-soft {
+  stroke: rgba(67, 52, 40, 0.42);
+  stroke-width: 1.4;
+}
+
+.hero-intro-image {
+  filter: saturate(0.92) contrast(1.03) brightness(0.98);
+}
+
+.hero-main-image {
+  filter: saturate(0.92) contrast(1.04) brightness(0.92);
+}
