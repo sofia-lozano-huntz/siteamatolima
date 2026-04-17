@@ -558,7 +558,7 @@ export default function IntroBrand() {
       >
         <section className="relative min-h-[100svh] overflow-hidden text-white">
           <Image
-            src="/hero-house.jpg"
+            src="/hero-house.png"
             alt="Residência Amato Lima"
             fill
             priority
