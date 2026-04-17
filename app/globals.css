@@ -40,11 +40,12 @@ body {
 }
 
 body {
+body {
   overscroll-behavior-y: none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 30%),
-    radial-gradient(circle at 70% 10%, rgba(255,255,255,0.18), transparent 22%),
-    linear-gradient(180deg, #f6f2ea 0%, #efe7dc 60%, #ece1d2 100%);
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.24), transparent 28%),
+    radial-gradient(circle at 70% 10%, rgba(255,255,255,0.10), transparent 22%),
+    linear-gradient(180deg, #EEE7DC 0%, #EAE3D6 54%, #E1D5C2 100%);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   min-height: 100vh;
