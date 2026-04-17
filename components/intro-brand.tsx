@@ -11,6 +11,8 @@ gsap.registerPlugin(useGSAP);
 export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
+  const sweepRef = useRef<HTMLDivElement | null>(null);
+
   const [headerVisible, setHeaderVisible] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
@@ -46,82 +48,121 @@ export default function IntroBrand() {
   }, [introDone, shouldPlayIntro]);
 
   useGSAP(
-  () => {
-    if (!shouldPlayIntro) return;
+    () => {
+      if (!shouldPlayIntro) return;
 
-    const intro = introRef.current;
-    if (!intro) return;
+      const intro = introRef.current;
+      const sweep = sweepRef.current;
+      if (!intro || !sweep) return;
 
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out" }
-    });
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out" }
+      });
 
-    tl.set(".intro-screen", {
-      autoAlpha: 1,
-      pointerEvents: "auto"
-    })
-      .set(".hero-layer", {
-        autoAlpha: 0,
-        y: 8
+      tl.set(".intro-screen", {
+        autoAlpha: 1,
+        pointerEvents: "auto"
       })
-      .fromTo(
-        intro,
-        {
+        .set(".hero-layer", {
           autoAlpha: 0,
-          scale: 0.996
-        },
-        {
-          autoAlpha: 1,
-          scale: 1,
-          duration: 0.16
-        }
-      )
-      .to(
-        intro,
-        {
-          autoAlpha: 0,
-          duration: 0.16,
-          onStart: () => setHeaderVisible(true)
-        }
-      )
-      .to(
-        ".hero-layer",
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.22
-        },
-        "-=0.1"
-      )
-      .to(
-        ".intro-screen",
-        {
-          autoAlpha: 0,
-          pointerEvents: "none",
-          duration: 0.12,
-          onComplete: () => {
-            setIntroDone(true);
-            sessionStorage.setItem("seenIntro", "true");
+          y: 16,
+          scale: 1.01
+        })
+        .set(sweep, {
+          xPercent: -140,
+          opacity: 0
+        })
+        .fromTo(
+          intro,
+          {
+            autoAlpha: 0,
+            scale: 0.985,
+            y: 6,
+            filter: "blur(6px)"
+          },
+          {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.42
           }
-        },
-        "<"
-      );
-  },
-  { scope: root, dependencies: [shouldPlayIntro] }
-);
-  
+        )
+        .to(
+          sweep,
+          {
+            opacity: 0.55,
+            duration: 0.12
+          },
+          "-=0.12"
+        )
+        .to(sweep, {
+          xPercent: 140,
+          duration: 0.55,
+          ease: "power3.inOut"
+        })
+        .to(
+          sweep,
+          {
+            opacity: 0,
+            duration: 0.16
+          },
+          "-=0.18"
+        )
+        .to(
+          intro,
+          {
+            autoAlpha: 0,
+            scale: 1.01,
+            filter: "blur(10px)",
+            duration: 0.34,
+            onStart: () => setHeaderVisible(true)
+          },
+          "-=0.1"
+        )
+        .to(
+          ".intro-screen",
+          {
+            autoAlpha: 0,
+            duration: 0.42,
+            ease: "power2.out"
+          },
+          "-=0.18"
+        )
+        .to(
+          ".hero-layer",
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.52,
+            ease: "power2.out"
+          },
+          "-=0.34"
+        )
+        .set(".intro-screen", {
+          pointerEvents: "none"
+        })
+        .call(() => {
+          setIntroDone(true);
+          sessionStorage.setItem("seenIntro", "true");
+        });
+    },
+    { scope: root, dependencies: [shouldPlayIntro] }
+  );
+
   return (
     <div ref={root} className="relative">
       <Header visible={headerVisible} />
 
       {!introDone && (
-        <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-black" />
+        <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-black">
+          <div className="absolute inset-0 opacity-[0.06] intro-grain" />
 
           <div className="absolute inset-0 grid place-items-center px-6">
             <div
               ref={introRef}
-              className="relative w-[min(60vw,560px)] md:w-[min(52vw,700px)]"
+              className="relative w-[min(68vw,620px)] md:w-[min(58vw,760px)]"
             >
               <Image
                 src="/logo-header.png"
@@ -129,8 +170,15 @@ export default function IntroBrand() {
                 width={1400}
                 height={520}
                 priority
-                className="h-auto w-full object-contain"
+                className="relative z-[2] h-auto w-full object-contain"
               />
+
+              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[2px]">
+                <div
+                  ref={sweepRef}
+                  className="absolute inset-y-[-18%] left-[-30%] w-[42%] rotate-[12deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.05),rgba(255,255,255,0.24),rgba(255,255,255,0.05),transparent)] blur-xl"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -138,7 +186,7 @@ export default function IntroBrand() {
 
       <div
         className={`hero-layer relative ${
-          introDone ? "translate-y-0 opacity-100" : ""
+          introDone ? "translate-y-0 opacity-100 scale-100" : ""
         }`}
       >
         <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
@@ -180,4 +228,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-}
+        }
