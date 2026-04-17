@@ -6,7 +6,7 @@ import { featuredProperties } from "@/lib/data";
 export default function ImoveisPage() {
   return (
     <main>
-      <Header ready />
+      <Header visible />
       <section className="pt-32">
         <SectionShell>
           <p className="mb-4 text-xs uppercase tracking-[0.35em] text-[var(--muted)]">
