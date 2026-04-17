@@ -184,3 +184,33 @@ a {
     object-position: center 34%;
   }
 }
+
+.stone-line {
+  stroke: rgba(68, 52, 39, 0.88);
+  stroke-width: 2.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  will-change: opacity, stroke-dashoffset, transform;
+}
+
+.stone-line-soft {
+  stroke: rgba(68, 52, 39, 0.4);
+  stroke-width: 1.35;
+}
+
+.stone-line-strong {
+  stroke-width: 2.6;
+}
+
+.stone-object-fill {
+  filter: saturate(0.9) contrast(1.03) brightness(0.98);
+}
+
+.hero-intro-image {
+  filter: saturate(0.92) contrast(1.03) brightness(0.98);
+}
+
+.hero-main-image {
+  filter: saturate(0.92) contrast(1.04) brightness(0.92);
+}
