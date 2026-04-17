@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP);
 
 function MonogramLarge() {
   return (
-    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-2xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl">
+    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-white/25 bg-white/10 text-2xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl">
       AL
     </div>
   );
@@ -25,56 +25,91 @@ export default function IntroBrand() {
       const brand = brandRef.current;
       if (!brand) return;
 
+      const isMobile = window.innerWidth < 768;
+
       const tl = gsap.timeline({
-        defaults: { ease: "power3.inOut" },
-        onComplete: () => {
-          setHeaderVisible(true);
-        }
+        defaults: { ease: "power2.out" }
       });
 
       tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".hero-layer", { autoAlpha: 0, y: 24 })
+        .set(".hero-layer", { autoAlpha: 0, y: 18 })
 
         .fromTo(
           brand,
-          { autoAlpha: 0, scale: 0.94, y: 18, xPercent: -50, yPercent: -50 },
-          { autoAlpha: 1, scale: 1, y: 0, duration: 1.1 }
+          {
+            autoAlpha: 0,
+            scale: 0.96,
+            y: 12,
+            xPercent: -50,
+            yPercent: -50
+          },
+          {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.75
+          }
         )
         .fromTo(
           ".brand-line",
-          { scaleX: 0, transformOrigin: "left center" },
-          { scaleX: 1, duration: 0.8 },
-          "-=0.45"
+          {
+            scaleX: 0,
+            transformOrigin: "left center"
+          },
+          {
+            scaleX: 1,
+            duration: 0.45
+          },
+          "-=0.2"
         )
-        .to({}, { duration: 0.7 })
+        .to(
+          brand,
+          {
+            scale: 1.02,
+            duration: 0.16
+          }
+        )
+        .to(
+          brand,
+          {
+            scale: 1,
+            duration: 0.16
+          }
+        )
+        .to({}, { duration: 0.28 })
         .to(brand, {
-          scale: 0.42,
-          x: () => (window.innerWidth < 768 ? -118 : -360),
-          y: () => -(window.innerHeight / 2) + 78,
-          duration: 1.1
+          scale: isMobile ? 0.42 : 0.36,
+          x: isMobile ? -132 : -420,
+          y: isMobile ? -300 : -370,
+          duration: 0.9,
+          onStart: () => setHeaderVisible(true)
         })
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.9
+            duration: 0.7
           },
-          "-=0.3"
+          "-=0.55"
         )
         .to(
           ".intro-overlay",
           {
-            autoAlpha: 0,
-            duration: 0.8
+            opacity: 0,
+            duration: 0.55
           },
-          "-=0.8"
+          "-=0.5"
         )
-        .to(".intro-screen", {
-          autoAlpha: 0,
-          pointerEvents: "none",
-          duration: 0.2
-        });
+        .to(
+          ".intro-screen",
+          {
+            autoAlpha: 0,
+            pointerEvents: "none",
+            duration: 0.15
+          },
+          "-=0.15"
+        );
     },
     { scope: root }
   );
@@ -83,18 +118,19 @@ export default function IntroBrand() {
     <div ref={root} className="relative overflow-hidden">
       <Header visible={headerVisible} />
 
-      <div className="intro-screen texture-travertine fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-        <div className="intro-overlay absolute inset-0 bg-[var(--overlay)]" />
+      <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
+        <div className="absolute inset-0 bg-[#140e0a]" />
+        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,.06),transparent_36%),linear-gradient(180deg,rgba(58,39,28,.28),rgba(20,14,10,.82))]" />
 
         <div
           ref={brandRef}
           className="absolute left-1/2 top-1/2 z-[101] w-[calc(100vw-40px)] max-w-[820px] -translate-x-1/2 -translate-y-1/2 px-4 text-white"
         >
-          <div className="flex items-center justify-center gap-5 md:gap-7">
+          <div className="flex items-center justify-center gap-4 md:gap-7">
             <MonogramLarge />
 
             <div className="min-w-0 flex-1">
-              <div className="font-display text-[clamp(2.2rem,5vw,5.8rem)] uppercase tracking-[0.12em] leading-none whitespace-nowrap">
+              <div className="font-display text-[clamp(2.1rem,5vw,5.8rem)] uppercase leading-none tracking-[0.12em] whitespace-nowrap">
                 Amato Lima
               </div>
               <div className="brand-line mt-5 h-px bg-white/60" />
