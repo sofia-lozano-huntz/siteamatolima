@@ -17,8 +17,41 @@ export default function IntroBrand() {
   const [introDone, setIntroDone] = useState(false);
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
-  const verticalLines = useMemo(() => Array.from({ length: 9 }), []);
-  const horizontalLines = useMemo(() => Array.from({ length: 7 }), []);
+  const verticalLines = useMemo(
+    () => [
+      { left: 10, height: 42, from: "top" },
+      { left: 18, height: 76, from: "bottom" },
+      { left: 28, height: 100, from: "top" },
+      { left: 41, height: 58, from: "bottom" },
+      { left: 52, height: 88, from: "top" },
+      { left: 64, height: 100, from: "bottom" },
+      { left: 76, height: 54, from: "top" },
+      { left: 86, height: 70, from: "bottom" }
+    ],
+    []
+  );
+
+  const horizontalLines = useMemo(
+    () => [
+      { top: 14, width: 46, from: "left" },
+      { top: 25, width: 78, from: "right" },
+      { top: 39, width: 100, from: "left" },
+      { top: 54, width: 62, from: "right" },
+      { top: 68, width: 88, from: "left" },
+      { top: 82, width: 44, from: "right" }
+    ],
+    []
+  );
+
+  const accentLines = useMemo(
+    () => [
+      { type: "v", left: 33, top: 22, height: 22, from: "top" },
+      { type: "v", left: 71, top: 48, height: 18, from: "bottom" },
+      { type: "h", top: 31, left: 52, width: 16, from: "left" },
+      { type: "h", top: 73, left: 18, width: 22, from: "right" }
+    ],
+    []
+  );
 
   useEffect(() => {
     const hasSeenIntro = sessionStorage.getItem("seenIntro");
@@ -79,16 +112,20 @@ export default function IntroBrand() {
         })
         .set(vLines, {
           scaleY: 0,
-          opacity: 0,
-          transformOrigin: "center center"
+          opacity: 0
         })
         .set(hLines, {
           scaleX: 0,
-          opacity: 0,
-          transformOrigin: "center center"
+          opacity: 0
         })
-
-        // logo entra
+        .set(".grid-accent-v", {
+          scaleY: 0,
+          opacity: 0
+        })
+        .set(".grid-accent-h", {
+          scaleX: 0,
+          opacity: 0
+        })
         .fromTo(
           intro,
           {
@@ -105,11 +142,7 @@ export default function IntroBrand() {
             duration: 0.34
           }
         )
-
-        // pequena pausa
         .to({}, { duration: 0.12 })
-
-        // logo começa a sair
         .to(intro, {
           autoAlpha: 0,
           scale: 1.01,
@@ -117,30 +150,62 @@ export default function IntroBrand() {
           duration: 0.24,
           onStart: () => setHeaderVisible(true)
         })
-
-        // grid nasce depois da logo começar a sumir
         .to(
           vLines,
           {
             scaleY: 1,
-            opacity: 0.32,
-            duration: 0.38,
-            stagger: 0.02
+            opacity: 0.28,
+            duration: 0.42,
+            stagger: 0.035,
+            transformOrigin: (_i, target) =>
+              target.getAttribute("data-from") === "top"
+                ? "top center"
+                : "bottom center"
           },
-          "-=0.08"
+          "-=0.06"
         )
         .to(
           hLines,
           {
             scaleX: 1,
-            opacity: 0.18,
-            duration: 0.34,
-            stagger: 0.025
+            opacity: 0.16,
+            duration: 0.38,
+            stagger: 0.04,
+            transformOrigin: (_i, target) =>
+              target.getAttribute("data-from") === "left"
+                ? "left center"
+                : "right center"
           },
-          "-=0.26"
+          "-=0.28"
         )
-
-        // home vem junto com grid
+        .to(
+          ".grid-accent-v",
+          {
+            scaleY: 1,
+            opacity: 0.2,
+            duration: 0.28,
+            stagger: 0.03,
+            transformOrigin: (_i, target) =>
+              target.getAttribute("data-from") === "top"
+                ? "top center"
+                : "bottom center"
+          },
+          "-=0.3"
+        )
+        .to(
+          ".grid-accent-h",
+          {
+            scaleX: 1,
+            opacity: 0.18,
+            duration: 0.26,
+            stagger: 0.03,
+            transformOrigin: (_i, target) =>
+              target.getAttribute("data-from") === "left"
+                ? "left center"
+                : "right center"
+          },
+          "-=0.24"
+        )
         .to(
           ".hero-layer",
           {
@@ -151,8 +216,6 @@ export default function IntroBrand() {
           },
           "-=0.16"
         )
-
-        // intro dissolve enquanto a página já aparece
         .to(
           ".intro-screen",
           {
@@ -161,8 +224,6 @@ export default function IntroBrand() {
           },
           "-=0.28"
         )
-
-        // grid também desaparece depois de “formar” a página
         .to(
           grid,
           {
@@ -171,7 +232,6 @@ export default function IntroBrand() {
           },
           "-=0.18"
         )
-
         .set(".intro-screen", {
           pointerEvents: "none"
         })
@@ -193,21 +253,59 @@ export default function IntroBrand() {
             ref={gridRef}
             className="pointer-events-none absolute inset-0 opacity-0"
           >
-            {verticalLines.map((_, i) => (
+            {verticalLines.map((line, i) => (
               <span
                 key={`v-${i}`}
-                className="grid-v absolute top-0 h-full w-px bg-white/20"
-                style={{ left: `${(100 / (verticalLines.length + 1)) * (i + 1)}%` }}
+                className="grid-v absolute w-px bg-white/20"
+                data-from={line.from}
+                style={{
+                  left: `${line.left}%`,
+                  height: `${line.height}%`,
+                  top: line.from === "top" ? "0%" : "auto",
+                  bottom: line.from === "bottom" ? "0%" : "auto"
+                }}
               />
             ))}
 
-            {horizontalLines.map((_, i) => (
+            {horizontalLines.map((line, i) => (
               <span
                 key={`h-${i}`}
-                className="grid-h absolute left-0 h-px w-full bg-white/10"
-                style={{ top: `${(100 / (horizontalLines.length + 1)) * (i + 1)}%` }}
+                className="grid-h absolute h-px bg-white/10"
+                data-from={line.from}
+                style={{
+                  top: `${line.top}%`,
+                  width: `${line.width}%`,
+                  left: line.from === "left" ? "0%" : "auto",
+                  right: line.from === "right" ? "0%" : "auto"
+                }}
               />
             ))}
+
+            {accentLines.map((line, i) =>
+              line.type === "v" ? (
+                <span
+                  key={`accent-v-${i}`}
+                  className="grid-accent-v absolute w-px bg-white/16"
+                  data-from={line.from}
+                  style={{
+                    left: `${line.left}%`,
+                    top: `${line.top}%`,
+                    height: `${line.height}%`
+                  }}
+                />
+              ) : (
+                <span
+                  key={`accent-h-${i}`}
+                  className="grid-accent-h absolute h-px bg-white/14"
+                  data-from={line.from}
+                  style={{
+                    top: `${line.top}%`,
+                    left: `${line.left}%`,
+                    width: `${line.width}%`
+                  }}
+                />
+              )
+            )}
           </div>
 
           <div className="absolute inset-0 grid place-items-center px-6">
@@ -272,4 +370,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-}
+                }
