@@ -127,19 +127,8 @@ export default function IntroBrand() {
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem("seenIntroV5");
-
-    if (hasSeenIntro) {
-      setIntroDone(true);
-      setHeaderVisible(true);
-      setShouldPlayIntro(false);
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      return;
-    }
-
-    setShouldPlayIntro(true);
-  }, []);
+  setShouldPlayIntro(true);
+}, []);
 
   useEffect(() => {
     if (!shouldPlayIntro || introDone) {
