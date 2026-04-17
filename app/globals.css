@@ -263,3 +263,13 @@ a {
 .border-line-strong {
   border-color: var(--line-strong);
 }
+.hero-layer,
+.hero-copy,
+.hero-intro-image,
+.hero-main-image,
+.stone-fill-image,
+.stone-highlight {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
