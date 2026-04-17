@@ -135,7 +135,7 @@ export default function IntroBrand() {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.42,
+            duration: 0.52,
             ease: "power2.out"
           },
           "-=0.34"
@@ -228,4 +228,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-        }
+}
