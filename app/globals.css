@@ -160,9 +160,15 @@ a {
 }
 
 .hero-intro-image {
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(1.18);
   filter: saturate(0.92) contrast(1.03) brightness(0.98);
 }
 
 .hero-main-image {
+  object-fit: cover;
+  object-position: center 40%;
+  transform: scale(1.12);
   filter: saturate(0.92) contrast(1.04) brightness(0.92);
-}
+  }
