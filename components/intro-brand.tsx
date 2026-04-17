@@ -100,7 +100,6 @@ export default function IntroBrand() {
 
       <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-[#070504]" />
-        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(201,168,131,.08),transparent_24%),linear-gradient(180deg,rgba(18,10,8,.18),rgba(7,5,4,.96))]" />
 
         <div className="absolute inset-0 flex items-center justify-center px-6">
           <div
