@@ -1,124 +1,120 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Header from "./header";
 
 gsap.registerPlugin(useGSAP);
 
-function MonogramLarge() {
-  return (
-    <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-white/20 bg-white/10 text-xl font-semibold tracking-[0.18em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl md:tracking-[0.22em]">
-      AL
-    </div>
-  );
-}
-
 export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
-  const brandRef = useRef<HTMLDivElement | null>(null);
+  const introRef = useRef<HTMLDivElement | null>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+
+  useEffect(() => {
+    if (!introDone) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [introDone]);
 
   useGSAP(
     () => {
-      const brand = brandRef.current;
-      if (!brand) return;
+      const intro = introRef.current;
+      if (!intro) return;
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
       });
 
-      tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".hero-layer", { autoAlpha: 0, y: 18 })
-
+      tl.set(".intro-screen", {
+        autoAlpha: 1,
+        pointerEvents: "auto"
+      })
+        .set(".hero-layer", {
+          autoAlpha: 0,
+          y: 14
+        })
         .fromTo(
-          brand,
+          intro,
           {
             autoAlpha: 0,
             scale: 0.985,
-            y: 8,
-            xPercent: -50,
-            yPercent: -50
+            y: 8
           },
           {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 0.9
+            duration: 0.8
           }
         )
-        .fromTo(
-          ".brand-line",
-          {
-            scaleX: 0,
-            transformOrigin: "left center"
-          },
-          {
-            scaleX: 1,
-            duration: 0.55
-          },
-          "-=0.3"
-        )
         .to({}, { duration: 0.45 })
-        .to(brand, {
+        .to(intro, {
           autoAlpha: 0,
-          scale: 0.992,
-          y: -6,
-          duration: 0.55,
-          onComplete: () => setHeaderVisible(true)
+          scale: 0.995,
+          duration: 0.45
         })
         .to(
           ".intro-overlay",
           {
             opacity: 0,
-            duration: 0.7
+            duration: 0.55
           },
-          "-=0.35"
+          "-=0.25"
         )
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.85
+            duration: 0.75,
+            onStart: () => setHeaderVisible(true)
           },
-          "-=0.4"
+          "-=0.2"
         )
-        .to(
-          ".intro-screen",
-          {
-            autoAlpha: 0,
-            pointerEvents: "none",
-            duration: 0.15
-          },
-          "-=0.1"
-        );
+        .to(".intro-screen", {
+          autoAlpha: 0,
+          pointerEvents: "none",
+          duration: 0.12,
+          onComplete: () => setIntroDone(true)
+        });
     },
     { scope: root }
   );
 
   return (
-    <div ref={root} className="relative overflow-hidden">
+    <div ref={root} className="relative">
       <Header visible={headerVisible} />
 
       <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[#120b08]" />
-        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_35%_22%,rgba(255,255,255,.05),transparent_24%),radial-gradient(circle_at_50%_50%,rgba(141,113,90,.08),transparent_45%),linear-gradient(180deg,rgba(36,22,15,.30),rgba(18,11,8,.90))]" />
+        <div className="absolute inset-0 bg-[#070504]" />
+        <div className="intro-overlay absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(201,168,131,.08),transparent_24%),linear-gradient(180deg,rgba(18,10,8,.18),rgba(7,5,4,.96))]" />
 
-        <div
-          ref={brandRef}
-          className="absolute left-1/2 top-1/2 z-[101] w-[min(92vw,760px)] -translate-x-1/2 -translate-y-1/2 px-3 text-white"
-        >
-          <div className="flex items-center justify-center gap-3 md:gap-7">
-            <MonogramLarge />
-
-            <div className="min-w-0 flex-1">
-              <div className="font-display text-[clamp(1.7rem,7vw,5.8rem)] uppercase leading-none tracking-[0.08em] whitespace-nowrap md:tracking-[0.12em]">
-                Amato Lima
-              </div>
-              <div className="brand-line mt-4 w-[78%] bg-white/60 md:mt-5 md:w-full" />
-            </div>
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <div
+            ref={introRef}
+            className="relative w-[min(70vw,640px)] md:w-[min(60vw,760px)]"
+          >
+            <Image
+              src="/logo-header.png"
+              alt="Amato Lima"
+              width={1400}
+              height={520}
+              priority
+              className="h-auto w-full object-contain"
+            />
           </div>
         </div>
       </div>
@@ -163,4 +159,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-            }
+}
