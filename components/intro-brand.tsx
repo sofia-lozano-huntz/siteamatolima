@@ -8,107 +8,99 @@ import Header from "./header";
 
 gsap.registerPlugin(useGSAP);
 
-function HouseWireframe() {
+function StoneWireframe() {
   return (
     <svg
-      viewBox="0 0 1200 700"
+      viewBox="0 0 1000 1000"
       className="h-full w-full"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* estrutura principal */}
-      <g className="wire-group wire-group-structure">
-        <path className="wire-line" d="M210 560H1020" />
-        <path className="wire-line" d="M250 500H970" />
-        <path className="wire-line" d="M305 438H935" />
-        <path className="wire-line" d="M340 355H905" />
-        <path className="wire-line" d="M380 265H920" />
-        <path className="wire-line" d="M420 205H915" />
+      {/* contorno externo da pedra */}
+      <g className="stone-group stone-group-outer">
+        <path className="stone-line" d="M165 118H835" />
+        <path className="stone-line" d="M835 118L894 176" />
+        <path className="stone-line" d="M894 176V832" />
+        <path className="stone-line" d="M894 832L832 890" />
+        <path className="stone-line" d="M832 890H172" />
+        <path className="stone-line" d="M172 890L118 835" />
+        <path className="stone-line" d="M118 835V170" />
+        <path className="stone-line" d="M118 170L165 118" />
 
-        <path className="wire-line" d="M300 520V380" />
-        <path className="wire-line" d="M420 500V330" />
-        <path className="wire-line" d="M545 500V305" />
-        <path className="wire-line" d="M760 500V285" />
-        <path className="wire-line" d="M920 500V250" />
-        <path className="wire-line" d="M1010 560V250" />
+        {/* leve espessura lateral */}
+        <path className="stone-line stone-line-soft" d="M118 170L165 198" />
+        <path className="stone-line stone-line-soft" d="M165 198H832" />
+        <path className="stone-line stone-line-soft" d="M832 198L894 176" />
 
-        {/* cobertura superior */}
-        <path className="wire-line" d="M405 175H930" />
-        <path className="wire-line" d="M930 175L975 225" />
-        <path className="wire-line" d="M975 225H445" />
-        <path className="wire-line" d="M405 175L445 225" />
-
-        {/* cobertura intermediária */}
-        <path className="wire-line" d="M330 255H780" />
-        <path className="wire-line" d="M780 255L820 302" />
-        <path className="wire-line" d="M820 302H370" />
-        <path className="wire-line" d="M330 255L370 302" />
-
-        {/* balanço esquerdo */}
-        <path className="wire-line" d="M305 315H690" />
-        <path className="wire-line" d="M305 315L270 365" />
-        <path className="wire-line" d="M270 365H655" />
-        <path className="wire-line" d="M690 315L655 365" />
+        <path className="stone-line stone-line-soft" d="M832 890L832 820" />
+        <path className="stone-line stone-line-soft" d="M172 890L172 820" />
       </g>
 
-      {/* aberturas */}
-      <g className="wire-group wire-group-openings">
-        <rect className="wire-line" x="390" y="330" width="95" height="120" />
-        <rect className="wire-line" x="490" y="330" width="95" height="120" />
-        <rect className="wire-line" x="590" y="330" width="95" height="120" />
-        <rect className="wire-line" x="775" y="305" width="135" height="160" />
+      {/* cavidade interna da pedra */}
+      <g className="stone-group stone-group-recess">
+        <path className="stone-line" d="M262 250H748" />
+        <path className="stone-line" d="M748 250L792 292" />
+        <path className="stone-line" d="M792 292V714" />
+        <path className="stone-line" d="M792 714L746 756" />
+        <path className="stone-line" d="M746 756H270" />
+        <path className="stone-line" d="M270 756L226 712" />
+        <path className="stone-line" d="M226 712V292" />
+        <path className="stone-line" d="M226 292L262 250" />
 
-        <rect className="wire-line" x="505" y="235" width="110" height="48" />
-        <rect className="wire-line" x="620" y="235" width="110" height="48" />
-        <rect className="wire-line" x="835" y="225" width="90" height="55" />
-
-        {/* vidro lateral */}
-        <path className="wire-line" d="M330 300V430" />
-        <path className="wire-line" d="M330 300H388" />
-        <path className="wire-line" d="M388 300V430" />
+        {/* lado direito profundo */}
+        <path className="stone-line stone-line-soft" d="M748 250V314" />
+        <path className="stone-line stone-line-soft" d="M792 292H862" />
+        <path className="stone-line stone-line-soft" d="M792 714H862" />
       </g>
 
-      {/* detalhes arquitetônicos */}
-      <g className="wire-group wire-group-details">
-        {/* vigas / repetição superior */}
-        <path className="wire-line" d="M465 205V225" />
-        <path className="wire-line" d="M505 205V225" />
-        <path className="wire-line" d="M545 205V225" />
-        <path className="wire-line" d="M585 205V225" />
-        <path className="wire-line" d="M625 205V225" />
-        <path className="wire-line" d="M665 205V225" />
-        <path className="wire-line" d="M705 205V225" />
-        <path className="wire-line" d="M745 205V225" />
-        <path className="wire-line" d="M785 205V225" />
-        <path className="wire-line" d="M825 205V225" />
-        <path className="wire-line" d="M865 205V225" />
+      {/* símbolo interno */}
+      <g className="stone-group stone-group-symbol">
+        {/* haste esquerda */}
+        <path
+          className="stone-line stone-line-strong"
+          d="M318 330C302 408 294 498 302 634C306 708 316 754 342 796"
+        />
+        <path
+          className="stone-line stone-line-strong"
+          d="M360 316C342 392 336 492 344 626C348 700 356 740 382 780"
+        />
 
-        <path className="wire-line" d="M395 282V302" />
-        <path className="wire-line" d="M435 282V302" />
-        <path className="wire-line" d="M475 282V302" />
-        <path className="wire-line" d="M515 282V302" />
-        <path className="wire-line" d="M555 282V302" />
-        <path className="wire-line" d="M595 282V302" />
-        <path className="wire-line" d="M635 282V302" />
-        <path className="wire-line" d="M675 282V302" />
-        <path className="wire-line" d="M715 282V302" />
-        <path className="wire-line" d="M755 282V302" />
+        {/* curva central externa */}
+        <path
+          className="stone-line stone-line-strong"
+          d="M390 774C364 716 356 642 360 540C366 436 396 362 456 320C500 288 560 280 616 298C680 318 724 372 738 444C746 482 748 532 744 596C742 664 742 718 742 780"
+        />
 
-        {/* base e escadaria simplificada */}
-        <path className="wire-line" d="M145 585H955" />
-        <path className="wire-line" d="M150 615H970" />
-        <path className="wire-line" d="M190 535L140 585" />
-        <path className="wire-line" d="M970 560L1030 615" />
+        {/* curva central interna */}
+        <path
+          className="stone-line stone-line-strong"
+          d="M442 744C422 698 416 632 420 548C426 456 448 394 494 354C530 322 576 316 620 332C670 350 702 392 714 446C720 476 722 520 718 578C716 636 716 690 716 744"
+        />
 
-        <path className="wire-line" d="M120 585H235" />
-        <path className="wire-line" d="M135 605H225" />
-        <path className="wire-line" d="M150 625H215" />
+        {/* arco direito */}
+        <path
+          className="stone-line stone-line-strong"
+          d="M630 300C708 300 772 302 826 304"
+        />
+        <path
+          className="stone-line stone-line-strong"
+          d="M826 304C824 448 822 590 820 736"
+        />
+        <path
+          className="stone-line stone-line-strong"
+          d="M820 736C790 736 758 736 726 736"
+        />
+        <path
+          className="stone-line stone-line-strong"
+          d="M726 736C724 662 724 590 724 520"
+        />
 
-        {/* alguns eixos */}
-        <path className="wire-line wire-line-soft" d="M600 130V560" />
-        <path className="wire-line wire-line-soft" d="M420 160V540" />
-        <path className="wire-line wire-line-soft" d="M820 170V540" />
+        {/* fundo do encaixe */}
+        <path className="stone-line stone-line-soft" d="M270 756L332 796" />
+        <path className="stone-line stone-line-soft" d="M742 780L820 736" />
+        <path className="stone-line stone-line-soft" d="M360 316L456 320" />
+        <path className="stone-line stone-line-soft" d="M620 332L738 444" />
       </g>
     </svg>
   );
@@ -119,6 +111,7 @@ export default function IntroBrand() {
   const introScreenRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
   const wireframeRef = useRef<HTMLDivElement | null>(null);
+  const stoneFillRef = useRef<HTMLDivElement | null>(null);
   const heroImageRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
@@ -127,7 +120,7 @@ export default function IntroBrand() {
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem("seenIntroV4");
+    const hasSeenIntro = sessionStorage.getItem("seenIntroV5");
 
     if (hasSeenIntro) {
       setIntroDone(true);
@@ -163,43 +156,52 @@ export default function IntroBrand() {
       const introScreen = introScreenRef.current;
       const logo = logoRef.current;
       const wireframe = wireframeRef.current;
+      const stoneFill = stoneFillRef.current;
       const heroImage = heroImageRef.current;
       const overlay = overlayRef.current;
 
-      if (!introScreen || !logo || !wireframe || !heroImage || !overlay) return;
+      if (!introScreen || !logo || !wireframe || !stoneFill || !heroImage || !overlay) {
+        return;
+      }
 
-      const wireLines = gsap.utils.toArray<SVGPathElement | SVGRectElement>(
-        ".wire-line"
-      );
+      const lines = gsap.utils.toArray<SVGPathElement>(".stone-line");
 
-      wireLines.forEach((line) => {
+      lines.forEach((line) => {
         const length =
-          typeof (line as SVGGeometryElement).getTotalLength === "function"
-            ? (line as SVGGeometryElement).getTotalLength()
-            : 300;
+          typeof line.getTotalLength === "function" ? line.getTotalLength() : 300;
 
         gsap.set(line, {
           strokeDasharray: length,
           strokeDashoffset: length,
-          opacity: line.classList.contains("wire-line-soft") ? 0.12 : 0.22
+          opacity: line.classList.contains("stone-line-soft")
+            ? 0.12
+            : line.classList.contains("stone-line-strong")
+            ? 0.2
+            : 0.16
         });
       });
 
       gsap.set(".hero-layer", {
         autoAlpha: 0,
-        y: 28
+        y: 26
       });
 
       gsap.set(logo, {
         autoAlpha: 0,
         y: 10,
-        scale: 0.97
+        scale: 0.975,
+        filter: "blur(0px)"
       });
 
       gsap.set(wireframe, {
         autoAlpha: 1,
-        scale: 0.985,
-        y: 8
+        scale: 0.98,
+        y: 10
+      });
+
+      gsap.set(stoneFill, {
+        autoAlpha: 0,
+        scale: 0.99
       });
 
       gsap.set(heroImage, {
@@ -211,9 +213,9 @@ export default function IntroBrand() {
         opacity: 1
       });
 
-      const structure = gsap.utils.toArray(".wire-group-structure .wire-line");
-      const openings = gsap.utils.toArray(".wire-group-openings .wire-line");
-      const details = gsap.utils.toArray(".wire-group-details .wire-line");
+      const outer = gsap.utils.toArray(".stone-group-outer .stone-line");
+      const recess = gsap.utils.toArray(".stone-group-recess .stone-line");
+      const symbol = gsap.utils.toArray(".stone-group-symbol .stone-line");
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
@@ -224,6 +226,7 @@ export default function IntroBrand() {
         { autoAlpha: 0 },
         { autoAlpha: 1, duration: 0.35 }
       )
+
         // assinatura mínima
         .to(
           logo,
@@ -231,23 +234,23 @@ export default function IntroBrand() {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.6
+            duration: 0.58
           },
           "0.15"
         )
-        .to({}, { duration: 0.35 })
+        .to({}, { duration: 0.38 })
         .to(
           logo,
           {
             autoAlpha: 0,
-            y: -6,
+            y: -8,
             filter: "blur(2px)",
-            duration: 0.35
+            duration: 0.34
           },
-          "1.0"
+          "0.98"
         )
 
-        // wireframe começa
+        // pedra começa a surgir em linhas
         .to(
           wireframe,
           {
@@ -258,46 +261,48 @@ export default function IntroBrand() {
           "1.0"
         )
         .to(
-          structure,
+          outer,
           {
             strokeDashoffset: 0,
             opacity: 0.72,
-            duration: 0.95,
-            stagger: {
-              each: 0.035,
-              from: "start"
-            }
+            duration: 0.92,
+            stagger: 0.04
           },
-          "1.08"
+          "1.05"
         )
         .to(
-          openings,
+          recess,
           {
             strokeDashoffset: 0,
-            opacity: 0.68,
-            duration: 0.78,
-            stagger: {
-              each: 0.03,
-              from: "start"
-            }
+            opacity: 0.62,
+            duration: 0.82,
+            stagger: 0.035
           },
-          "1.62"
+          "1.48"
         )
         .to(
-          details,
+          symbol,
           {
             strokeDashoffset: 0,
-            opacity: 0.46,
-            duration: 0.72,
-            stagger: {
-              each: 0.02,
-              from: "start"
-            }
+            opacity: 0.78,
+            duration: 1.02,
+            stagger: 0.045
           },
-          "2.0"
+          "1.82"
         )
 
-        // imagem real surge por trás
+        // leve preenchimento com a pedra real
+        .to(
+          stoneFill,
+          {
+            autoAlpha: 0.38,
+            scale: 1,
+            duration: 0.75
+          },
+          "2.45"
+        )
+
+        // hero entra por trás
         .to(
           heroImage,
           {
@@ -305,7 +310,7 @@ export default function IntroBrand() {
             scale: 1,
             duration: 1.05
           },
-          "2.55"
+          "2.95"
         )
         .to(
           overlay,
@@ -313,35 +318,51 @@ export default function IntroBrand() {
             opacity: 0.18,
             duration: 1
           },
-          "2.55"
+          "2.95"
         )
 
-        // linhas ficam alguns frames sobre a imagem
-        .to({}, { duration: 0.32 })
+        // a pedra começa a ceder espaço
         .to(
-          [details],
+          stoneFill,
           {
-            opacity: 0,
-            duration: 0.35
+            autoAlpha: 0.14,
+            scale: 1.01,
+            duration: 0.55
           },
-          "3.55"
+          "3.45"
         )
         .to(
-          [openings],
+          symbol,
           {
             opacity: 0,
             duration: 0.42
           },
-          "3.64"
+          "3.62"
         )
         .to(
-          [structure],
+          recess,
+          {
+            opacity: 0,
+            duration: 0.44
+          },
+          "3.72"
+        )
+        .to(
+          outer,
           {
             opacity: 0,
             duration: 0.55,
             onStart: () => setHeaderVisible(true)
           },
-          "3.74"
+          "3.82"
+        )
+        .to(
+          stoneFill,
+          {
+            autoAlpha: 0,
+            duration: 0.48
+          },
+          "3.9"
         )
 
         // hero assume
@@ -352,7 +373,7 @@ export default function IntroBrand() {
             y: 0,
             duration: 0.95
           },
-          "3.68"
+          "3.78"
         )
         .to(
           introScreen,
@@ -360,14 +381,14 @@ export default function IntroBrand() {
             autoAlpha: 0,
             duration: 0.65
           },
-          "4.1"
+          "4.18"
         )
         .set(introScreen, {
           pointerEvents: "none"
         })
         .call(() => {
           setIntroDone(true);
-          sessionStorage.setItem("seenIntroV4", "true");
+          sessionStorage.setItem("seenIntroV5", "true");
         });
     },
     { scope: root, dependencies: [shouldPlayIntro] }
@@ -384,7 +405,7 @@ export default function IntroBrand() {
         >
           <div
             ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,#f8f5ef_0%,#f1eadf_52%,#ece3d6_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,#f8f5ef_0%,#f1eadf_54%,#ece3d6_100%)]"
           />
 
           <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
@@ -394,45 +415,57 @@ export default function IntroBrand() {
             <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(45,33,24,0.12)]" />
           </div>
 
-          {/* imagem real por trás */}
-          <div
-            ref={heroImageRef}
-            className="absolute inset-0"
-          >
+          {/* hero por trás */}
+          <div ref={heroImageRef} className="absolute inset-0 z-0">
             <Image
               src="/hero-house.jpg"
               alt="Residência Amato Lima"
               fill
               priority
-              className="object-cover object-center hero-intro-image"
+              className="hero-intro-image object-cover object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.88)_0%,rgba(244,239,230,0.42)_30%,rgba(33,23,16,0.18)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.9)_0%,rgba(244,239,230,0.42)_34%,rgba(33,23,16,0.18)_100%)]" />
           </div>
 
           {/* assinatura mínima */}
-          <div className="absolute inset-0 flex items-center justify-center px-6">
+          <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
             <div
-  ref={logoRef}
-  className="relative w-[150px] md:w-[340px]"
->
+              ref={logoRef}
+              className="relative h-[44px] w-[170px] md:h-[74px] md:w-[300px]"
+            >
               <Image
                 src="/logo-header.png"
                 alt="Amato Lima"
-                width={720}
-                height={240}
+                fill
                 priority
-                className="h-auto w-full object-contain"
+                className="object-contain"
               />
             </div>
           </div>
 
-          {/* wireframe */}
-          <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8">
+          {/* preenchimento leve da pedra */}
+          <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+            <div
+              ref={stoneFillRef}
+              className="relative h-[230px] w-[230px] md:h-[360px] md:w-[360px]"
+            >
+              <Image
+                src="/stone-object.png"
+                alt="Pedra Amato Lima"
+                fill
+                priority
+                className="object-contain stone-object-fill"
+              />
+            </div>
+          </div>
+
+          {/* wireframe da pedra */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
             <div
               ref={wireframeRef}
-              className="w-full max-w-[1200px] translate-y-[2%]"
+              className="h-[240px] w-[240px] md:h-[380px] md:w-[380px]"
             >
-              <HouseWireframe />
+              <StoneWireframe />
             </div>
           </div>
         </div>
@@ -449,7 +482,7 @@ export default function IntroBrand() {
             alt="Residência Amato Lima"
             fill
             priority
-            className="object-cover object-center hero-main-image"
+            className="hero-main-image object-cover object-center"
           />
 
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,20,14,0.18)_0%,rgba(28,20,14,0.28)_35%,rgba(22,16,12,0.56)_100%)]" />
@@ -490,4 +523,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-        }
+                }
