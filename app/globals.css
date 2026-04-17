@@ -130,3 +130,17 @@ a {
 .grid-h {
   will-change: transform, opacity;
 }
+
+.hero-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 8.333% 100%, 100% 16.66%;
+  background-position: left top, left top;
+}
+
+.grid-v,
+.grid-h,
+.grid-box-line {
+  will-change: transform, opacity;
+}
