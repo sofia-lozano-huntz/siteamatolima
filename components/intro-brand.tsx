@@ -412,9 +412,9 @@ export default function IntroBrand() {
           {/* assinatura mínima */}
           <div className="absolute inset-0 flex items-center justify-center px-6">
             <div
-              ref={logoRef}
-              className="relative w-[180px] md:w-[240px]"
-            >
+  ref={logoRef}
+  className="relative w-[150px] md:w-[300px]"
+>
               <Image
                 src="/logo-header.png"
                 alt="Amato Lima"
