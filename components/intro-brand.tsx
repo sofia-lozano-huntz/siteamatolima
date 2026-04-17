@@ -191,10 +191,10 @@ export default function IntroBrand() {
       });
 
       gsap.set(logo, {
-        autoAlpha: 0,
-        y: 8,
-        scale: 0.985
-      });
+  autoAlpha: 0,
+  y: 12,
+  scale: 0.96
+});
 
       gsap.set(wireframe, {
         autoAlpha: 1,
@@ -236,16 +236,12 @@ export default function IntroBrand() {
           "0.15"
         )
         .to({}, { duration: 0.35 })
-        .to(
-          logo,
-          {
-            autoAlpha: 0,
-            y: -6,
-            filter: "blur(2px)",
-            duration: 0.35
-          },
-          "1.0"
-        )
+        .to(logo, {
+  autoAlpha: 1,
+  y: 0,
+  scale: 1,
+  duration: 0.7
+}, "0.15")
 
         // wireframe começa
         .to(
@@ -412,9 +408,9 @@ export default function IntroBrand() {
           {/* assinatura mínima */}
           <div className="absolute inset-0 flex items-center justify-center px-6">
             <div
-              ref={logoRef}
-              className="relative w-[180px] md:w-[240px]"
-            >
+  ref={logoRef}
+  className="relative w-[220px] md:w-[320px]"
+>
               <Image
                 src="/logo-header.png"
                 alt="Amato Lima"
