@@ -493,9 +493,9 @@ export default function IntroBrand() {
           className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#f4efe6]"
         >
           <div
-            ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,#f8f5ef_0%,#f1eadf_52%,#ece3d6_100%)]"
-          />
+  ref={overlayRef}
+  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,245,239,0.92)_0%,rgba(241,234,223,0.84)_52%,rgba(236,227,214,0.72)_100%)]"
+/>
 
           <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
             <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(45,33,24,0.14)]" />
