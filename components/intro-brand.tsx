@@ -8,47 +8,61 @@ import Header from "./header";
 
 gsap.registerPlugin(useGSAP);
 
+type VerticalLine = {
+  left: number;
+  top?: number;
+  bottom?: number;
+  height: number;
+  from: "top" | "bottom";
+  variant?: "main" | "soft";
+};
+
+type HorizontalLine = {
+  top: number;
+  left?: number;
+  right?: number;
+  width: number;
+  from: "left" | "right";
+  variant?: "main" | "soft";
+};
+
 export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   const [headerVisible, setHeaderVisible] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
-  const verticalLines = useMemo(
+  const verticalLines = useMemo<VerticalLine[]>(
     () => [
-      { left: 10, height: 42, from: "top" },
-      { left: 18, height: 76, from: "bottom" },
-      { left: 28, height: 100, from: "top" },
-      { left: 41, height: 58, from: "bottom" },
-      { left: 52, height: 88, from: "top" },
-      { left: 64, height: 100, from: "bottom" },
-      { left: 76, height: 54, from: "top" },
-      { left: 86, height: 70, from: "bottom" }
+      { left: 8, top: 6, height: 88, from: "top", variant: "soft" },
+      { left: 14, top: 10, height: 74, from: "top", variant: "main" },
+      { left: 22, bottom: 0, height: 92, from: "bottom", variant: "soft" },
+      { left: 30, top: 4, height: 96, from: "top", variant: "main" },
+      { left: 38, bottom: 8, height: 58, from: "bottom", variant: "soft" },
+      { left: 50, top: 0, height: 100, from: "top", variant: "main" },
+      { left: 61, top: 18, height: 56, from: "top", variant: "soft" },
+      { left: 69, bottom: 0, height: 100, from: "bottom", variant: "main" },
+      { left: 78, top: 8, height: 72, from: "top", variant: "soft" },
+      { left: 88, bottom: 6, height: 86, from: "bottom", variant: "main" },
+      { left: 94, top: 12, height: 60, from: "top", variant: "soft" }
     ],
     []
   );
 
-  const horizontalLines = useMemo(
+  const horizontalLines = useMemo<HorizontalLine[]>(
     () => [
-      { top: 14, width: 46, from: "left" },
-      { top: 25, width: 78, from: "right" },
-      { top: 39, width: 100, from: "left" },
-      { top: 54, width: 62, from: "right" },
-      { top: 68, width: 88, from: "left" },
-      { top: 82, width: 44, from: "right" }
-    ],
-    []
-  );
-
-  const accentLines = useMemo(
-    () => [
-      { type: "v", left: 33, top: 22, height: 22, from: "top" },
-      { type: "v", left: 71, top: 48, height: 18, from: "bottom" },
-      { type: "h", top: 31, left: 52, width: 16, from: "left" },
-      { type: "h", top: 73, left: 18, width: 22, from: "right" }
+      { top: 8, left: 6, width: 88, from: "left", variant: "main" },
+      { top: 16, right: 0, width: 58, from: "right", variant: "soft" },
+      { top: 27, left: 10, width: 78, from: "left", variant: "soft" },
+      { top: 39, right: 6, width: 90, from: "right", variant: "main" },
+      { top: 52, left: 24, width: 48, from: "left", variant: "soft" },
+      { top: 67, right: 0, width: 84, from: "right", variant: "main" },
+      { top: 80, left: 6, width: 38, from: "left", variant: "soft" },
+      { top: 90, right: 10, width: 64, from: "right", variant: "soft" }
     ],
     []
   );
@@ -89,7 +103,9 @@ export default function IntroBrand() {
 
       const intro = introRef.current;
       const grid = gridRef.current;
-      if (!intro || !grid) return;
+      const overlay = overlayRef.current;
+
+      if (!intro || !grid || !overlay) return;
 
       const vLines = gsap.utils.toArray<HTMLElement>(".grid-v");
       const hLines = gsap.utils.toArray<HTMLElement>(".grid-h");
@@ -104,8 +120,8 @@ export default function IntroBrand() {
       })
         .set(".hero-layer", {
           autoAlpha: 0,
-          y: 18,
-          scale: 1.01
+          y: 22,
+          scale: 1.02
         })
         .set(grid, {
           autoAlpha: 1
@@ -118,120 +134,152 @@ export default function IntroBrand() {
           scaleX: 0,
           opacity: 0
         })
-        .set(".grid-accent-v", {
-          scaleY: 0,
-          opacity: 0
+        .set(overlay, {
+          opacity: 1
         })
-        .set(".grid-accent-h", {
-          scaleX: 0,
-          opacity: 0
-        })
+
+        // Logo entra devagar
         .fromTo(
           intro,
           {
             autoAlpha: 0,
-            scale: 0.985,
-            y: 8,
-            filter: "blur(6px)"
+            scale: 0.975,
+            y: 14,
+            filter: "blur(10px)"
           },
           {
             autoAlpha: 1,
             scale: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.34
+            duration: 0.95,
+            ease: "power2.out"
           }
         )
-        .to({}, { duration: 0.12 })
-        .to(intro, {
-          autoAlpha: 0,
-          scale: 1.01,
-          filter: "blur(10px)",
-          duration: 0.24,
-          onStart: () => setHeaderVisible(true)
-        })
+
+        // pequena presença da marca
+        .to({}, { duration: 0.4 })
+
+        // logo sai devagar
+        .to(
+          intro,
+          {
+            autoAlpha: 0,
+            scale: 1.015,
+            y: -4,
+            filter: "blur(12px)",
+            duration: 0.7,
+            ease: "power2.inOut",
+            onStart: () => setHeaderVisible(true)
+          }
+        )
+
+        // o preto começa a abrir junto
+        .to(
+          overlay,
+          {
+            opacity: 0.55,
+            duration: 0.95,
+            ease: "power2.out"
+          },
+          "-=0.55"
+        )
+
+        // verticais entram lentamente de lados diferentes
         .to(
           vLines,
           {
             scaleY: 1,
-            opacity: 0.28,
-            duration: 0.42,
-            stagger: 0.035,
+            opacity: (_i, target) =>
+              target.dataset.variant === "main" ? 0.26 : 0.14,
+            duration: 0.95,
+            stagger: 0.06,
+            ease: "power2.out",
             transformOrigin: (_i, target) =>
               target.getAttribute("data-from") === "top"
                 ? "top center"
                 : "bottom center"
           },
-          "-=0.06"
+          "-=0.38"
         )
+
+        // horizontais entram depois, também lentas
         .to(
           hLines,
           {
             scaleX: 1,
-            opacity: 0.16,
-            duration: 0.38,
-            stagger: 0.04,
+            opacity: (_i, target) =>
+              target.dataset.variant === "main" ? 0.2 : 0.11,
+            duration: 0.9,
+            stagger: 0.07,
+            ease: "power2.out",
             transformOrigin: (_i, target) =>
               target.getAttribute("data-from") === "left"
                 ? "left center"
                 : "right center"
           },
-          "-=0.28"
+          "-=0.72"
         )
-        .to(
-          ".grid-accent-v",
-          {
-            scaleY: 1,
-            opacity: 0.2,
-            duration: 0.28,
-            stagger: 0.03,
-            transformOrigin: (_i, target) =>
-              target.getAttribute("data-from") === "top"
-                ? "top center"
-                : "bottom center"
-          },
-          "-=0.3"
-        )
-        .to(
-          ".grid-accent-h",
-          {
-            scaleX: 1,
-            opacity: 0.18,
-            duration: 0.26,
-            stagger: 0.03,
-            transformOrigin: (_i, target) =>
-              target.getAttribute("data-from") === "left"
-                ? "left center"
-                : "right center"
-          },
-          "-=0.24"
-        )
+
+        // home aparece por trás enquanto o grid já existe
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.5
+            duration: 1.05,
+            ease: "power2.out"
           },
-          "-=0.16"
+          "-=0.78"
         )
+
+        // grid respira / expande um pouco
         .to(
-          ".intro-screen",
+          grid,
           {
-            autoAlpha: 0,
-            duration: 0.42
+            scale: 1.018,
+            opacity: 0.92,
+            duration: 0.75,
+            ease: "power1.inOut"
           },
-          "-=0.28"
+          "-=0.48"
         )
+
+        // fundo preto abre mais
+        .to(
+          overlay,
+          {
+            opacity: 0.12,
+            duration: 0.8,
+            ease: "power2.out"
+          },
+          "-=0.52"
+        )
+
+        // grid desaparece lentamente
         .to(
           grid,
           {
             autoAlpha: 0,
-            duration: 0.26
+            scale: 1.03,
+            duration: 0.75,
+            ease: "power2.out"
           },
-          "-=0.18"
+          "-=0.28"
         )
+
+        // intro completa desaparece
+        .to(
+          ".intro-screen",
+          {
+            autoAlpha: 0,
+            duration: 0.42,
+            ease: "power2.out"
+          },
+          "-=0.42"
+        )
+
         .set(".intro-screen", {
           pointerEvents: "none"
         })
@@ -250,19 +298,26 @@ export default function IntroBrand() {
       {!introDone && (
         <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-black">
           <div
+            ref={overlayRef}
+            className="absolute inset-0 bg-black"
+          />
+
+          <div
             ref={gridRef}
-            className="pointer-events-none absolute inset-0 opacity-0"
+            className="pointer-events-none absolute inset-0 origin-center opacity-0"
           >
             {verticalLines.map((line, i) => (
               <span
                 key={`v-${i}`}
                 className="grid-v absolute w-px bg-white/20"
                 data-from={line.from}
+                data-variant={line.variant ?? "soft"}
                 style={{
                   left: `${line.left}%`,
                   height: `${line.height}%`,
-                  top: line.from === "top" ? "0%" : "auto",
-                  bottom: line.from === "bottom" ? "0%" : "auto"
+                  top: line.top !== undefined ? `${line.top}%` : "auto",
+                  bottom:
+                    line.bottom !== undefined ? `${line.bottom}%` : "auto"
                 }}
               />
             ))}
@@ -272,40 +327,15 @@ export default function IntroBrand() {
                 key={`h-${i}`}
                 className="grid-h absolute h-px bg-white/10"
                 data-from={line.from}
+                data-variant={line.variant ?? "soft"}
                 style={{
                   top: `${line.top}%`,
                   width: `${line.width}%`,
-                  left: line.from === "left" ? "0%" : "auto",
-                  right: line.from === "right" ? "0%" : "auto"
+                  left: line.left !== undefined ? `${line.left}%` : "auto",
+                  right: line.right !== undefined ? `${line.right}%` : "auto"
                 }}
               />
             ))}
-
-            {accentLines.map((line, i) =>
-              line.type === "v" ? (
-                <span
-                  key={`accent-v-${i}`}
-                  className="grid-accent-v absolute w-px bg-white/16"
-                  data-from={line.from}
-                  style={{
-                    left: `${line.left}%`,
-                    top: `${line.top}%`,
-                    height: `${line.height}%`
-                  }}
-                />
-              ) : (
-                <span
-                  key={`accent-h-${i}`}
-                  className="grid-accent-h absolute h-px bg-white/14"
-                  data-from={line.from}
-                  style={{
-                    top: `${line.top}%`,
-                    left: `${line.left}%`,
-                    width: `${line.width}%`
-                  }}
-                />
-              )
-            )}
           </div>
 
           <div className="absolute inset-0 grid place-items-center px-6">
@@ -370,4 +400,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-                }
+            }
