@@ -497,8 +497,8 @@ export default function IntroBrand() {
     <Image
       src="/logo-header.png"
       alt="Amato Lima"
-      width={900}
-      height={220}
+      width={1000}
+      height={320}
       priority
       className="h-auto w-full object-contain"
     />
