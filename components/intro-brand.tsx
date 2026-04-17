@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP);
 
 function MonogramLarge() {
   return (
-    <div className="grid h-24 w-24 place-items-center rounded-full border border-white/30 bg-white/10 text-2xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-32 md:w-32 md:text-3xl">
+    <div className="grid h-28 w-28 place-items-center rounded-full border border-white/30 bg-white/10 text-3xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-36 md:w-36 md:text-4xl">
       AL
     </div>
   );
@@ -26,37 +26,44 @@ export default function IntroBrand() {
         onComplete: () => setReady(true)
       });
 
-      tl.set(".intro-stage", { autoAlpha: 1, pointerEvents: "auto" })
-        .set(".brand-center", { autoAlpha: 0, scale: 0.96, y: 24 })
-        .set(".hero-reveal", { autoAlpha: 0, y: 40 })
-
-        .to(".brand-center", {
+      tl.set(".intro-screen", { autoAlpha: 1 })
+        .set(".brand-mark", {
           autoAlpha: 1,
-          scale: 1,
+          xPercent: -50,
+          yPercent: -50,
+          x: 0,
           y: 0,
-          duration: 1.2
+          scale: 1
+        })
+        .set(".hero-layer", { autoAlpha: 0, y: 40 })
+
+        .from(".brand-mark", {
+          duration: 1,
+          scale: 0.92,
+          y: 20,
+          autoAlpha: 0
         })
         .fromTo(
           ".brand-line",
           { scaleX: 0, transformOrigin: "left center" },
           { scaleX: 1, duration: 0.8 },
-          "-=0.55"
+          "-=0.45"
         )
-        .to({}, { duration: 0.45 })
-        .to(".brand-center", {
+        .to({}, { duration: 0.8 })
+        .to(".brand-mark", {
+          duration: 1.2,
           scale: 0.42,
-          x: () => (window.innerWidth < 768 ? -118 : -360),
-          y: () => -(window.innerHeight / 2) + 84,
-          duration: 1.15
+          x: () => (window.innerWidth < 768 ? -145 : -430),
+          y: () => -(window.innerHeight / 2) + 72
         })
         .to(
-          ".hero-reveal",
+          ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
             duration: 1
           },
-          "-=0.55"
+          "-=0.45"
         )
         .to(
           ".intro-overlay",
@@ -66,7 +73,7 @@ export default function IntroBrand() {
           },
           "-=0.9"
         )
-        .to(".intro-stage", {
+        .to(".intro-screen", {
           autoAlpha: 0,
           pointerEvents: "none",
           duration: 0.35
@@ -79,24 +86,22 @@ export default function IntroBrand() {
     <div ref={root} className="relative">
       <Header ready={ready} />
 
-      <div className="intro-stage texture-travertine fixed inset-0 z-50 opacity-100">
+      <div className="intro-screen texture-travertine fixed inset-0 z-[100]">
         <div className="intro-overlay absolute inset-0 bg-[var(--overlay)]" />
 
-        <div className="brand-center absolute inset-0 flex items-center justify-center px-6 text-white">
-          <div className="flex items-center gap-5 md:gap-7">
-            <MonogramLarge />
+        <div className="brand-mark absolute left-1/2 top-1/2 z-[101] flex items-center gap-5 md:gap-7 text-white">
+          <MonogramLarge />
 
-            <div className="min-w-[180px] md:min-w-[420px]">
-              <div className="font-display text-4xl uppercase tracking-[0.14em] md:text-7xl">
-                Amato Lima
-              </div>
-              <div className="brand-line mt-5" />
+          <div className="min-w-[220px] md:min-w-[520px]">
+            <div className="font-display text-4xl uppercase tracking-[0.14em] md:text-7xl">
+              Amato Lima
             </div>
+            <div className="brand-line mt-5 h-[1px] bg-white/60" />
           </div>
         </div>
       </div>
 
-      <div className="hero-reveal relative">
+      <div className="hero-layer relative">
         <section className="relative min-h-screen overflow-hidden text-white">
           <div className="texture-travertine absolute inset-0" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,12,8,.62),rgba(18,12,8,.18),rgba(18,12,8,.5))]" />
