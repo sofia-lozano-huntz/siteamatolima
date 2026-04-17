@@ -62,42 +62,43 @@ export default function IntroBrand() {
     })
       .set(".hero-layer", {
         autoAlpha: 0,
-        y: 10
+        y: 8
       })
       .fromTo(
         intro,
         {
           autoAlpha: 0,
-          scale: 0.992,
-          y: 4
+          scale: 0.996
         },
         {
           autoAlpha: 1,
           scale: 1,
-          y: 0,
-          duration: 0.22
+          duration: 0.16
         }
       )
-      .to(intro, {
-        autoAlpha: 0,
-        duration: 0.16,
-        onStart: () => setHeaderVisible(true)
-      })
+      .to(
+        intro,
+        {
+          autoAlpha: 0,
+          duration: 0.16,
+          onStart: () => setHeaderVisible(true)
+        }
+      )
       .to(
         ".hero-layer",
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.28
+          duration: 0.22
         },
-        "-=0.06"
+        "-=0.1"
       )
       .to(
         ".intro-screen",
         {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.18,
+          duration: 0.12,
           onComplete: () => {
             setIntroDone(true);
             sessionStorage.setItem("seenIntro", "true");
@@ -115,12 +116,12 @@ export default function IntroBrand() {
 
       {!introDone && (
         <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-[#050403]" />
+          <div className="absolute inset-0 bg-black" />
 
           <div className="absolute inset-0 grid place-items-center px-6">
             <div
               ref={introRef}
-              className="relative w-[min(68vw,620px)] md:w-[min(58vw,760px)]"
+              className="relative w-[min(60vw,560px)] md:w-[min(52vw,700px)]"
             >
               <Image
                 src="/logo-header.png"
