@@ -83,7 +83,7 @@ export default function IntroBrand() {
     <div ref={root} className="relative overflow-hidden">
       <Header visible={headerVisible} />
 
-      <div className="intro-screen texture-travertine fixed inset-0 z-[100] h-[100dvh] w-screen overflow-hidden">
+      <div className="intro-screen texture-travertine fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
         <div className="intro-overlay absolute inset-0 bg-[var(--overlay)]" />
 
         <div
@@ -104,10 +104,10 @@ export default function IntroBrand() {
       </div>
 
       <div className="hero-layer relative">
-        <section className="texture-travertine relative min-h-[100dvh] overflow-hidden text-white">
+        <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
           <div className="absolute inset-0 bg-[var(--overlay)]" />
 
-          <div className="shell relative flex min-h-[100dvh] items-end pb-16 pt-28 md:items-center md:pb-24">
+          <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
               <p className="mb-4 text-xs uppercase tracking-[0.38em] text-white/70">
                 Ativos imobiliários
