@@ -377,17 +377,17 @@ export default function IntroBrand() {
           {
             autoAlpha: 1,
             scale: 1,
-            duration: 1.15
+            duration: 1.0
           },
-          "3.02"
+          "2.9"
         )
         .to(
           overlay,
           {
-            opacity: 0.12,
-            duration: 1.05
+            opacity: 0.08,
+            duration: 0.95
           },
-          "3.02"
+          "2.9"
         )
 
         .to(
@@ -395,18 +395,18 @@ export default function IntroBrand() {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.92
+            duration: 0.82
           },
-          "3.62"
+          "3.28"
         )
         .to(
           ".hero-copy",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.78
+            duration: 0.72
           },
-          "3.82"
+          "3.46"
         )
 
         .to(
@@ -469,9 +469,9 @@ export default function IntroBrand() {
           introScreen,
           {
             autoAlpha: 0,
-            duration: 0.62
+            duration: 0.48
           },
-          "4.62"
+          "4.18"
         )
         .set(introScreen, {
           pointerEvents: "none"
