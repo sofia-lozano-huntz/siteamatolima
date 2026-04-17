@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP);
 
 function MonogramLarge() {
   return (
-    <div className="grid h-28 w-28 place-items-center rounded-full border border-white/30 bg-white/10 text-3xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-36 md:w-36 md:text-4xl">
+    <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-2xl font-semibold tracking-[0.22em] text-white backdrop-blur-sm md:h-28 md:w-28 md:text-3xl">
       AL
     </div>
   );
@@ -26,7 +26,7 @@ export default function IntroBrand() {
         onComplete: () => setReady(true)
       });
 
-      tl.set(".intro-screen", { autoAlpha: 1 })
+      tl.set(".intro-screen", { autoAlpha: 1, pointerEvents: "auto" })
         .set(".brand-mark", {
           autoAlpha: 1,
           xPercent: -50,
@@ -35,12 +35,12 @@ export default function IntroBrand() {
           y: 0,
           scale: 1
         })
-        .set(".hero-layer", { autoAlpha: 0, y: 40 })
+        .set(".hero-layer", { autoAlpha: 0, y: 30 })
 
         .from(".brand-mark", {
           duration: 1,
-          scale: 0.92,
-          y: 20,
+          scale: 0.94,
+          y: 18,
           autoAlpha: 0
         })
         .fromTo(
@@ -49,12 +49,12 @@ export default function IntroBrand() {
           { scaleX: 1, duration: 0.8 },
           "-=0.45"
         )
-        .to({}, { duration: 0.8 })
+        .to({}, { duration: 0.7 })
         .to(".brand-mark", {
-          duration: 1.2,
+          duration: 1.1,
           scale: 0.42,
-          x: () => (window.innerWidth < 768 ? -145 : -430),
-          y: () => -(window.innerHeight / 2) + 72
+          x: () => (window.innerWidth < 768 ? -118 : -360),
+          y: () => -(window.innerHeight / 2) + 78
         })
         .to(
           ".hero-layer",
@@ -63,7 +63,7 @@ export default function IntroBrand() {
             y: 0,
             duration: 1
           },
-          "-=0.45"
+          "-=0.35"
         )
         .to(
           ".intro-overlay",
@@ -83,30 +83,32 @@ export default function IntroBrand() {
   );
 
   return (
-    <div ref={root} className="relative">
+    <div ref={root} className="relative overflow-hidden">
       <Header ready={ready} />
 
-      <div className="intro-screen texture-travertine fixed inset-0 z-[100]">
+      <div className="intro-screen texture-travertine fixed inset-0 z-[100] h-[100dvh] w-screen overflow-hidden">
         <div className="intro-overlay absolute inset-0 bg-[var(--overlay)]" />
 
-        <div className="brand-mark absolute left-1/2 top-1/2 z-[101] flex items-center gap-5 md:gap-7 text-white">
-          <MonogramLarge />
+        <div className="brand-mark absolute left-1/2 top-1/2 z-[101] w-[calc(100vw-32px)] max-w-[760px] -translate-x-1/2 -translate-y-1/2 px-4 text-white">
+          <div className="flex items-center justify-center gap-4 md:gap-6">
+            <MonogramLarge />
 
-          <div className="min-w-[220px] md:min-w-[520px]">
-            <div className="font-display text-4xl uppercase tracking-[0.14em] md:text-7xl">
-              Amato Lima
+            <div className="min-w-0 flex-1">
+              <div className="font-display text-[clamp(2rem,6vw,5.5rem)] uppercase tracking-[0.12em] leading-none">
+                Amato Lima
+              </div>
+              <div className="brand-line mt-4 h-px bg-white/60" />
             </div>
-            <div className="brand-line mt-5 h-[1px] bg-white/60" />
           </div>
         </div>
       </div>
 
-      <div className="hero-layer relative">
-        <section className="relative min-h-screen overflow-hidden text-white">
+      <div className="hero-layer relative overflow-hidden">
+        <section className="relative min-h-[100dvh] overflow-hidden text-white">
           <div className="texture-travertine absolute inset-0" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,12,8,.62),rgba(18,12,8,.18),rgba(18,12,8,.5))]" />
 
-          <div className="shell relative flex min-h-screen items-end pb-16 pt-28 md:items-center md:pb-24">
+          <div className="shell relative flex min-h-[100dvh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
               <p className="mb-4 text-xs uppercase tracking-[0.38em] text-white/70">
                 Ativos imobiliários
