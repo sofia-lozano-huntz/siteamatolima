@@ -78,7 +78,14 @@ a {
 
 .brand-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
+  opacity: 0.8;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.32),
+    rgba(255,255,255,.55),
+    transparent
+  );
 }
 
 .shell {
