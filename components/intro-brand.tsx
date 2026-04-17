@@ -46,65 +46,69 @@ export default function IntroBrand() {
   }, [introDone, shouldPlayIntro]);
 
   useGSAP(
-    () => {
-      if (!shouldPlayIntro) return;
+  () => {
+    if (!shouldPlayIntro) return;
 
-      const intro = introRef.current;
-      if (!intro) return;
+    const intro = introRef.current;
+    if (!intro) return;
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power2.out" }
-      });
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" }
+    });
 
-      tl.set(".intro-screen", {
-        autoAlpha: 1,
-        pointerEvents: "auto"
+    tl.set(".intro-screen", {
+      autoAlpha: 1,
+      pointerEvents: "auto"
+    })
+      .set(".hero-layer", {
+        autoAlpha: 0,
+        y: 10
       })
-        .set(".hero-layer", {
+      .fromTo(
+        intro,
+        {
           autoAlpha: 0,
-          y: 10
-        })
-        .fromTo(
-          intro,
-          {
-            autoAlpha: 0,
-            scale: 0.992,
-            y: 4
-          },
-          {
-            autoAlpha: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.28
-          }
-        )
-        .to(intro, {
-          autoAlpha: 0,
-          duration: 0.22,
-          onStart: () => setHeaderVisible(true)
-        })
-        .to(
-          ".hero-layer",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.35
-          },
-          "-=0.08"
-        )
-        .to(".intro-screen", {
+          scale: 0.992,
+          y: 4
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.22
+        }
+      )
+      .to(intro, {
+        autoAlpha: 0,
+        duration: 0.16,
+        onStart: () => setHeaderVisible(true)
+      })
+      .to(
+        ".hero-layer",
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.28
+        },
+        "-=0.06"
+      )
+      .to(
+        ".intro-screen",
+        {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.05,
+          duration: 0.18,
           onComplete: () => {
             setIntroDone(true);
             sessionStorage.setItem("seenIntro", "true");
           }
-        });
-    },
-    { scope: root, dependencies: [shouldPlayIntro] }
-  );
-
+        },
+        "<"
+      );
+  },
+  { scope: root, dependencies: [shouldPlayIntro] }
+);
+  
   return (
     <div ref={root} className="relative">
       <Header visible={headerVisible} />
