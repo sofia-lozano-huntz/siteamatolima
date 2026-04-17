@@ -13,7 +13,7 @@ export default function IntroBrand() {
   const introRef = useRef<HTMLDivElement | null>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [introDone, setIntroDone] = useState(false);
-  const [shouldPlayIntro, setShouldPlayIntro] = useState(false);
+  const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
   useEffect(() => {
     const hasSeenIntro = sessionStorage.getItem("seenIntro");
@@ -62,42 +62,40 @@ export default function IntroBrand() {
       })
         .set(".hero-layer", {
           autoAlpha: 0,
-          y: 18
+          y: 10
         })
         .fromTo(
           intro,
           {
             autoAlpha: 0,
-            scale: 0.988,
-            y: 8
+            scale: 0.992,
+            y: 4
           },
           {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 0.55
+            duration: 0.28
           }
         )
-        .to({}, { duration: 0.2 })
         .to(intro, {
           autoAlpha: 0,
-          scale: 0.997,
-          duration: 0.35,
-          onComplete: () => setHeaderVisible(true)
+          duration: 0.22,
+          onStart: () => setHeaderVisible(true)
         })
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.65
+            duration: 0.35
           },
-          "-=0.1"
+          "-=0.08"
         )
         .to(".intro-screen", {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.08,
+          duration: 0.05,
           onComplete: () => {
             setIntroDone(true);
             sessionStorage.setItem("seenIntro", "true");
@@ -133,7 +131,11 @@ export default function IntroBrand() {
         </div>
       )}
 
-      <div className={`hero-layer relative ${introDone ? "opacity-100 translate-y-0" : ""}`}>
+      <div
+        className={`hero-layer relative ${
+          introDone ? "translate-y-0 opacity-100" : ""
+        }`}
+      >
         <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
           <div className="absolute inset-0 bg-[var(--overlay)]" />
 
@@ -173,4 +175,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-     }
+}
