@@ -30,97 +30,104 @@ export default function IntroBrand() {
   }, [introDone]);
 
   useGSAP(
-    () => {
-      const intro = introRef.current;
-      if (!intro) return;
+  useGSAP(
+  () => {
+    const intro = introRef.current;
+    if (!intro) return;
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power2.out" }
-      });
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" }
+    });
 
-      tl.set(".intro-screen", {
-        autoAlpha: 1,
-        pointerEvents: "auto"
+    tl.set(".intro-screen", {
+      autoAlpha: 1,
+      pointerEvents: "auto"
+    })
+      .set(".hero-layer", {
+        autoAlpha: 0,
+        y: 24
       })
-        .set(".hero-layer", {
+      .set("header", {
+        autoAlpha: 0
+      })
+      .fromTo(
+        intro,
+        {
           autoAlpha: 0,
-          y: 14
-        })
-        .fromTo(
-          intro,
-          {
-            autoAlpha: 0,
-            scale: 0.985,
-            y: 8
-          },
-          {
-            autoAlpha: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.8
-          }
-        )
-        .to({}, { duration: 0.45 })
-        .to(intro, {
+          scale: 0.982,
+          y: 10
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          duration: 1
+        }
+      )
+      .to({}, { duration: 0.55 })
+      .to(
+        intro,
+        {
           autoAlpha: 0,
-          scale: 0.995,
-          duration: 0.45
-        })
-        .to(
-          ".intro-overlay",
-          {
-            opacity: 0,
-            duration: 0.55
-          },
-          "-=0.25"
-        )
-        .to(
-          ".hero-layer",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.75,
-            onStart: () => setHeaderVisible(true)
-          },
-          "-=0.2"
-        )
-        .to(".intro-screen", {
-          autoAlpha: 0,
-          pointerEvents: "none",
-          duration: 0.12,
-          onComplete: () => setIntroDone(true)
-        });
-    },
-    { scope: root }
-  );
+          scale: 0.996,
+          duration: 0.6
+        }
+      )
+      .to(
+        ".hero-layer",
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1
+        },
+        "-=0.2"
+      )
+      .to(
+        "header",
+        {
+          autoAlpha: 1,
+          duration: 0.6,
+          onStart: () => setHeaderVisible(true)
+        },
+        "-=0.55"
+      )
+      .to(".intro-screen", {
+        autoAlpha: 0,
+        pointerEvents: "none",
+        duration: 0.12,
+        onComplete: () => setIntroDone(true)
+      });
+  },
+  { scope: root }
+);
 
   return (
     <div ref={root} className="relative">
       <Header visible={headerVisible} />
 
-      <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[#070504]" />
+<div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
+  <div className="absolute inset-0 bg-[#070504]" />
 
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div
-            ref={introRef}
-            className="relative w-[min(70vw,640px)] md:w-[min(60vw,760px)]"
-          >
-            <Image
-              src="/logo-header.png"
-              alt="Amato Lima"
-              width={1400}
-              height={520}
-              priority
-              className="h-auto w-full object-contain"
-            />
-          </div>
-        </div>
-      </div>
+  <div className="absolute inset-0 flex items-center justify-center px-6">
+    <div
+      ref={introRef}
+      className="relative w-[min(70vw,640px)] md:w-[min(60vw,760px)]"
+    >
+      <Image
+        src="/logo-header.png"
+        alt="Amato Lima"
+        width={1400}
+        height={520}
+        priority
+        className="h-auto w-full object-contain"
+      />
+    </div>
+  </div>
+</div>
 
       <div className="hero-layer relative">
         <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
-          <div className="absolute inset-0 bg-[var(--overlay)]" />
+          <div className="absolute inset-0 flex items-center justify-center px-6">
 
           <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
