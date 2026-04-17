@@ -19,7 +19,7 @@ export default async function ImovelPage({
 
   return (
     <main>
-      <Header ready />
+      <Header visible />
 
       <section className="pt-32">
         <SectionShell>
