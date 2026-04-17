@@ -192,8 +192,8 @@ export default function IntroBrand() {
 
       gsap.set(logo, {
         autoAlpha: 0,
-        y: 8,
-        scale: 0.985
+        y: 10,
+        scale: 0.97
       });
 
       gsap.set(wireframe, {
