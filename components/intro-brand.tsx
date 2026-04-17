@@ -484,7 +484,7 @@ export default function IntroBrand() {
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
   <div
     ref={logoRef}
-    className="w-[260px] md:w-[520px]"
+    className="w-[360px] md:w-[620px]"
   >
     <Image
       src="/logo-header.png"
