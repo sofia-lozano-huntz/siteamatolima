@@ -99,6 +99,10 @@ export default function IntroBrand() {
         scale: 1.08
       });
 
+      gsap.set(overlay, {
+        opacity: 1
+      });
+
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
       });
@@ -119,7 +123,7 @@ export default function IntroBrand() {
 
         .to({}, { duration: 0.4 })
 
-        // LOGO SAI (AGORA CORRETO)
+        // LOGO SAI
         .to(
           logo,
           {
@@ -154,10 +158,24 @@ export default function IntroBrand() {
           "2.2"
         )
 
-        .to(overlay, { opacity: 0.2, duration: 1 }, "2.2")
+        .to(
+          overlay,
+          {
+            opacity: 0.2,
+            duration: 1
+          },
+          "2.2"
+        )
 
         // LINHAS SOMEM
-        .to(lines, { opacity: 0, duration: 0.6 }, "3.2")
+        .to(
+          lines,
+          {
+            opacity: 0,
+            duration: 0.6
+          },
+          "3.2"
+        )
 
         // HERO FINAL
         .to(".hero-layer", {
@@ -189,7 +207,6 @@ export default function IntroBrand() {
           ref={introScreenRef}
           className="fixed inset-0 z-[100] bg-[#f4efe6]"
         >
-          {/* IMAGEM */}
           <div ref={heroImageRef} className="absolute inset-0">
             <Image
               src="/hero-house.jpg"
@@ -199,33 +216,25 @@ export default function IntroBrand() {
             />
           </div>
 
-          {/* LOGO */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div
-              ref={logoRef}
-              className="relative w-[220px] md:w-[320px]"
-            >
+            <div ref={logoRef} className="relative w-[220px] md:w-[320px]">
               <Image
                 src="/logo-header.png"
                 alt="Amato Lima"
                 width={700}
                 height={200}
-                className="w-full h-auto"
+                className="h-auto w-full"
               />
             </div>
           </div>
 
-          {/* WIREFRAME */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div ref={wireframeRef} className="w-full max-w-[1200px]">
               <HouseWireframe />
             </div>
           </div>
 
-          <div
-            ref={overlayRef}
-            className="absolute inset-0 bg-[#f4efe6]"
-          />
+          <div ref={overlayRef} className="absolute inset-0 bg-[#f4efe6]" />
         </div>
       )}
 
@@ -241,4 +250,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-    }
+}
