@@ -6,24 +6,24 @@ import MenuOverlay from "./menu-overlay";
 
 function Monogram() {
   return (
-    <div className="grid h-10 w-10 place-items-center rounded-full border border-white/40 bg-white/15 text-[11px] font-semibold tracking-[0.25em] text-white backdrop-blur-md">
+    <div className="grid h-10 w-10 place-items-center rounded-full border border-white/40 bg-white/10 text-[11px] font-semibold tracking-[0.25em] text-white backdrop-blur-sm">
       AL
     </div>
   );
 }
 
 export default function Header({
-  ready
+  visible
 }: {
-  ready: boolean;
+  visible: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-30 transition-all duration-700 ${
-          ready ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+        className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ${
+          visible ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         <div className="shell flex items-center justify-between py-6">
