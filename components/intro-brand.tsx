@@ -13,24 +13,42 @@ export default function IntroBrand() {
   const introRef = useRef<HTMLDivElement | null>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [introDone, setIntroDone] = useState(false);
+  const [shouldPlayIntro, setShouldPlayIntro] = useState(false);
 
   useEffect(() => {
-    if (!introDone) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    } else {
+    const hasSeenIntro = sessionStorage.getItem("seenIntro");
+
+    if (hasSeenIntro) {
+      setIntroDone(true);
+      setHeaderVisible(true);
+      setShouldPlayIntro(false);
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
+      return;
+    }
+
+    setShouldPlayIntro(true);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldPlayIntro || introDone) {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    } else {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     }
 
     return () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
-  }, [introDone]);
+  }, [introDone, shouldPlayIntro]);
 
   useGSAP(
     () => {
+      if (!shouldPlayIntro) return;
+
       const intro = introRef.current;
       if (!intro) return;
 
@@ -44,27 +62,27 @@ export default function IntroBrand() {
       })
         .set(".hero-layer", {
           autoAlpha: 0,
-          y: 24
+          y: 18
         })
         .fromTo(
           intro,
           {
             autoAlpha: 0,
-            scale: 0.982,
-            y: 10
+            scale: 0.988,
+            y: 8
           },
           {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 1
+            duration: 0.55
           }
         )
-        .to({}, { duration: 0.55 })
+        .to({}, { duration: 0.2 })
         .to(intro, {
           autoAlpha: 0,
-          scale: 0.996,
-          duration: 0.6,
+          scale: 0.997,
+          duration: 0.35,
           onComplete: () => setHeaderVisible(true)
         })
         .to(
@@ -72,45 +90,50 @@ export default function IntroBrand() {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 1
+            duration: 0.65
           },
-          "-=0.18"
+          "-=0.1"
         )
         .to(".intro-screen", {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.12,
-          onComplete: () => setIntroDone(true)
+          duration: 0.08,
+          onComplete: () => {
+            setIntroDone(true);
+            sessionStorage.setItem("seenIntro", "true");
+          }
         });
     },
-    { scope: root }
+    { scope: root, dependencies: [shouldPlayIntro] }
   );
 
   return (
     <div ref={root} className="relative">
       <Header visible={headerVisible} />
 
-      <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[#050403]" />
+      {!introDone && (
+        <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden">
+          <div className="absolute inset-0 bg-[#050403]" />
 
-        <div className="absolute inset-0 grid place-items-center px-6">
-          <div
-            ref={introRef}
-            className="relative w-[min(68vw,620px)] md:w-[min(58vw,760px)]"
-          >
-            <Image
-              src="/logo-header.png"
-              alt="Amato Lima"
-              width={1400}
-              height={520}
-              priority
-              className="h-auto w-full object-contain"
-            />
+          <div className="absolute inset-0 grid place-items-center px-6">
+            <div
+              ref={introRef}
+              className="relative w-[min(68vw,620px)] md:w-[min(58vw,760px)]"
+            >
+              <Image
+                src="/logo-header.png"
+                alt="Amato Lima"
+                width={1400}
+                height={520}
+                priority
+                className="h-auto w-full object-contain"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="hero-layer relative">
+      <div className={`hero-layer relative ${introDone ? "opacity-100 translate-y-0" : ""}`}>
         <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
           <div className="absolute inset-0 bg-[var(--overlay)]" />
 
@@ -150,4 +173,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-}
+     }
