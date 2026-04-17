@@ -509,7 +509,6 @@ export default function IntroBrand() {
               src="/hero-house.jpg"
               alt="Residência Amato Lima"
               fill
-              priority
               className="object-cover object-center hero-intro-image"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.88)_0%,rgba(244,239,230,0.52)_32%,rgba(33,23,16,0.20)_100%)]" />
