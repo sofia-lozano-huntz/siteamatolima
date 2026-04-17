@@ -26,6 +26,13 @@ type HorizontalLine = {
   variant?: "main" | "soft";
 };
 
+type BoxLine = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+};
+
 export default function IntroBrand() {
   const root = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
@@ -38,31 +45,40 @@ export default function IntroBrand() {
 
   const verticalLines = useMemo<VerticalLine[]>(
     () => [
-      { left: 8, top: 6, height: 88, from: "top", variant: "soft" },
-      { left: 14, top: 10, height: 74, from: "top", variant: "main" },
-      { left: 22, bottom: 0, height: 92, from: "bottom", variant: "soft" },
-      { left: 30, top: 4, height: 96, from: "top", variant: "main" },
-      { left: 38, bottom: 8, height: 58, from: "bottom", variant: "soft" },
-      { left: 50, top: 0, height: 100, from: "top", variant: "main" },
-      { left: 61, top: 18, height: 56, from: "top", variant: "soft" },
-      { left: 69, bottom: 0, height: 100, from: "bottom", variant: "main" },
-      { left: 78, top: 8, height: 72, from: "top", variant: "soft" },
-      { left: 88, bottom: 6, height: 86, from: "bottom", variant: "main" },
-      { left: 94, top: 12, height: 60, from: "top", variant: "soft" }
+      { left: 7, top: 4, height: 90, from: "top", variant: "soft" },
+      { left: 12, top: 10, height: 72, from: "top", variant: "main" },
+      { left: 19, bottom: 0, height: 94, from: "bottom", variant: "soft" },
+      { left: 27, top: 3, height: 100, from: "top", variant: "main" },
+      { left: 35, bottom: 10, height: 56, from: "bottom", variant: "soft" },
+      { left: 48, top: 0, height: 100, from: "top", variant: "main" },
+      { left: 58, top: 18, height: 60, from: "top", variant: "soft" },
+      { left: 66, bottom: 0, height: 100, from: "bottom", variant: "main" },
+      { left: 75, top: 8, height: 74, from: "top", variant: "soft" },
+      { left: 84, bottom: 5, height: 86, from: "bottom", variant: "main" },
+      { left: 92, top: 12, height: 58, from: "top", variant: "soft" }
     ],
     []
   );
 
   const horizontalLines = useMemo<HorizontalLine[]>(
     () => [
-      { top: 8, left: 6, width: 88, from: "left", variant: "main" },
-      { top: 16, right: 0, width: 58, from: "right", variant: "soft" },
-      { top: 27, left: 10, width: 78, from: "left", variant: "soft" },
-      { top: 39, right: 6, width: 90, from: "right", variant: "main" },
-      { top: 52, left: 24, width: 48, from: "left", variant: "soft" },
-      { top: 67, right: 0, width: 84, from: "right", variant: "main" },
-      { top: 80, left: 6, width: 38, from: "left", variant: "soft" },
-      { top: 90, right: 10, width: 64, from: "right", variant: "soft" }
+      { top: 8, left: 5, width: 90, from: "left", variant: "main" },
+      { top: 16, right: 0, width: 56, from: "right", variant: "soft" },
+      { top: 28, left: 9, width: 78, from: "left", variant: "soft" },
+      { top: 41, right: 4, width: 92, from: "right", variant: "main" },
+      { top: 55, left: 22, width: 46, from: "left", variant: "soft" },
+      { top: 69, right: 0, width: 84, from: "right", variant: "main" },
+      { top: 82, left: 6, width: 36, from: "left", variant: "soft" },
+      { top: 92, right: 8, width: 62, from: "right", variant: "soft" }
+    ],
+    []
+  );
+
+  const boxes = useMemo<BoxLine[]>(
+    () => [
+      { top: 14, left: 54, width: 18, height: 12 },
+      { top: 52, left: 18, width: 22, height: 16 },
+      { top: 68, left: 58, width: 16, height: 10 }
     ],
     []
   );
@@ -109,6 +125,7 @@ export default function IntroBrand() {
 
       const vLines = gsap.utils.toArray<HTMLElement>(".grid-v");
       const hLines = gsap.utils.toArray<HTMLElement>(".grid-h");
+      const boxLines = gsap.utils.toArray<HTMLElement>(".grid-box-line");
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" }
@@ -120,7 +137,7 @@ export default function IntroBrand() {
       })
         .set(".hero-layer", {
           autoAlpha: 0,
-          y: 22,
+          y: 24,
           scale: 1.02
         })
         .set(grid, {
@@ -134,152 +151,161 @@ export default function IntroBrand() {
           scaleX: 0,
           opacity: 0
         })
+        .set(boxLines, {
+          scaleX: 0,
+          scaleY: 0,
+          opacity: 0
+        })
         .set(overlay, {
           opacity: 1
         })
 
-        // Logo entra devagar
         .fromTo(
           intro,
           {
             autoAlpha: 0,
-            scale: 0.975,
-            y: 14,
-            filter: "blur(10px)"
+            scale: 0.972,
+            y: 16,
+            filter: "blur(12px)"
           },
           {
             autoAlpha: 1,
             scale: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.95,
+            duration: 1.1,
             ease: "power2.out"
           }
         )
-
-        // pequena presença da marca
-        .to({}, { duration: 0.4 })
-
-        // logo sai devagar
+        .to({}, { duration: 0.55 })
         .to(
           intro,
           {
             autoAlpha: 0,
-            scale: 1.015,
-            y: -4,
+            scale: 1.012,
+            y: -6,
             filter: "blur(12px)",
-            duration: 0.7,
+            duration: 0.85,
             ease: "power2.inOut",
             onStart: () => setHeaderVisible(true)
           }
         )
-
-        // o preto começa a abrir junto
         .to(
           overlay,
           {
-            opacity: 0.55,
-            duration: 0.95,
-            ease: "power2.out"
+            opacity: 0.62,
+            duration: 1.1
           },
-          "-=0.55"
+          "-=0.72"
         )
-
-        // verticais entram lentamente de lados diferentes
         .to(
           vLines,
           {
             scaleY: 1,
             opacity: (_i, target) =>
-              target.dataset.variant === "main" ? 0.26 : 0.14,
-            duration: 0.95,
+              target.dataset.variant === "main" ? 0.24 : 0.1,
+            duration: 1.05,
             stagger: 0.06,
-            ease: "power2.out",
             transformOrigin: (_i, target) =>
               target.getAttribute("data-from") === "top"
                 ? "top center"
                 : "bottom center"
           },
-          "-=0.38"
+          "-=0.4"
         )
-
-        // horizontais entram depois, também lentas
         .to(
           hLines,
           {
             scaleX: 1,
             opacity: (_i, target) =>
-              target.dataset.variant === "main" ? 0.2 : 0.11,
-            duration: 0.9,
-            stagger: 0.07,
-            ease: "power2.out",
+              target.dataset.variant === "main" ? 0.18 : 0.08,
+            duration: 0.95,
+            stagger: 0.065,
             transformOrigin: (_i, target) =>
               target.getAttribute("data-from") === "left"
                 ? "left center"
                 : "right center"
           },
-          "-=0.72"
+          "-=0.82"
         )
-
-        // home aparece por trás enquanto o grid já existe
+        .to(
+          boxLines,
+          {
+            opacity: 0.14,
+            duration: 0.55,
+            stagger: 0.04
+          },
+          "-=0.65"
+        )
+        .to(
+          ".grid-box-top, .grid-box-bottom",
+          {
+            scaleX: 1,
+            duration: 0.45,
+            stagger: 0.03,
+            transformOrigin: "left center"
+          },
+          "<"
+        )
+        .to(
+          ".grid-box-left, .grid-box-right",
+          {
+            scaleY: 1,
+            duration: 0.45,
+            stagger: 0.03,
+            transformOrigin: "top center"
+          },
+          "-=0.35"
+        )
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 1.05,
+            duration: 1.15,
             ease: "power2.out"
           },
-          "-=0.78"
+          "-=0.76"
         )
-
-        // grid respira / expande um pouco
         .to(
           grid,
           {
-            scale: 1.018,
-            opacity: 0.92,
-            duration: 0.75,
+            scale: 1.016,
+            opacity: 0.94,
+            duration: 0.85,
             ease: "power1.inOut"
-          },
-          "-=0.48"
-        )
-
-        // fundo preto abre mais
-        .to(
-          overlay,
-          {
-            opacity: 0.12,
-            duration: 0.8,
-            ease: "power2.out"
           },
           "-=0.52"
         )
-
-        // grid desaparece lentamente
+        .to(
+          overlay,
+          {
+            opacity: 0.08,
+            duration: 0.9,
+            ease: "power2.out"
+          },
+          "-=0.58"
+        )
         .to(
           grid,
           {
             autoAlpha: 0,
-            scale: 1.03,
-            duration: 0.75,
+            scale: 1.028,
+            duration: 0.8,
             ease: "power2.out"
           },
-          "-=0.28"
+          "-=0.2"
         )
-
-        // intro completa desaparece
         .to(
           ".intro-screen",
           {
             autoAlpha: 0,
-            duration: 0.42,
+            duration: 0.5,
             ease: "power2.out"
           },
-          "-=0.42"
+          "-=0.5"
         )
-
         .set(".intro-screen", {
           pointerEvents: "none"
         })
@@ -297,10 +323,7 @@ export default function IntroBrand() {
 
       {!introDone && (
         <div className="intro-screen fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-black">
-          <div
-            ref={overlayRef}
-            className="absolute inset-0 bg-black"
-          />
+          <div ref={overlayRef} className="absolute inset-0 bg-black" />
 
           <div
             ref={gridRef}
@@ -336,6 +359,24 @@ export default function IntroBrand() {
                 }}
               />
             ))}
+
+            {boxes.map((box, i) => (
+              <div
+                key={`box-${i}`}
+                className="absolute"
+                style={{
+                  top: `${box.top}%`,
+                  left: `${box.left}%`,
+                  width: `${box.width}%`,
+                  height: `${box.height}%`
+                }}
+              >
+                <span className="grid-box-line grid-box-top absolute left-0 top-0 h-px w-full bg-white/12" />
+                <span className="grid-box-line grid-box-right absolute right-0 top-0 h-full w-px bg-white/12" />
+                <span className="grid-box-line grid-box-bottom absolute bottom-0 left-0 h-px w-full bg-white/12" />
+                <span className="grid-box-line grid-box-left absolute left-0 top-0 h-full w-px bg-white/12" />
+              </div>
+            ))}
           </div>
 
           <div className="absolute inset-0 grid place-items-center px-6">
@@ -363,6 +404,7 @@ export default function IntroBrand() {
       >
         <section className="texture-travertine relative min-h-[100svh] overflow-hidden text-white">
           <div className="absolute inset-0 bg-[var(--overlay)]" />
+          <div className="hero-grid-overlay pointer-events-none absolute inset-0 opacity-[0.08]" />
 
           <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-28 md:items-center md:pb-24">
             <div className="max-w-3xl">
@@ -400,4 +442,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-            }
+                          }
