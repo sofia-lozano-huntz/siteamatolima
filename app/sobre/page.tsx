@@ -4,7 +4,7 @@ import SectionShell from "@/components/section-shell";
 export default function SobrePage() {
   return (
     <main>
-      <Header visible />
+      <Header />
       <section className="texture-travertine relative overflow-hidden pt-32 text-white">
         <div className="absolute inset-0 bg-[rgba(20,14,10,.42)]" />
         <div className="shell relative py-24">
