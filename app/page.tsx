@@ -1,11 +1,9 @@
-import Header from "@/components/header";
-import Hero from "@/components/sections/hero";
+import IntroBrand from "@/components/intro-brand";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Header />
-      <Hero />
-    </>
+    <main>
+      <IntroBrand />
+    </main>
   );
 }
