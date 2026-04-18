@@ -22,17 +22,26 @@ export default function Header({
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ${
-          visible ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className="
+fixed inset-x-0 top-0 z-40
+transition-all duration-700
+backdrop-blur-md
+bg-white/30
+border-b border-black/5
+"
       >
         <div className="shell flex items-center justify-between py-6">
-          <Link href="/" className="flex items-center gap-3 text-white">
-            <Monogram />
-            <span className="font-display text-2xl tracking-[0.08em] md:text-3xl">
-              Amato Lima
-            </span>
-          </Link>
+          import Image from "next/image";
+
+<Link href="/" className="flex items-center">
+  <Image
+    src="/logo-header.png"
+    alt="Amato Lima"
+    width={160}
+    height={50}
+    className="object-contain"
+  />
+</Link>
 
           <button
             type="button"
