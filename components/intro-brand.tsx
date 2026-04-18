@@ -179,7 +179,7 @@ export default function IntroBrand() {
 
       gsap.set(".hero-copy", {
         autoAlpha: 0,
-        y: 22
+        y: 18
       });
 
       gsap.set(logo, {
@@ -201,7 +201,7 @@ export default function IntroBrand() {
 
       gsap.set(heroImage, {
         autoAlpha: 0,
-        scale: 1.035
+        scale: 1.02
       });
 
       gsap.set(overlay, {
@@ -250,7 +250,6 @@ export default function IntroBrand() {
           },
           "0.96"
         )
-
         .to(
           stoneWire,
           {
@@ -330,7 +329,6 @@ export default function IntroBrand() {
           },
           "2.3"
         )
-
         .to(
           stoneWire,
           {
@@ -348,7 +346,6 @@ export default function IntroBrand() {
           },
           "2.46"
         )
-
         .fromTo(
           ".stone-highlight",
           {
@@ -370,44 +367,45 @@ export default function IntroBrand() {
           },
           "3.16"
         )
-
         .to(
           heroImage,
           {
             autoAlpha: 1,
             scale: 1,
-            duration: 1.0
+            duration: 0.82,
+            ease: "power2.out"
           },
-          "2.9"
+          "2.78"
         )
         .to(
           overlay,
           {
-            opacity: 0.08,
-            duration: 0.95
+            opacity: 0.04,
+            duration: 0.82,
+            ease: "power2.out"
           },
-          "2.9"
+          "2.78"
         )
-
         .to(
           ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.82
+            duration: 0.62,
+            ease: "power2.out"
           },
-          "3.28"
+          "2.98"
         )
         .to(
           ".hero-copy",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.72
+            duration: 0.58,
+            ease: "power2.out"
           },
-          "3.46"
+          "3.12"
         )
-
         .to(
           stoneFill,
           {
@@ -462,14 +460,14 @@ export default function IntroBrand() {
           },
           "4.34"
         )
-
         .to(
           introScreen,
           {
             autoAlpha: 0,
-            duration: 0.48
+            duration: 0.34,
+            ease: "power2.out"
           },
-          "4.18"
+          "3.58"
         )
         .set(introScreen, {
           pointerEvents: "none"
@@ -481,25 +479,25 @@ export default function IntroBrand() {
     { scope: root, dependencies: [shouldPlayIntro] }
   );
 
-return (
+  return (
     <div ref={root} className="relative">
       <Header />
 
       {!introDone && (
         <div
           ref={introScreenRef}
-          className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#f4efe6]"
+          className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#8A7357]"
         >
           <div
             ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,245,239,0.92)_0%,rgba(241,234,223,0.84)_52%,rgba(236,227,214,0.72)_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(79,64,50,0.34)_0%,rgba(79,64,50,0.46)_100%)]"
           />
 
           <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
-            <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(45,33,24,0.14)]" />
-            <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(45,33,24,0.12)]" />
-            <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(45,33,24,0.10)]" />
-            <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(45,33,24,0.12)]" />
+            <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(234,227,214,0.10)]" />
+            <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(234,227,214,0.10)]" />
+            <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(234,227,214,0.08)]" />
+            <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(234,227,214,0.08)]" />
           </div>
 
           <div ref={heroImageRef} className="absolute inset-0 z-0">
@@ -509,7 +507,7 @@ return (
               fill
               className="object-cover object-center hero-intro-image"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,239,230,0.88)_0%,rgba(244,239,230,0.52)_32%,rgba(33,23,16,0.20)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(79,64,50,0.10)_0%,rgba(79,64,50,0.18)_42%,rgba(79,64,50,0.34)_100%)]" />
           </div>
 
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
@@ -537,7 +535,7 @@ return (
                 priority
                 className="object-contain stone-fill-image"
               />
-              <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)]" />
+              <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(234,227,214,0.18),transparent)]" />
             </div>
           </div>
 
@@ -554,7 +552,7 @@ return (
           introDone ? "translate-y-0 opacity-100" : ""
         }`}
       >
-        <section className="relative h-[58vh] min-h-[520px] overflow-hidden text-white md:h-[68vh] md:min-h-[620px]">
+        <section className="relative h-[60vh] min-h-[520px] overflow-hidden md:h-[70vh] md:min-h-[640px]">
           <Image
             src="/hero-house.png"
             alt="Residência Amato Lima"
@@ -563,19 +561,18 @@ return (
             className="object-cover object-center hero-main-image"
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,15,11,0.10)_0%,rgba(20,15,11,0.18)_28%,rgba(17,12,9,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(92,74,58,0.06)_0%,rgba(79,64,50,0.14)_34%,rgba(79,64,50,0.34)_100%)]" />
 
-          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[linear-gradient(180deg,rgba(234,227,214,0)_0%,rgba(234,227,214,0.14)_34%,rgba(234,227,214,0.56)_72%,rgba(234,227,214,0.92)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[26%] bg-[linear-gradient(180deg,rgba(234,227,214,0)_0%,rgba(234,227,214,0.12)_34%,rgba(234,227,214,0.52)_72%,rgba(234,227,214,0.92)_100%)]" />
 
-          <div className="shell relative flex h-full items-end pb-14 md:pb-18">
-            <div className="hero-copy flex max-w-[34rem] flex-col gap-5">
-              <p className="text-[10px] uppercase tracking-[0.42em] text-white/58 md:text-[11px]">
+          <div className="shell relative flex h-full items-center">
+            <div className="hero-copy max-w-[42rem]">
+              <h1 className="font-display text-[clamp(2.8rem,6vw,5.8rem)] leading-[0.92] text-[#EAE3D6]">
                 Ativos imobiliários
-              </p>
+              </h1>
 
-              <p className="max-w-[28rem] text-[15px] leading-[1.75] text-white/74 md:text-[18px] md:leading-[1.8]">
-                Aquisição, transformação e reposicionamento em regiões nobres de
-                São Paulo.
+              <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.8] text-[#D6C6A8] md:text-[17px]">
+                Transformados com inteligência e sofisticação
               </p>
             </div>
           </div>
@@ -597,4 +594,4 @@ return (
       </div>
     </div>
   );
-}
+            }
