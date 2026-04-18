@@ -493,9 +493,9 @@ export default function IntroBrand() {
           className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#f4efe6]"
         >
           <div
-  ref={overlayRef}
-  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,245,239,0.92)_0%,rgba(241,234,223,0.84)_52%,rgba(236,227,214,0.72)_100%)]"
-/>
+            ref={overlayRef}
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,245,239,0.92)_0%,rgba(241,234,223,0.84)_52%,rgba(236,227,214,0.72)_100%)]"
+          />
 
           <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
             <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(45,33,24,0.14)]" />
@@ -567,40 +567,20 @@ export default function IntroBrand() {
 
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,20,14,0.16)_0%,rgba(28,20,14,0.26)_35%,rgba(22,16,12,0.58)_100%)]" />
 
-          <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-28 md:items-center md:pb-24">
-            <div className="hero-copy max-w-3xl">
-              <p className="mb-4 text-xs uppercase tracking-[0.38em] text-white/72">
+          <div className="shell relative flex min-h-[100svh] items-center pt-40 pb-32">
+            <div className="hero-copy max-w-xl flex flex-col gap-4">
+              <p className="text-xs uppercase tracking-[0.35em] text-white/60">
                 Ativos imobiliários
               </p>
 
-              <h1 className="font-display text-5xl leading-[0.92] md:text-8xl">
-                Transformados com inteligência e sofisticação.
-              </h1>
-
-              <p className="mt-6 max-w-xl text-sm leading-7 text-white/78 md:text-base">
-                Aquisição estratégica, reposicionamento arquitetônico e
-                comercialização em regiões nobres de São Paulo.
+              <p className="text-base leading-relaxed text-white/75 md:text-lg">
+                Aquisição, transformação e reposicionamento em regiões nobres de
+                São Paulo.
               </p>
-
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="#imoveis"
-                  className="rounded-full border border-white/35 bg-white/10 px-6 py-3 text-sm uppercase tracking-[0.2em] backdrop-blur-sm transition hover:bg-white hover:text-[var(--foreground)]"
-                >
-                  Ver imóveis
-                </a>
-
-                <a
-                  href="#projetos"
-                  className="rounded-full border border-white/20 px-6 py-3 text-sm uppercase tracking-[0.2em] transition hover:bg-white/10"
-                >
-                  Ver projetos
-                </a>
-              </div>
             </div>
           </div>
         </section>
       </div>
     </div>
   );
-}
+            }
