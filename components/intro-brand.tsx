@@ -481,7 +481,7 @@ export default function IntroBrand() {
     { scope: root, dependencies: [shouldPlayIntro] }
   );
 
-  return (
+return (
     <div ref={root} className="relative">
       <Header />
 
@@ -513,7 +513,7 @@ export default function IntroBrand() {
           </div>
 
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
-            <div ref={logoRef} className="w-[360px] md:w-[580px]">
+            <div ref={logoRef} className="w-[660px] md:w-[880px]">
               <Image
                 src="/logo-header.png"
                 alt="Amato Lima"
@@ -550,50 +550,51 @@ export default function IntroBrand() {
       )}
 
       <div
-  className={`hero-layer relative ${
-    introDone ? "translate-y-0 opacity-100" : ""
-  }`}
->
-  <section className="relative h-[58vh] min-h-[520px] overflow-hidden text-white md:h-[68vh] md:min-h-[620px]">
-    <Image
-      src="/hero-house.png"
-      alt="Residência Amato Lima"
-      fill
-      priority
-      className="object-cover object-center hero-main-image"
-    />
+        className={`hero-layer relative ${
+          introDone ? "translate-y-0 opacity-100" : ""
+        }`}
+      >
+        <section className="relative h-[58vh] min-h-[520px] overflow-hidden text-white md:h-[68vh] md:min-h-[620px]">
+          <Image
+            src="/hero-house.png"
+            alt="Residência Amato Lima"
+            fill
+            priority
+            className="object-cover object-center hero-main-image"
+          />
 
-    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,15,11,0.10)_0%,rgba(20,15,11,0.18)_28%,rgba(17,12,9,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,15,11,0.10)_0%,rgba(20,15,11,0.18)_28%,rgba(17,12,9,0.52)_100%)]" />
 
-    <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[linear-gradient(180deg,rgba(234,227,214,0)_0%,rgba(234,227,214,0.14)_34%,rgba(234,227,214,0.56)_72%,rgba(234,227,214,0.92)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[linear-gradient(180deg,rgba(234,227,214,0)_0%,rgba(234,227,214,0.14)_34%,rgba(234,227,214,0.56)_72%,rgba(234,227,214,0.92)_100%)]" />
 
-    <div className="shell relative flex h-full items-end pb-14 md:pb-18">
-      <div className="hero-copy flex max-w-[34rem] flex-col gap-5">
-        <p className="text-[10px] uppercase tracking-[0.42em] text-white/58 md:text-[11px]">
-          Ativos imobiliários
-        </p>
+          <div className="shell relative flex h-full items-end pb-14 md:pb-18">
+            <div className="hero-copy flex max-w-[34rem] flex-col gap-5">
+              <p className="text-[10px] uppercase tracking-[0.42em] text-white/58 md:text-[11px]">
+                Ativos imobiliários
+              </p>
 
-        <p className="max-w-[28rem] text-[15px] leading-[1.75] text-white/74 md:text-[18px] md:leading-[1.8]">
-          Aquisição, transformação e reposicionamento em regiões nobres de São
-          Paulo.
-        </p>
+              <p className="max-w-[28rem] text-[15px] leading-[1.75] text-white/74 md:text-[18px] md:leading-[1.8]">
+                Aquisição, transformação e reposicionamento em regiões nobres de
+                São Paulo.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className="relative z-10 -mt-10 bg-[var(--background)] pt-16 md:-mt-16 md:pt-24">
+          <div className="shell">
+            <div className="mb-12 flex items-center justify-center">
+              <div className="h-px w-full max-w-[220px] bg-[rgba(79,64,50,0.12)]" />
+            </div>
+
+            <div className="pb-10 text-center">
+              <p className="text-[10px] uppercase tracking-[0.34em] text-[var(--muted)] md:text-[11px]">
+                Curadoria inicial
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div className="relative z-10 -mt-10 bg-[var(--background)] pt-16 md:-mt-16 md:pt-24">
-    <div className="shell">
-      <div className="mb-12 flex items-center justify-center">
-        <div className="h-px w-full max-w-[220px] bg-[rgba(79,64,50,0.12)]" />
-      </div>
-
-      <div className="pb-10 text-center">
-        <p className="text-[10px] uppercase tracking-[0.34em] text-[var(--muted)] md:text-[11px]">
-          Curadoria inicial
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
   );
 }
