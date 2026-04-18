@@ -1,11 +1,11 @@
-import IntroBrand from "@/components/intro-brand";
-import HomeExperience from "@/components/home/home-experience";
+import Header from "@/components/header";
+import Hero from "@/components/sections/hero";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main>
-      <IntroBrand />
-      <HomeExperience />
-    </main>
+    <>
+      <Header />
+      <Hero />
+    </>
   );
 }
