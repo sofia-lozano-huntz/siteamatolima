@@ -4,7 +4,7 @@ import SectionShell from "@/components/section-shell";
 export default function ProjetosPage() {
   return (
     <main>
-      <Header visible />
+      <Header />
       <section className="pt-32">
         <SectionShell>
           <p className="mb-4 text-xs uppercase tracking-[0.35em] text-[var(--muted)]">
