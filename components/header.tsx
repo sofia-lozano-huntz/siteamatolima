@@ -1,16 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import MenuOverlay from "./menu-overlay";
-
-function Monogram() {
-  return (
-    <div className="grid h-10 w-10 place-items-center rounded-full border border-white/40 bg-white/10 text-[11px] font-semibold tracking-[0.25em] text-white backdrop-blur-sm">
-      AL
-    </div>
-  );
-}
 
 export default function Header({
   visible
@@ -22,38 +15,35 @@ export default function Header({
   return (
     <>
       <header
-        className="
-fixed inset-x-0 top-0 z-40
-transition-all duration-700
-backdrop-blur-md
-bg-white/30
-border-b border-black/5
-"
+        className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ${
+          visible ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
       >
-        <div className="shell flex items-center justify-between py-6">
-          import Image from "next/image";
+        <div className="border-b border-black/5 bg-white/28 backdrop-blur-md">
+          <div className="shell flex items-center justify-between py-5 md:py-6">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo-header.png"
+                alt="Amato Lima"
+                width={160}
+                height={50}
+                priority
+                className="h-auto w-[132px] object-contain md:w-[168px]"
+              />
+            </Link>
 
-<Link href="/" className="flex items-center">
-  <Image
-    src="/logo-header.png"
-    alt="Amato Lima"
-    width={160}
-    height={50}
-    className="object-contain"
-  />
-</Link>
-
-          <button
-            type="button"
-            aria-label="Abrir menu"
-            onClick={() => setOpen(true)}
-            className="group flex h-12 w-12 items-center justify-center text-white"
-          >
-            <span className="flex flex-col gap-2">
-              <span className="hamburger-line" />
-              <span className="hamburger-line w-6 group-hover:w-8" />
-            </span>
-          </button>
+            <button
+              type="button"
+              aria-label="Abrir menu"
+              onClick={() => setOpen(true)}
+              className="group flex h-12 w-12 items-center justify-center text-[var(--foreground)]"
+            >
+              <span className="flex flex-col items-end gap-[7px]">
+                <span className="block h-px w-7 origin-right bg-current transition-transform duration-300 group-hover:scale-x-[0.86]" />
+                <span className="block h-px w-10 origin-right bg-current transition-transform duration-300 group-hover:scale-x-[1.06]" />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
