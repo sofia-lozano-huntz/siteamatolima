@@ -5,45 +5,36 @@ import Image from "next/image";
 import Link from "next/link";
 import MenuOverlay from "./menu-overlay";
 
-export default function Header({
-  visible
-}: {
-  visible: boolean;
-}) {
+export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-40 transition-all duration-700 ${
-          visible ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        <div className="border-b border-black/5 bg-white/28 backdrop-blur-md">
-          <div className="shell flex items-center justify-between py-5 md:py-6">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo-header.png"
-                alt="Amato Lima"
-                width={160}
-                height={50}
-                priority
-                className="h-auto w-[132px] object-contain md:w-[168px]"
-              />
-            </Link>
+      <header className="fixed inset-x-0 top-0 z-50 px-6 py-6">
+        <div className="flex items-center justify-between">
+          {/* LOGO */}
+          <Link href="/" className="block">
+            <Image
+              src="/logo-header.png"
+              alt="Amato Lima"
+              width={220}
+              height={70}
+              priority
+              className="h-auto w-[140px] md:w-[180px] object-contain"
+            />
+          </Link>
 
-            <button
-              type="button"
-              aria-label="Abrir menu"
-              onClick={() => setOpen(true)}
-              className="group flex h-12 w-12 items-center justify-center text-[var(--foreground)]"
-            >
-              <span className="flex flex-col items-end gap-[7px]">
-                <span className="block h-px w-7 origin-right bg-current transition-transform duration-300 group-hover:scale-x-[0.86]" />
-                <span className="block h-px w-10 origin-right bg-current transition-transform duration-300 group-hover:scale-x-[1.06]" />
-              </span>
-            </button>
-          </div>
+          {/* MENU BUTTON */}
+          <button
+            onClick={() => setOpen(true)}
+            className="group relative flex h-10 w-10 items-center justify-center"
+            aria-label="Abrir menu"
+          >
+            <span className="flex flex-col gap-1.5">
+              <span className="h-[1px] w-6 bg-white transition-all group-hover:w-8" />
+              <span className="h-[1px] w-4 bg-white transition-all group-hover:w-6" />
+            </span>
+          </button>
         </div>
       </header>
 
