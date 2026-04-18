@@ -489,9 +489,9 @@ export default function IntroBrand() {
           className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#8A7357]"
         >
           <div
-            ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(79,64,50,0.34)_0%,rgba(79,64,50,0.46)_100%)]"
-          />
+  ref={overlayRef}
+  className="absolute inset-0 bg-[linear-gradient(180deg,rgba(79,64,50,0.28)_0%,rgba(79,64,50,0.40)_100%)]"
+/>
 
           <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
             <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(234,227,214,0.10)]" />
@@ -507,9 +507,8 @@ export default function IntroBrand() {
               fill
               className="object-cover object-center hero-intro-image"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(79,64,50,0.10)_0%,rgba(79,64,50,0.18)_42%,rgba(79,64,50,0.34)_100%)]" />
-          </div>
-
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(92,74,58,0.04)_0%,rgba(79,64,50,0.10)_36%,rgba(79,64,50,0.28)_100%)]" />
+</div>
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
             <div ref={logoRef} className="w-[660px] md:w-[880px]">
               <Image
@@ -552,7 +551,7 @@ export default function IntroBrand() {
           introDone ? "translate-y-0 opacity-100" : ""
         }`}
       >
-        <section className="relative h-[60vh] min-h-[520px] overflow-hidden md:h-[70vh] md:min-h-[640px]">
+        <section className="relative h-[62vh] min-h-[540px] overflow-hidden md:h-[72vh] md:min-h-[660px]">
           <Image
             src="/hero-house.png"
             alt="Residência Amato Lima"
@@ -566,32 +565,29 @@ export default function IntroBrand() {
           <div className="absolute inset-x-0 bottom-0 h-[26%] bg-[linear-gradient(180deg,rgba(234,227,214,0)_0%,rgba(234,227,214,0.12)_34%,rgba(234,227,214,0.52)_72%,rgba(234,227,214,0.92)_100%)]" />
 
           <div className="shell relative flex h-full items-center">
-            <div className="hero-copy max-w-[42rem]">
-              <h1 className="font-display text-[clamp(2.8rem,6vw,5.8rem)] leading-[0.92] text-[#EAE3D6]">
-                Ativos imobiliários
-              </h1>
+  <div className="hero-copy max-w-[44rem]">
+    <h1 className="font-display text-[clamp(3.1rem,7vw,6.4rem)] leading-[0.9] tracking-[-0.02em] text-[#EAE3D6]">
+      Ativos imobiliários
+    </h1>
 
-              <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.8] text-[#D6C6A8] md:text-[17px]">
-                Transformados com inteligência e sofisticação
-              </p>
-            </div>
-          </div>
+    <p className="mt-5 max-w-[31rem] text-[15px] leading-[1.85] tracking-[0.01em] text-[#D6C6A8] md:text-[17px]">
+      Transformados com inteligência e sofisticação
+    </p>
+  </div>
+</div>
         </section>
 
-        <div className="relative z-10 -mt-10 bg-[var(--background)] pt-16 md:-mt-16 md:pt-24">
-          <div className="shell">
-            <div className="mb-12 flex items-center justify-center">
-              <div className="h-px w-full max-w-[220px] bg-[rgba(79,64,50,0.12)]" />
-            </div>
-
-            <div className="pb-10 text-center">
-              <p className="text-[10px] uppercase tracking-[0.34em] text-[var(--muted)] md:text-[11px]">
-                Curadoria inicial
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className="relative z-10 -mt-10 bg-[#8A7357] pt-16 md:-mt-16 md:pt-24">
+  <div className="shell">
+    <div className="mb-12 flex items-center justify-center">
+      <div className="h-px w-full max-w-[220px] bg-[rgba(234,227,214,0.14)]" />
     </div>
-  );
-            }
+
+    <div className="pb-10 text-center">
+      <p className="text-[10px] uppercase tracking-[0.34em] text-[#D6C6A8] md:text-[11px]">
+        Curadoria inicial
+      </p>
+    </div>
+  </div>
+</div>
+        
