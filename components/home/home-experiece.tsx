@@ -40,27 +40,27 @@ const curatedAssets = [
     title: "Residência Jardins",
     location: "Jardins",
     status: "Disponível",
-    image: "/image1.png"
+    image: "/hero-house.png"
   },
   {
     title: "Casa Tamboré 11",
     location: "Tamboré 11",
     status: "Disponível",
-    image: "/image2.png"
+    image: "/image1.png"
   },
   {
     title: "Apartamento Higienópolis",
     location: "Higienópolis",
     status: "Disponível",
-    image: "/image3.png"
+    image: "/image2.png"
   }
 ];
 
 const sensoryFrames = [
-  { src: "/image4.png", alt: "Cozinha clara com marcenaria e iluminação suave" },
-  { src: "/image5.png", alt: "Corredor com madeira clara e parede verde" },
-  { src: "/image6.png", alt: "Lavabo com pedra escultórica e madeira escura" },
-  { src: "/image7.png", alt: "Sala com mobiliário curvo e luz natural" }
+  { src: "/image3.png", alt: "Frame sensorial 1" },
+  { src: "/image4.png", alt: "Frame sensorial 2" },
+  { src: "/image5.png", alt: "Frame sensorial 3" },
+  { src: "/image6.png", alt: "Frame sensorial 4" }
 ];
 
 export default function HomeExperience() {
@@ -200,7 +200,7 @@ export default function HomeExperience() {
               </h3>
             </div>
 
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden items-center gap-3 md:flex">
               {curatedAssets.map((asset, index) => (
                 <button
                   key={asset.title}
@@ -308,7 +308,7 @@ export default function HomeExperience() {
 
                 <div className="relative min-h-[420px] overflow-hidden rounded-[26px]">
                   <Image
-                    src="/render-sala-01.jpg"
+                    src="/image7.png"
                     alt="Transformação espacial"
                     fill
                     className="object-cover object-center"
@@ -398,4 +398,4 @@ export default function HomeExperience() {
       </section>
     </div>
   );
-}
+                }
