@@ -109,7 +109,6 @@ export default function IntroBrand() {
   const heroImageRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
-  const [headerVisible, setHeaderVisible] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
 
@@ -459,8 +458,7 @@ export default function IntroBrand() {
           {
             opacity: 0,
             duration: 0.52,
-            stagger: 0.025,
-            onStart: () => setHeaderVisible(true)
+            stagger: 0.025
           },
           "4.34"
         )
@@ -485,7 +483,7 @@ export default function IntroBrand() {
 
   return (
     <div ref={root} className="relative">
-      <Header visible={headerVisible} />
+      <Header />
 
       {!introDone && (
         <div
@@ -583,4 +581,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-            }
+}
