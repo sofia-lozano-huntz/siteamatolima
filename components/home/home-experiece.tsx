@@ -40,27 +40,27 @@ const curatedAssets = [
     title: "Residência Jardins",
     location: "Jardins",
     status: "Disponível",
-    image: "/hero-house.jpg"
+    image: "/image1.png"
   },
   {
     title: "Casa Tamboré 11",
     location: "Tamboré 11",
     status: "Disponível",
-    image: "/hero-house.jpg"
+    image: "/image2.png"
   },
   {
     title: "Apartamento Higienópolis",
     location: "Higienópolis",
     status: "Disponível",
-    image: "/hero-house.jpg"
+    image: "/image3.png"
   }
 ];
 
 const sensoryFrames = [
-  { src: "/render-cozinha-01.jpg", alt: "Cozinha clara com marcenaria e iluminação suave" },
-  { src: "/render-corredor-01.jpg", alt: "Corredor com madeira clara e parede verde" },
-  { src: "/render-banho-01.jpg", alt: "Lavabo com pedra escultórica e madeira escura" },
-  { src: "/render-sala-01.jpg", alt: "Sala com mobiliário curvo e luz natural" }
+  { src: "/image4.png", alt: "Cozinha clara com marcenaria e iluminação suave" },
+  { src: "/image5.png", alt: "Corredor com madeira clara e parede verde" },
+  { src: "/image6.png", alt: "Lavabo com pedra escultórica e madeira escura" },
+  { src: "/image7.png", alt: "Sala com mobiliário curvo e luz natural" }
 ];
 
 export default function HomeExperience() {
