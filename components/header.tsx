@@ -12,27 +12,25 @@ export default function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-6 py-6">
         <div className="flex items-center justify-between">
-          {/* LOGO */}
           <Link href="/" className="block">
             <Image
               src="/logo-header.png"
               alt="Amato Lima"
-              width={520}
-              height={170}
+              width={820}
+              height={260}
               priority
-              className="h-auto w-[140px] md:w-[180px] object-contain"
+              className="h-auto w-[210px] md:w-[300px] object-contain opacity-95"
             />
           </Link>
 
-          {/* MENU BUTTON */}
           <button
             onClick={() => setOpen(true)}
-            className="group relative flex h-10 w-10 items-center justify-center"
+            className="group relative flex h-12 w-12 items-center justify-center"
             aria-label="Abrir menu"
           >
-            <span className="flex flex-col gap-1.5">
-              <span className="h-[1px] w-6 bg-white transition-all group-hover:w-8" />
-              <span className="h-[1px] w-4 bg-white transition-all group-hover:w-6" />
+            <span className="flex flex-col items-end gap-[8px]">
+              <span className="h-[0.5px] w-8 bg-[#EAE3D6]/85 transition-all duration-300 group-hover:w-10" />
+              <span className="h-[0.5px] w-5 bg-[#EAE3D6]/85 transition-all duration-300 group-hover:w-7" />
             </span>
           </button>
         </div>
