@@ -341,13 +341,13 @@ export default function HomeExperience() {
                 key={frame.src}
                 className={`group relative overflow-hidden rounded-[28px] ${
                   index === 0
-                    ? "md:col-span-7 md:min-h-[440px]"
+                    ? "min-h-[300px] md:col-span-7 md:min-h-[440px]"
                     : index === 1
-                      ? "md:col-span-5 md:min-h-[440px]"
+                      ? "min-h-[300px] md:col-span-5 md:min-h-[440px]"
                       : index === 2
-                        ? "md:col-span-4 md:min-h-[320px]"
-                        : "md:col-span-8 md:min-h-[320px]"
-                } min-h-[300px]`}
+                        ? "min-h-[300px] md:col-span-4 md:min-h-[320px]"
+                        : "min-h-[300px] md:col-span-8 md:min-h-[320px]"
+                }`}
               >
                 <Image
                   src={frame.src}
@@ -398,4 +398,4 @@ export default function HomeExperience() {
       </section>
     </div>
   );
-                }
+}
