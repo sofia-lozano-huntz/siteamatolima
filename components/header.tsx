@@ -17,8 +17,8 @@ export default function Header() {
             <Image
               src="/logo-header.png"
               alt="Amato Lima"
-              width={220}
-              height={70}
+              width={520}
+              height={170}
               priority
               className="h-auto w-[140px] md:w-[180px] object-contain"
             />
