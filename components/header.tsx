@@ -14,17 +14,24 @@ export default function Header() {
         <div className="flex items-start justify-between">
           <Link href="/" className="block">
             <div className="relative rounded-[18px] border border-[#EAE3D6]/10 bg-[linear-gradient(180deg,rgba(154,123,95,0.22)_0%,rgba(168,142,107,0.12)_100%)] px-3 py-2 shadow-[0_10px_34px_rgba(79,64,50,0.12)] backdrop-blur-[10px]">
-              <div className="absolute inset-0 rounded-[18px] bg-[radial-gradient(circle_at_top_left,rgba(234,227,214,0.18),transparent_42%)] pointer-events-none" />
-              <Image
-                src="/logo-header.png"
-                alt="Amato Lima"
-                width={500}
-                height={260}
-                priority
-                className="relative h-auto w-[232px] md:w-[320px] object-contain opacity-100"
-              />
-            </div>
-          </Link>
+          <Link href="/" className="block">
+  <Image
+    src="/logo-header.png"
+    alt="Amato Lima"
+    width={300}
+    height={160}
+    priority
+    className="
+      h-auto 
+      w-[220px] md:w-[300px] 
+      object-contain 
+      opacity-100
+
+      [filter:brightness(1.08)_contrast(1.05)_drop-shadow(0_4px_12px_rgba(79,64,50,0.18))]
+    "
+  />
+</Link>
+  
 
           <button
             onClick={() => setOpen(true)}
