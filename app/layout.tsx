@@ -24,9 +24,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="font-body">
-        {children}
-      </body>
+      <body className="font-body">{children}</body>
     </html>
   );
 }
