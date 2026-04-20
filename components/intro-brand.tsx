@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Header from "./header";
+import MenuOverlay from "./menu-overlay";
 
 gsap.registerPlugin(useGSAP);
 
@@ -111,6 +111,7 @@ export default function IntroBrand() {
 
   const [introDone, setIntroDone] = useState(false);
   const [shouldPlayIntro, setShouldPlayIntro] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setShouldPlayIntro(true);
@@ -163,50 +164,50 @@ export default function IntroBrand() {
           strokeDasharray: length,
           strokeDashoffset: length,
           opacity: line.classList.contains("stone-line-faint")
-            ? 0.05
+            ? 0.04
             : line.classList.contains("stone-line-soft")
-              ? 0.09
+              ? 0.075
               : line.classList.contains("stone-line-strong")
-                ? 0.14
-                : 0.11
+                ? 0.12
+                : 0.095
         });
       });
 
-      gsap.set(".hero-layer", {
-        autoAlpha: 0,
-        y: 12
+      gsap.set(".top-minimal", {
+        autoAlpha: 0
       });
 
-      gsap.set(".hero-copy", {
-        autoAlpha: 0,
-        y: 26
+      gsap.set(".hero-layer", {
+        autoAlpha: 1,
+        y: 0
       });
 
       gsap.set(".hero-title-line", {
         autoAlpha: 0,
-        y: 20
+        y: 18,
+        filter: "blur(8px)"
       });
 
-      gsap.set(".hero-subtitle", {
+      gsap.set(".hero-explore", {
         autoAlpha: 0,
-        y: 16
+        y: 10
       });
 
       gsap.set(logo, {
         autoAlpha: 0,
-        y: 10,
+        y: 8,
         scale: 0.988
       });
 
       gsap.set(stoneWire, {
         autoAlpha: 0,
-        scale: 0.97,
+        scale: 0.975,
         y: 10
       });
 
       gsap.set(stoneFill, {
         autoAlpha: 0,
-        scale: 0.975
+        scale: 0.982
       });
 
       gsap.set(heroImage, {
@@ -220,7 +221,7 @@ export default function IntroBrand() {
 
       gsap.set(".stone-highlight", {
         opacity: 0,
-        xPercent: -30
+        xPercent: -28
       });
 
       const outline = gsap.utils.toArray(".stone-group-outline .stone-line");
@@ -238,34 +239,35 @@ export default function IntroBrand() {
       tl.fromTo(
         introScreen,
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.35 }
+        { autoAlpha: 1, duration: 0.3 }
       )
         .to(
-          ".hero-layer",
+          ".top-minimal",
           {
             autoAlpha: 1,
-            y: 0,
-            duration: 0.45
+            duration: 0.5
           },
-          "0.18"
+          "0.1"
         )
         .to(
           ".hero-title-line.title-line-1",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.72
+            filter: "blur(0px)",
+            duration: 0.8
           },
-          "0.36"
+          "0.18"
         )
         .to(
           ".hero-title-line.title-line-2",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.72
+            filter: "blur(0px)",
+            duration: 0.8
           },
-          "0.52"
+          "0.32"
         )
         .to(
           stoneWire,
@@ -273,109 +275,109 @@ export default function IntroBrand() {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 0.9
+            duration: 0.85
           },
-          "0.82"
+          "0.72"
         )
         .to(
           outline,
           {
             strokeDashoffset: 0,
-            opacity: 0.28,
-            duration: 0.92,
-            stagger: 0.05
+            opacity: 0.22,
+            duration: 0.88,
+            stagger: 0.045
           },
-          "0.92"
+          "0.8"
         )
         .to(
           recess,
           {
             strokeDashoffset: 0,
-            opacity: 0.22,
-            duration: 0.72,
-            stagger: 0.04
+            opacity: 0.17,
+            duration: 0.68,
+            stagger: 0.035
           },
-          "1.16"
+          "1.02"
         )
         .to(
           left,
           {
             strokeDashoffset: 0,
-            opacity: 0.22,
-            duration: 0.58,
-            stagger: 0.03
+            opacity: 0.16,
+            duration: 0.54,
+            stagger: 0.025
           },
-          "1.32"
+          "1.14"
         )
         .to(
           center,
           {
             strokeDashoffset: 0,
-            opacity: 0.26,
-            duration: 0.68,
-            stagger: 0.03
+            opacity: 0.19,
+            duration: 0.62,
+            stagger: 0.025
           },
-          "1.46"
+          "1.24"
         )
         .to(
           right,
           {
             strokeDashoffset: 0,
-            opacity: 0.22,
-            duration: 0.6,
-            stagger: 0.03
+            opacity: 0.16,
+            duration: 0.56,
+            stagger: 0.025
           },
-          "1.64"
+          "1.34"
         )
         .to(
           detail,
           {
             strokeDashoffset: 0,
-            opacity: 0.14,
-            duration: 0.4,
-            stagger: 0.025
+            opacity: 0.11,
+            duration: 0.34,
+            stagger: 0.02
           },
-          "1.74"
+          "1.4"
         )
         .to(
           depth,
           {
             strokeDashoffset: 0,
-            opacity: 0.08,
-            duration: 0.36,
-            stagger: 0.018
+            opacity: 0.06,
+            duration: 0.3,
+            stagger: 0.015
           },
-          "1.8"
+          "1.46"
         )
         .to(
           stoneFill,
           {
-            autoAlpha: 0.26,
+            autoAlpha: 0.22,
             scale: 1,
-            duration: 0.82
+            duration: 0.72
           },
-          "1.6"
+          "1.2"
         )
         .fromTo(
           ".stone-highlight",
           {
-            xPercent: -30,
+            xPercent: -28,
             opacity: 0
           },
           {
-            xPercent: 28,
-            opacity: 0.12,
-            duration: 0.76
+            xPercent: 26,
+            opacity: 0.1,
+            duration: 0.66
           },
-          "1.9"
+          "1.48"
         )
         .to(
           ".stone-highlight",
           {
             opacity: 0,
-            duration: 0.24
+            duration: 0.2
           },
-          "2.26"
+          "1.82"
         )
         .to(
           logo,
@@ -383,9 +385,9 @@ export default function IntroBrand() {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.54
+            duration: 0.46
           },
-          "1.82"
+          "1.38"
         )
         .to(
           heroImage,
@@ -395,97 +397,106 @@ export default function IntroBrand() {
             duration: 0.95,
             ease: "power2.out"
           },
-          "2.08"
+          "1.84"
         )
         .to(
           overlay,
           {
-            opacity: 0.03,
+            opacity: 0.02,
             duration: 0.95,
             ease: "power2.out"
           },
-          "2.08"
+          "1.84"
+        )
+        .to(
+          ".hero-title-line",
+          {
+            color: "#EAE3D6",
+            duration: 0.55,
+            stagger: 0.04
+          },
+          "1.96"
         )
         .to(
           logo,
           {
             autoAlpha: 0,
             y: -8,
-            duration: 0.42
+            duration: 0.36
           },
-          "2.52"
+          "2.24"
         )
         .to(
           stoneFill,
           {
             autoAlpha: 0,
             scale: 1.01,
-            duration: 0.42
+            duration: 0.36
           },
-          "2.54"
+          "2.28"
         )
         .to(
           depth,
           {
             opacity: 0,
-            duration: 0.18,
+            duration: 0.15,
             stagger: 0.01
           },
-          "2.56"
+          "2.3"
         )
         .to(
           detail,
           {
             opacity: 0,
-            duration: 0.2,
+            duration: 0.16,
             stagger: 0.01
           },
-          "2.6"
+          "2.34"
         )
         .to(
           [right, center, left],
           {
             opacity: 0,
-            duration: 0.28,
-            stagger: 0.015
+            duration: 0.24,
+            stagger: 0.012
           },
-          "2.66"
+          "2.38"
         )
         .to(
           recess,
           {
             opacity: 0,
-            duration: 0.34,
-            stagger: 0.02
+            duration: 0.28,
+            stagger: 0.015
           },
-          "2.74"
+          "2.46"
         )
         .to(
           outline,
           {
             opacity: 0,
-            duration: 0.38,
-            stagger: 0.02
+            duration: 0.32,
+            stagger: 0.015
           },
-          "2.82"
+          "2.54"
+        )
+        .to(
+          ".hero-explore",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.45
+          },
+          "2.42"
         )
         .to(
           introScreen,
           {
             autoAlpha: 0,
-            duration: 0.42,
+            duration: 0.38,
             ease: "power2.out"
           },
-          "2.72"
-        )
-        .to(
-          ".hero-subtitle",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.6
-          },
-          "2.94"
+          "2.5"
         )
         .set(introScreen, {
           pointerEvents: "none"
@@ -499,78 +510,8 @@ export default function IntroBrand() {
 
   return (
     <div ref={root} className="relative">
-      <Header />
-
-      {!introDone && (
-        <div
-          ref={introScreenRef}
-          className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#F5F1E8]"
-        >
-          <div
-            ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,198,168,0.08)_0%,rgba(168,142,107,0.12)_100%)]"
-          />
-
-          <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-            <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(79,64,50,0.08)]" />
-            <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(79,64,50,0.08)]" />
-            <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(79,64,50,0.06)]" />
-            <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(79,64,50,0.06)]" />
-          </div>
-
-          <div ref={heroImageRef} className="absolute inset-0 z-0">
-            <Image
-              src="/hero-house.png"
-              alt="Residência Amato Lima"
-              fill
-              className="object-cover object-center hero-intro-image"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(245,241,232,0.78)_0%,rgba(245,241,232,0.44)_34%,rgba(168,142,107,0.10)_100%)]" />
-          </div>
-
-          <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
-            <div ref={logoRef} className="w-[660px] md:w-[880px]">
-              <Image
-                src="/logo-header.png"
-                alt="Amato Lima"
-                width={900}
-                height={220}
-                priority
-                className="h-auto w-full object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
-            <div
-              ref={stoneFillRef}
-              className="relative aspect-square w-[300px] md:w-[440px]"
-            >
-              <Image
-                src="/stone-object.png"
-                alt="Pedra Amato Lima"
-                fill
-                priority
-                className="object-contain stone-fill-image"
-              />
-              <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(245,241,232,0.18),transparent)]" />
-            </div>
-          </div>
-
-          <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
-            <div ref={stoneWireRef} className="w-[320px] md:w-[470px]">
-              <StoneWireframe />
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div
-        className={`hero-layer relative ${
-          introDone ? "translate-y-0 opacity-100" : ""
-        }`}
-      >
-        <section className="relative h-[68vh] min-h-[580px] overflow-hidden md:h-[78vh] md:min-h-[720px]">
+      <div className="hero-layer relative">
+        <section className="relative h-[100svh] min-h-[720px] overflow-hidden">
           <Image
             src="/hero-house.png"
             alt="Residência Amato Lima"
@@ -579,43 +520,120 @@ export default function IntroBrand() {
             className="object-cover object-center hero-main-image"
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(168,142,107,0.06)_0%,rgba(154,123,95,0.14)_40%,rgba(154,123,95,0.24)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(168,142,107,0.04)_0%,rgba(154,123,95,0.10)_42%,rgba(154,123,95,0.18)_100%)]" />
 
-          <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[linear-gradient(180deg,rgba(214,198,168,0)_0%,rgba(214,198,168,0.24)_40%,rgba(214,198,168,0.68)_78%,#D6C6A8_100%)]" />
+          <div className="top-minimal absolute inset-x-0 top-0 z-40 px-6 py-6 md:px-8">
+            <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+              <div />
 
-          <div className="shell relative flex h-full items-center">
-            <div className="hero-copy max-w-[54rem]">
-              <h1 className="font-display leading-[0.88] tracking-[-0.02em] text-[#EAE3D6]">
-                <span className="hero-title-line title-line-1 block whitespace-nowrap text-[clamp(2.4rem,7vw,6.8rem)] font-[600]">
+              <div className="justify-self-center">
+                <Image
+                  src="/logo-header.png"
+                  alt="Amato Lima"
+                  width={900}
+                  height={260}
+                  priority
+                  className="h-auto w-[180px] object-contain opacity-95 md:w-[240px]"
+                />
+              </div>
+
+              <button
+                onClick={() => setMenuOpen(true)}
+                className="justify-self-end text-[12px] font-semibold uppercase tracking-[0.24em] text-[#EAE3D6] transition-opacity hover:opacity-70 md:text-[13px]"
+                aria-label="Abrir menu"
+                type="button"
+              >
+                Menu
+              </button>
+            </div>
+          </div>
+
+          {!introDone && (
+            <div
+              ref={introScreenRef}
+              className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#F1EEE7]"
+            >
+              <div
+                ref={overlayRef}
+                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,198,168,0.05)_0%,rgba(191,178,154,0.08)_100%)]"
+              />
+
+              <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
+                <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(79,64,50,0.08)]" />
+                <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(79,64,50,0.08)]" />
+                <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(79,64,50,0.06)]" />
+                <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(79,64,50,0.06)]" />
+              </div>
+
+              <div ref={heroImageRef} className="absolute inset-0 z-0">
+                <Image
+                  src="/hero-house.png"
+                  alt="Residência Amato Lima"
+                  fill
+                  className="object-cover object-center hero-intro-image"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(241,238,231,0.86)_0%,rgba(241,238,231,0.52)_34%,rgba(168,142,107,0.10)_100%)]" />
+              </div>
+
+              <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
+                <div ref={logoRef} className="w-[620px] md:w-[820px]">
+                  <Image
+                    src="/logo-header.png"
+                    alt="Amato Lima"
+                    width={900}
+                    height={220}
+                    priority
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+                <div
+                  ref={stoneFillRef}
+                  className="relative aspect-square w-[280px] md:w-[420px]"
+                >
+                  <Image
+                    src="/stone-object.png"
+                    alt="Pedra Amato Lima"
+                    fill
+                    priority
+                    className="object-contain stone-fill-image"
+                  />
+                  <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(241,238,231,0.16),transparent)]" />
+                </div>
+              </div>
+
+              <div className="absolute inset-0 z-20 flex items-center justify-center px-6">
+                <div ref={stoneWireRef} className="w-[300px] md:w-[450px]">
+                  <StoneWireframe />
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="shell relative z-20 flex h-full items-center">
+            <div className="max-w-[50rem] pt-24 md:pt-20">
+              <h1 className="font-display leading-[0.9] tracking-[-0.02em] text-[#4F4032]">
+                <span className="hero-title-line title-line-1 block whitespace-nowrap text-[clamp(2.9rem,7.2vw,6.8rem)] font-[500]">
                   Ativos imobiliários
                 </span>
-                <span className="hero-title-line title-line-2 mt-1 block whitespace-nowrap text-[clamp(2.4rem,7vw,6.8rem)] font-[600]">
+                <span className="hero-title-line title-line-2 block whitespace-nowrap text-[clamp(2.9rem,7.2vw,6.8rem)] font-[500]">
                   elevados ao essencial
                 </span>
               </h1>
-
-              <p className="hero-subtitle mt-6 max-w-[30rem] text-[15px] font-[400] leading-[1.9] tracking-[0.02em] text-[#EAE3D6]/84 md:text-[18px]">
-                Transformados com inteligência e sofisticação
-              </p>
             </div>
+          </div>
+
+          <div className="hero-explore absolute inset-x-0 bottom-9 z-30 flex justify-center">
+            <p className="text-[11px] uppercase tracking-[0.34em] text-[#EAE3D6] md:text-[12px]">
+              Explore
+            </p>
           </div>
         </section>
-
-        <div className="relative z-10 -mt-12 bg-[#D6C6A8] pt-20 md:-mt-20 md:pt-28">
-          <div className="shell">
-            <div className="mb-12 flex items-center justify-center">
-              <div className="h-px w-full max-w-[220px] bg-[rgba(154,123,95,0.22)]" />
-            </div>
-
-            <div className="pb-10 text-center">
-              <p className="text-[10px] uppercase tracking-[0.34em] text-[#9A7B5F] md:text-[11px]">
-                Curadoria inicial
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
+
+      <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
   );
-}
-
+          }
