@@ -11,27 +11,27 @@ export default function Header() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-6 py-6 md:px-8">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="block">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+          <div />
+
+          <Link href="/" className="justify-self-center block">
             <Image
               src="/logo-header.png"
               alt="Amato Lima"
               width={900}
               height={260}
               priority
-              className="h-auto w-[240px] md:w-[320px] object-contain opacity-95"
+              className="h-auto w-[180px] md:w-[240px] object-contain opacity-95"
             />
           </Link>
 
           <button
             onClick={() => setOpen(true)}
-            className="group relative flex h-12 w-12 items-center justify-center"
+            className="justify-self-end text-[12px] font-semibold uppercase tracking-[0.24em] text-[#EAE3D6] transition-opacity hover:opacity-70 md:text-[13px]"
             aria-label="Abrir menu"
+            type="button"
           >
-            <span className="flex flex-col items-end gap-[8px] transition-all duration-300">
-              <span className="h-[2.2px] w-10 rounded-full bg-[#EAE3D6]/95 transition-all duration-300 group-hover:w-12" />
-              <span className="h-[2.2px] w-6 rounded-full bg-[#EAE3D6]/95 transition-all duration-300 group-hover:w-9" />
-            </span>
+            Menu
           </button>
         </div>
       </header>
