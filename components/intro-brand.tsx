@@ -617,4 +617,5 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-        }
+}
+
