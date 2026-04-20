@@ -163,45 +163,55 @@ export default function IntroBrand() {
           strokeDasharray: length,
           strokeDashoffset: length,
           opacity: line.classList.contains("stone-line-faint")
-            ? 0.08
+            ? 0.05
             : line.classList.contains("stone-line-soft")
-              ? 0.14
+              ? 0.09
               : line.classList.contains("stone-line-strong")
-                ? 0.2
-                : 0.16
+                ? 0.14
+                : 0.11
         });
       });
 
       gsap.set(".hero-layer", {
         autoAlpha: 0,
-        y: 24
+        y: 12
       });
 
       gsap.set(".hero-copy", {
         autoAlpha: 0,
-        y: 18
+        y: 26
+      });
+
+      gsap.set(".hero-title-line", {
+        autoAlpha: 0,
+        y: 20
+      });
+
+      gsap.set(".hero-subtitle", {
+        autoAlpha: 0,
+        y: 16
       });
 
       gsap.set(logo, {
         autoAlpha: 0,
         y: 10,
-        scale: 0.985
+        scale: 0.988
       });
 
       gsap.set(stoneWire, {
-        autoAlpha: 1,
-        scale: 0.94,
-        y: 12
+        autoAlpha: 0,
+        scale: 0.97,
+        y: 10
       });
 
       gsap.set(stoneFill, {
         autoAlpha: 0,
-        scale: 0.955
+        scale: 0.975
       });
 
       gsap.set(heroImage, {
         autoAlpha: 0,
-        scale: 1.02
+        scale: 1.03
       });
 
       gsap.set(overlay, {
@@ -210,7 +220,7 @@ export default function IntroBrand() {
 
       gsap.set(".stone-highlight", {
         opacity: 0,
-        xPercent: -35
+        xPercent: -30
       });
 
       const outline = gsap.utils.toArray(".stone-group-outline .stone-line");
@@ -231,243 +241,251 @@ export default function IntroBrand() {
         { autoAlpha: 1, duration: 0.35 }
       )
         .to(
-          logo,
+          ".hero-layer",
           {
             autoAlpha: 1,
             y: 0,
-            scale: 1,
-            duration: 0.62
+            duration: 0.45
           },
-          "0.15"
+          "0.18"
         )
-        .to({}, { duration: 0.28 })
         .to(
-          logo,
+          ".hero-title-line.title-line-1",
           {
-            autoAlpha: 0,
-            y: -6,
-            duration: 0.28
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.72
           },
-          "0.96"
+          "0.36"
+        )
+        .to(
+          ".hero-title-line.title-line-2",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.72
+          },
+          "0.52"
         )
         .to(
           stoneWire,
           {
+            autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 1.02
+            duration: 0.9
           },
-          "0.98"
+          "0.82"
         )
         .to(
           outline,
           {
             strokeDashoffset: 0,
-            opacity: 0.72,
+            opacity: 0.28,
             duration: 0.92,
-            stagger: 0.055
+            stagger: 0.05
           },
-          "1.04"
+          "0.92"
         )
         .to(
           recess,
           {
             strokeDashoffset: 0,
-            opacity: 0.62,
-            duration: 0.76,
-            stagger: 0.045
+            opacity: 0.22,
+            duration: 0.72,
+            stagger: 0.04
           },
-          "1.36"
+          "1.16"
         )
         .to(
           left,
           {
             strokeDashoffset: 0,
-            opacity: 0.72,
-            duration: 0.64,
-            stagger: 0.035
+            opacity: 0.22,
+            duration: 0.58,
+            stagger: 0.03
           },
-          "1.62"
+          "1.32"
         )
         .to(
           center,
           {
             strokeDashoffset: 0,
-            opacity: 0.84,
-            duration: 0.8,
-            stagger: 0.035
+            opacity: 0.26,
+            duration: 0.68,
+            stagger: 0.03
           },
-          "1.78"
+          "1.46"
         )
         .to(
           right,
           {
             strokeDashoffset: 0,
-            opacity: 0.76,
-            duration: 0.66,
-            stagger: 0.035
+            opacity: 0.22,
+            duration: 0.6,
+            stagger: 0.03
           },
-          "2.02"
+          "1.64"
         )
         .to(
           detail,
           {
             strokeDashoffset: 0,
-            opacity: 0.48,
-            duration: 0.44,
+            opacity: 0.14,
+            duration: 0.4,
             stagger: 0.025
           },
-          "2.18"
+          "1.74"
         )
         .to(
           depth,
           {
             strokeDashoffset: 0,
-            opacity: 0.22,
-            duration: 0.42,
+            opacity: 0.08,
+            duration: 0.36,
             stagger: 0.018
           },
-          "2.3"
-        )
-        .to(
-          stoneWire,
-          {
-            scale: 1.012,
-            duration: 0.55
-          },
-          "2.48"
+          "1.8"
         )
         .to(
           stoneFill,
           {
-            autoAlpha: 0.36,
+            autoAlpha: 0.26,
             scale: 1,
-            duration: 0.9
+            duration: 0.82
           },
-          "2.46"
+          "1.6"
         )
         .fromTo(
           ".stone-highlight",
           {
-            xPercent: -35,
+            xPercent: -30,
             opacity: 0
           },
           {
-            xPercent: 35,
-            opacity: 0.16,
-            duration: 0.82
+            xPercent: 28,
+            opacity: 0.12,
+            duration: 0.76
           },
-          "2.72"
+          "1.9"
         )
         .to(
           ".stone-highlight",
           {
             opacity: 0,
-            duration: 0.28
+            duration: 0.24
           },
-          "3.16"
+          "2.26"
+        )
+        .to(
+          logo,
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.54
+          },
+          "1.82"
         )
         .to(
           heroImage,
           {
             autoAlpha: 1,
             scale: 1,
-            duration: 0.82,
+            duration: 0.95,
             ease: "power2.out"
           },
-          "2.78"
+          "2.08"
         )
         .to(
           overlay,
           {
-            opacity: 0.04,
-            duration: 0.82,
+            opacity: 0.03,
+            duration: 0.95,
             ease: "power2.out"
           },
-          "2.78"
+          "2.08"
         )
         .to(
-          ".hero-layer",
+          logo,
           {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.62,
-            ease: "power2.out"
+            autoAlpha: 0,
+            y: -8,
+            duration: 0.42
           },
-          "2.98"
-        )
-        .to(
-          ".hero-copy",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.58,
-            ease: "power2.out"
-          },
-          "3.12"
+          "2.52"
         )
         .to(
           stoneFill,
           {
             autoAlpha: 0,
-            scale: 1.012,
-            duration: 0.5
+            scale: 1.01,
+            duration: 0.42
           },
-          "4.0"
+          "2.54"
         )
         .to(
           depth,
           {
             opacity: 0,
-            duration: 0.22,
+            duration: 0.18,
             stagger: 0.01
           },
-          "4.02"
+          "2.56"
         )
         .to(
           detail,
           {
             opacity: 0,
-            duration: 0.26,
-            stagger: 0.012
+            duration: 0.2,
+            stagger: 0.01
           },
-          "4.08"
+          "2.6"
         )
         .to(
           [right, center, left],
           {
             opacity: 0,
-            duration: 0.38,
-            stagger: 0.02
+            duration: 0.28,
+            stagger: 0.015
           },
-          "4.16"
+          "2.66"
         )
         .to(
           recess,
           {
             opacity: 0,
-            duration: 0.42,
+            duration: 0.34,
             stagger: 0.02
           },
-          "4.26"
+          "2.74"
         )
         .to(
           outline,
           {
             opacity: 0,
-            duration: 0.52,
-            stagger: 0.025
+            duration: 0.38,
+            stagger: 0.02
           },
-          "4.34"
+          "2.82"
         )
         .to(
           introScreen,
           {
             autoAlpha: 0,
-            duration: 0.34,
+            duration: 0.42,
             ease: "power2.out"
           },
-          "3.58"
+          "2.72"
+        )
+        .to(
+          ".hero-subtitle",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6
+          },
+          "2.94"
         )
         .set(introScreen, {
           pointerEvents: "none"
@@ -486,18 +504,18 @@ export default function IntroBrand() {
       {!introDone && (
         <div
           ref={introScreenRef}
-          className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#D6C6A8]"
+          className="fixed inset-0 z-[100] h-[100svh] w-full overflow-hidden bg-[#F5F1E8]"
         >
           <div
             ref={overlayRef}
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(168,142,107,0.20)_0%,rgba(154,123,95,0.34)_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(214,198,168,0.08)_0%,rgba(168,142,107,0.12)_100%)]"
           />
 
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05]">
-            <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(234,227,214,0.12)]" />
-            <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(234,227,214,0.12)]" />
-            <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(234,227,214,0.1)]" />
-            <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(234,227,214,0.1)]" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+            <div className="absolute left-[7%] top-[11%] h-px w-[13%] bg-[rgba(79,64,50,0.08)]" />
+            <div className="absolute right-[9%] top-[14%] h-px w-[11%] bg-[rgba(79,64,50,0.08)]" />
+            <div className="absolute left-[82%] top-[10%] h-[16%] w-px bg-[rgba(79,64,50,0.06)]" />
+            <div className="absolute left-[10%] bottom-[12%] h-px w-[14%] bg-[rgba(79,64,50,0.06)]" />
           </div>
 
           <div ref={heroImageRef} className="absolute inset-0 z-0">
@@ -507,7 +525,7 @@ export default function IntroBrand() {
               fill
               className="object-cover object-center hero-intro-image"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(168,142,107,0.10)_0%,rgba(154,123,95,0.18)_42%,rgba(154,123,95,0.28)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(245,241,232,0.78)_0%,rgba(245,241,232,0.44)_34%,rgba(168,142,107,0.10)_100%)]" />
           </div>
 
           <div className="absolute inset-0 z-30 flex items-center justify-center px-6">
@@ -535,7 +553,7 @@ export default function IntroBrand() {
                 priority
                 className="object-contain stone-fill-image"
               />
-              <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(234,227,214,0.18),transparent)]" />
+              <div className="stone-highlight absolute inset-0 rounded-[18px] bg-[linear-gradient(90deg,transparent,rgba(245,241,232,0.18),transparent)]" />
             </div>
           </div>
 
@@ -566,12 +584,17 @@ export default function IntroBrand() {
           <div className="absolute inset-x-0 bottom-0 h-[28%] bg-[linear-gradient(180deg,rgba(214,198,168,0)_0%,rgba(214,198,168,0.24)_40%,rgba(214,198,168,0.68)_78%,#D6C6A8_100%)]" />
 
           <div className="shell relative flex h-full items-center">
-            <div className="hero-copy max-w-[48rem]">
-              <h1 className="font-display whitespace-nowrap text-[clamp(2.35rem,7vw,6.6rem)] font-[600] leading-[0.92] tracking-[-0.02em] text-[#EAE3D6]">
-                Ativos Imobiliários
+            <div className="hero-copy max-w-[54rem]">
+              <h1 className="font-display leading-[0.88] tracking-[-0.02em] text-[#EAE3D6]">
+                <span className="hero-title-line title-line-1 block whitespace-nowrap text-[clamp(2.4rem,7vw,6.8rem)] font-[600]">
+                  Ativos imobiliários
+                </span>
+                <span className="hero-title-line title-line-2 mt-1 block whitespace-nowrap text-[clamp(2.4rem,7vw,6.8rem)] font-[600]">
+                  elevados ao essencial
+                </span>
               </h1>
 
-              <p className="mt-5 max-w-[34rem] text-[15px] font-[400] leading-[1.9] tracking-[0.02em] text-[#EAE3D6]/82 md:text-[18px]">
+              <p className="hero-subtitle mt-6 max-w-[30rem] text-[15px] font-[400] leading-[1.9] tracking-[0.02em] text-[#EAE3D6]/84 md:text-[18px]">
                 Transformados com inteligência e sofisticação
               </p>
             </div>
@@ -594,4 +617,4 @@ export default function IntroBrand() {
       </div>
     </div>
   );
-}
+        }
