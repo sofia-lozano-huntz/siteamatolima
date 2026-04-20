@@ -1,9 +1,5 @@
-import IntroBrand from "@/components/intro-brand";
+import HeroFindScroll from "@/components/HeroFindScroll";
 
 export default function HomePage() {
-  return (
-    <main>
-      <IntroBrand />
-    </main>
-  );
+  return <HeroFindScroll />;
 }
