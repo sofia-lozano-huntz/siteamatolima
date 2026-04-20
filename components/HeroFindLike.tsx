@@ -209,7 +209,7 @@ export default function HeroFindLike() {
               <div className="hero-house absolute inset-x-0 bottom-0 z-10 mx-auto h-[72vh] w-full max-w-[1100px] px-0 sm:h-[74vh] md:h-[78vh] lg:h-[82vh]">
                 <div className="relative h-full w-full">
                   <Image
-                    src="/images/hero-casa.jpg"
+                    src="/public/hero-house.png"
                     alt="Casa Amato Lima"
                     fill
                     priority
