@@ -3,11 +3,14 @@
 :root {
   --background: #D6C6A8;
   --background-soft: #EAE3D6;
+  --background-cream: #F5F1E8;
   --background-warm: #C9B08C;
 
   --foreground: #4F4032;
   --foreground-soft: #8A7357;
+  --foreground-deep-neutral: #3A3228;
   --muted: #9A7B5F;
+  --neutral-mid: #BFB29A;
 
   --line: rgba(154, 123, 95, 0.18);
   --line-strong: rgba(154, 123, 95, 0.3);
@@ -138,7 +141,7 @@ a {
 
 .intro-grain {
   background-image:
-    radial-gradient(rgba(154, 123, 95, 0.05) 0.6px, transparent 0.6px);
+    radial-gradient(rgba(154, 123, 95, 0.04) 0.6px, transparent 0.6px);
   background-size: 8px 8px;
 }
 
@@ -159,8 +162,8 @@ a {
 .hero-intro-image {
   object-fit: cover;
   object-position: center 38%;
-  transform: scale(1.14);
-  filter: saturate(0.94) contrast(1.02) brightness(0.98);
+  transform: scale(1.08);
+  filter: saturate(0.9) contrast(0.98) brightness(1.04);
 }
 
 .hero-main-image {
@@ -172,7 +175,7 @@ a {
 
 @media (max-width: 768px) {
   .hero-intro-image {
-    transform: scale(1.22);
+    transform: scale(1.16);
     object-position: center 32%;
   }
 
@@ -183,8 +186,8 @@ a {
 }
 
 .wire-line {
-  stroke: rgba(79, 64, 50, 0.82);
-  stroke-width: 2.15;
+  stroke: rgba(79, 64, 50, 0.24);
+  stroke-width: 1.6;
   stroke-linecap: square;
   stroke-linejoin: miter;
   vector-effect: non-scaling-stroke;
@@ -192,13 +195,13 @@ a {
 }
 
 .wire-line-soft {
-  stroke: rgba(79, 64, 50, 0.42);
-  stroke-width: 1.4;
+  stroke: rgba(79, 64, 50, 0.14);
+  stroke-width: 1.1;
 }
 
 .stone-line {
-  stroke: rgba(79, 64, 50, 0.88);
-  stroke-width: 2.15;
+  stroke: rgba(79, 64, 50, 0.24);
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
@@ -206,8 +209,8 @@ a {
 }
 
 .stone-line-soft {
-  stroke: rgba(79, 64, 50, 0.4);
-  stroke-width: 1.35;
+  stroke: rgba(79, 64, 50, 0.14);
+  stroke-width: 1.1;
 }
 
 .stone-highlight {
@@ -216,18 +219,18 @@ a {
 }
 
 .stone-line-strong {
-  stroke: rgba(154, 123, 95, 0.94);
-  stroke-width: 2.6;
+  stroke: rgba(154, 123, 95, 0.3);
+  stroke-width: 2.1;
 }
 
 .stone-line-faint {
-  stroke: rgba(79, 64, 50, 0.18);
-  stroke-width: 1.1;
+  stroke: rgba(79, 64, 50, 0.08);
+  stroke-width: 0.9;
 }
 
 .stone-object-fill,
 .stone-fill-image {
-  filter: saturate(0.94) contrast(1.02) brightness(1);
+  filter: saturate(0.86) contrast(0.95) brightness(1.02);
 }
 
 .text-foreground-soft {
