@@ -134,9 +134,8 @@ export default function IntroHero() {
         <div className="absolute inset-0 opacity-[0.06] mix-blend-multiply grain-layer" />
 
         <div
-          ref={lineWrapRef}
-          className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
-        >
+  className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+>
           <div className="relative h-[360px] w-[360px] md:h-[460px] md:w-[460px]">
             <span className="logo-line absolute left-[22%] top-[20%] h-px w-[24%] bg-neutral-500/40" />
             <span className="logo-line absolute left-[22%] top-[20%] h-[24%] w-px bg-neutral-500/40" />
