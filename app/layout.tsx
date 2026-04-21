@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Amato Lima",
-  description: "Ativos imobiliários | Real estate assets",
+  title: "Omai Inspired",
+  description: "Site editorial de villas de luxo, pronto para GitHub e Vercel.",
 };
 
 export default function RootLayout({
