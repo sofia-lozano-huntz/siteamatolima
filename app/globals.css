@@ -5,18 +5,36 @@
   --foreground: #171717;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+}
+
+button {
+  font: inherit;
 }
 
 .grain-layer {
-  background-image:
-    radial-gradient(rgba(0, 0, 0, 0.35) 0.45px, transparent 0.45px);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.32) 0.45px,
+    transparent 0.45px
+  );
   background-size: 8px 8px;
 }
