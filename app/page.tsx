@@ -1,9 +1,11 @@
-import HeroFindLike from "@/components/HeroFindLike";
+import IntroHero from "@/components/IntroHero";
+import PortfolioSection from "@/components/PortfolioSection";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <main>
-      <HeroFindLike />
+      <IntroHero />
+      <PortfolioSection />
     </main>
   );
 }
