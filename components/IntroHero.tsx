@@ -5,8 +5,7 @@ import gsap from "gsap";
 import Header from "./Header";
 
 export default function IntroHero() {
-  const rootRef = useRef<HTMLSectionElement | null>(null);
-  const lineWrapRef = useRef<HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLElement | null>(null);
   const stoneRef = useRef<HTMLImageElement | null>(null);
   const phraseRef = useRef<HTMLDivElement | null>(null);
   const shimmerRef = useRef<HTMLSpanElement | null>(null);
