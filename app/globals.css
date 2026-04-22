@@ -80,8 +80,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .intro-text-wrap,
-  .home-phrase {
+  .intro-text-wrap {
     max-width: 12ch;
   }
 
