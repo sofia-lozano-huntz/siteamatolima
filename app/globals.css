@@ -26,6 +26,7 @@ img {
 .intro-text,
 .home-copy p {
   text-wrap: balance;
+  font-family: var(--font-cormorant), serif;
 }
 
 .stone-outline {
