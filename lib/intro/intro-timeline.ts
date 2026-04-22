@@ -23,8 +23,8 @@ export function createIntroTimeline(root: HTMLElement) {
   const homeImageLayer = document.querySelector(".home-image-layer");
   const homeCopy = document.querySelector(".home-copy");
 
-  gsap.set(q(".text-part-1"), { opacity: 0, y: 10 });
-  gsap.set(q(".text-part-2"), { opacity: 0, y: 10 });
+  gsap.set(q(".text-part-1"), { opacity: 0, y: 12 });
+  gsap.set(q(".text-part-2"), { opacity: 0, y: 12 });
 
   gsap.set(q(".stone-path"), {
     opacity: 0,
@@ -34,18 +34,18 @@ export function createIntroTimeline(root: HTMLElement) {
 
   gsap.set(q(".lines-sweep"), {
     opacity: 0,
-    xPercent: -120,
+    xPercent: -110,
   });
 
   gsap.set(q(".stone-logo-wrap"), {
     opacity: 0,
-    scale: 0.985,
-    y: 4,
+    scale: 0.992,
+    y: 0,
   });
 
   gsap.set(q(".phrase-sweep"), {
     opacity: 0,
-    xPercent: -120,
+    xPercent: -110,
   });
 
   if (homeImageLayer) gsap.set(homeImageLayer, { opacity: 0 });
@@ -91,11 +91,11 @@ export function createIntroTimeline(root: HTMLElement) {
     q(".lines-sweep"),
     {
       opacity: 1,
-      xPercent: 135,
+      xPercent: 118,
       duration: sweepDuration,
       ease: "power2.inOut",
     },
-    ">-0.35"
+    ">-0.12"
   );
 
   tl.to(
@@ -103,29 +103,38 @@ export function createIntroTimeline(root: HTMLElement) {
     {
       opacity: 1,
       scale: 1,
-      y: 0,
       duration: stoneRevealDuration,
-      ease: easeSoft,
+      ease: "power2.out",
     },
-    ">-0.72"
+    ">-0.18"
+  );
+
+  tl.to({}, { duration: holdStone });
+
+  tl.to(
+    q(".stone-logo-wrap"),
+    {
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    },
+    ">-0.05"
   );
 
   tl.to(
     q(".stone-path"),
     {
       opacity: 0,
-      duration: 0.55,
+      duration: 0.45,
       stagger: 0.02,
       ease: "power2.out",
     },
-    "<+0.08"
+    "<+0.02"
   );
-
-  tl.to({}, { duration: holdStone });
 
   tl.to(q(".phrase-sweep"), {
     opacity: 1,
-    xPercent: 150,
+    xPercent: 138,
     duration: phraseSweepDuration,
     ease: "power2.inOut",
   });
@@ -138,7 +147,7 @@ export function createIntroTimeline(root: HTMLElement) {
         duration: homeRevealDuration,
         ease: "power2.out",
       },
-      "<+0.12"
+      "<+0.18"
     );
   }
 
@@ -147,10 +156,10 @@ export function createIntroTimeline(root: HTMLElement) {
       homeCopy,
       {
         opacity: 1,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out",
       },
-      "<+0.25"
+      "<+0.22"
     );
   }
 
@@ -164,7 +173,7 @@ export function createIntroTimeline(root: HTMLElement) {
         root.style.display = "none";
       },
     },
-    "<+0.12"
+    "<+0.15"
   );
 
   return tl;
