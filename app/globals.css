@@ -111,3 +111,11 @@ img {
     left: -15%;
   }
 }
+
+.mark-stage {
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
