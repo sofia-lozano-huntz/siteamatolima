@@ -4,7 +4,7 @@ export default function IntroHomeTransition() {
   return (
     <section className="relative min-h-screen bg-[#F5F1EA]">
       <div className="home-image-layer absolute inset-0 opacity-0">
-        <div className="absolute inset-0 bg-[url('/images/intro/home-hero.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/images/intro/home-hero.png')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-black/10" />
       </div>
 
