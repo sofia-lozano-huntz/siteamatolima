@@ -26,7 +26,6 @@ export default function IntroExperience() {
       aria-hidden="true"
     >
       <div className="intro-bg absolute inset-0 bg-[#F5F1EA]" />
-
       <IntroText />
       <IntroLines />
       <IntroStoneReveal />
