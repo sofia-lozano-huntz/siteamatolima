@@ -4,22 +4,16 @@ import Image from "next/image";
 
 export default function IntroStoneReveal() {
   return (
-    <div className="absolute inset-0 z-40 pointer-events-none">
-      <div className="absolute left-1/2 top-[34%] w-[min(28vw,420px)] -translate-x-1/2 -translate-y-1/2 md:left-[54%]">
-        <div className="stone-logo-wrap relative opacity-0">
-          <Image
-            src="/images/intro/stone-logo.png"
-            alt="Logo escultórica Amato Lima"
-            width={1200}
-            height={1200}
-            priority
-            className="stone-logo h-auto w-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div className="absolute left-[7vw] top-1/2 z-10 max-w-[16ch] -translate-y-1/2">
-        <div className="light-sweep phrase-sweep" />
+    <div className="mark-stage absolute left-0 top-0 w-full">
+      <div className="stone-logo-wrap relative mx-auto w-[72vw] max-w-[220px] opacity-0 md:w-[min(22vw,320px)] md:max-w-none">
+        <Image
+          src="/images/intro/stone-logo.png"
+          alt="Logo escultórica Amato Lima"
+          width={1200}
+          height={1200}
+          priority
+          className="stone-logo h-auto w-full object-contain"
+        />
       </div>
     </div>
   );
