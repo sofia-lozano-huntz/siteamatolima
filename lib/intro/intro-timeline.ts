@@ -21,6 +21,7 @@ export function createIntroTimeline(root: HTMLElement) {
   } = introConfig;
 
   const homeImageLayer = document.querySelector(".home-image-layer");
+  const homeCopy = document.querySelector(".home-copy");
 
   gsap.set(q(".text-part-1"), { opacity: 0, y: 10 });
   gsap.set(q(".text-part-2"), { opacity: 0, y: 10 });
@@ -33,23 +34,22 @@ export function createIntroTimeline(root: HTMLElement) {
 
   gsap.set(q(".lines-sweep"), {
     opacity: 0,
-    xPercent: -140,
+    xPercent: -120,
   });
 
   gsap.set(q(".stone-logo-wrap"), {
     opacity: 0,
     scale: 0.985,
-    y: 6,
+    y: 4,
   });
 
   gsap.set(q(".phrase-sweep"), {
     opacity: 0,
-    xPercent: -130,
+    xPercent: -120,
   });
 
-  if (homeImageLayer) {
-    gsap.set(homeImageLayer, { opacity: 0 });
-  }
+  if (homeImageLayer) gsap.set(homeImageLayer, { opacity: 0 });
+  if (homeCopy) gsap.set(homeCopy, { opacity: 0 });
 
   const tl = gsap.timeline({
     defaults: { ease: easePrimary },
@@ -84,18 +84,18 @@ export function createIntroTimeline(root: HTMLElement) {
       stagger: linesStagger,
       ease: "power2.inOut",
     },
-    ">-0.08"
+    ">-0.05"
   );
 
   tl.to(
     q(".lines-sweep"),
     {
       opacity: 1,
-      xPercent: 185,
+      xPercent: 135,
       duration: sweepDuration,
       ease: "power2.inOut",
     },
-    ">-0.4"
+    ">-0.35"
   );
 
   tl.to(
@@ -107,15 +107,15 @@ export function createIntroTimeline(root: HTMLElement) {
       duration: stoneRevealDuration,
       ease: easeSoft,
     },
-    ">-0.78"
+    ">-0.72"
   );
 
   tl.to(
     q(".stone-path"),
     {
       opacity: 0,
-      duration: 0.7,
-      stagger: 0.03,
+      duration: 0.55,
+      stagger: 0.02,
       ease: "power2.out",
     },
     "<+0.08"
@@ -125,7 +125,7 @@ export function createIntroTimeline(root: HTMLElement) {
 
   tl.to(q(".phrase-sweep"), {
     opacity: 1,
-    xPercent: 260,
+    xPercent: 150,
     duration: phraseSweepDuration,
     ease: "power2.inOut",
   });
@@ -138,7 +138,19 @@ export function createIntroTimeline(root: HTMLElement) {
         duration: homeRevealDuration,
         ease: "power2.out",
       },
-      "<+0.1"
+      "<+0.12"
+    );
+  }
+
+  if (homeCopy) {
+    tl.to(
+      homeCopy,
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "<+0.25"
     );
   }
 
@@ -152,7 +164,7 @@ export function createIntroTimeline(root: HTMLElement) {
         root.style.display = "none";
       },
     },
-    "<+0.15"
+    "<+0.12"
   );
 
   return tl;
