@@ -21,7 +21,6 @@ export function createIntroTimeline(root: HTMLElement) {
   } = introConfig;
 
   const homeImageLayer = document.querySelector(".home-image-layer");
-  const homePhrase = document.querySelector(".home-phrase");
 
   gsap.set(q(".text-part-1"), { opacity: 0, y: 10 });
   gsap.set(q(".text-part-2"), { opacity: 0, y: 10 });
@@ -50,10 +49,6 @@ export function createIntroTimeline(root: HTMLElement) {
 
   if (homeImageLayer) {
     gsap.set(homeImageLayer, { opacity: 0 });
-  }
-
-  if (homePhrase) {
-    gsap.set(homePhrase, { opacity: 1 });
   }
 
   const tl = gsap.timeline({
