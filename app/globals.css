@@ -1,6 +1,22 @@
+@import "tailwindcss";
+
 html,
 body {
+  margin: 0;
+  padding: 0;
   background: #f5f1ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
 }
 
 .intro-root {
@@ -8,7 +24,7 @@ body {
 }
 
 .intro-text,
-.home-phrase {
+.home-copy p {
   text-wrap: balance;
 }
 
@@ -28,12 +44,12 @@ body {
   filter: drop-shadow(0 18px 28px rgba(108, 90, 61, 0.08));
 }
 
+.mark-stage {
+  pointer-events: none;
+}
+
 .light-sweep {
   position: absolute;
-  top: -30%;
-  left: -12%;
-  width: 22%;
-  height: 160%;
   opacity: 0;
   pointer-events: none;
   transform: skewX(-18deg);
@@ -49,17 +65,21 @@ body {
 }
 
 .lines-sweep {
-  top: -18%;
-  left: -8%;
-  width: 28%;
-  height: 140%;
+  top: -10%;
+  left: -18%;
+  width: 34%;
+  height: 120%;
+}
+
+.phrase-sweep-wrap {
+  pointer-events: none;
 }
 
 .phrase-sweep {
-  top: -35%;
-  left: -10%;
-  width: 38%;
-  height: 180%;
+  top: 0;
+  left: -12%;
+  width: 24%;
+  height: 100%;
 }
 
 .home-image-layer {
@@ -72,23 +92,21 @@ body {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(20, 20, 20, 0.20) 0%,
-    rgba(20, 20, 20, 0.12) 32%,
-    rgba(20, 20, 20, 0.04) 64%,
-    rgba(20, 20, 20, 0.00) 100%
+    rgba(20, 20, 20, 0.18) 0%,
+    rgba(20, 20, 20, 0.1) 32%,
+    rgba(20, 20, 20, 0.03) 64%,
+    rgba(20, 20, 20, 0) 100%
   );
 }
 
 @media (max-width: 768px) {
-  .intro-text-wrap {
-    max-width: 12ch;
-  }
-
   .lines-sweep {
-    width: 34%;
+    width: 38%;
+    left: -20%;
   }
 
   .phrase-sweep {
-    width: 52%;
+    width: 30%;
+    left: -15%;
   }
 }
