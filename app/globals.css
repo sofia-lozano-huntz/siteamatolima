@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* Base reset */
+
 html,
 body {
   margin: 0;
@@ -13,15 +15,20 @@ body {
 
 body {
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
   display: block;
 }
 
+/* Intro base */
+
 .intro-root {
   will-change: opacity, transform;
 }
+
+/* Tipografia */
 
 .intro-text,
 .home-copy p {
@@ -29,25 +36,35 @@ img {
   font-family: var(--font-cormorant), serif;
 }
 
+/* Pedra / linhas */
+
 .stone-outline {
   overflow: visible;
 }
 
 .stone-path {
   fill: none;
-  stroke: rgba(148, 126, 94, 0.34);
-  stroke-width: 1.15;
+  stroke: rgba(148, 126, 94, 0.32);
+  stroke-width: 1.1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .stone-logo {
-  filter: drop-shadow(0 18px 28px rgba(108, 90, 61, 0.08));
+  filter: drop-shadow(0 18px 28px rgba(108, 90, 61, 0.06));
 }
+
+/* Container da pedra */
 
 .mark-stage {
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
+
+/* Sweep (efeito de brilho refinado) */
 
 .light-sweep {
   position: absolute;
@@ -65,12 +82,16 @@ img {
   );
 }
 
+/* Sweep nas linhas */
+
 .lines-sweep {
   top: -6%;
   left: -16%;
   width: 18%;
   height: 112%;
 }
+
+/* Sweep na frase */
 
 .phrase-sweep-wrap {
   pointer-events: none;
@@ -82,6 +103,8 @@ img {
   width: 13%;
   height: 100%;
 }
+
+/* Home (background que entra no final) */
 
 .home-image-layer {
   will-change: opacity;
@@ -100,22 +123,16 @@ img {
   );
 }
 
+/* Responsividade */
+
 @media (max-width: 768px) {
   .lines-sweep {
-    width: 38%;
-    left: -20%;
+    width: 22%;
+    left: -18%;
   }
 
   .phrase-sweep {
-    width: 30%;
-    left: -15%;
+    width: 16%;
+    left: -12%;
   }
-}
-
-.mark-stage {
-  pointer-events: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
