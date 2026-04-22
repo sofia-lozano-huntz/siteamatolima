@@ -1,1 +1,15 @@
-
+export const introConfig = {
+  holdStart: 0.45,
+  textInDuration: 0.9,
+  textOverlap: 0.18,
+  linesDuration: 1.15,
+  linesStagger: 0.08,
+  sweepDuration: 1.25,
+  stoneRevealDuration: 1.1,
+  holdStone: 0.85,
+  phraseSweepDuration: 1.05,
+  homeRevealDuration: 1.2,
+  introFadeDuration: 0.95,
+  easeSoft: "power2.out",
+  easePrimary: "power3.out",
+};
